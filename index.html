@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6F7F5" />
+  <meta name="description" content="Rootvalue — Vietnam investment research system." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Rootvalue" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Rootvalue</title>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-word"><span>ROOT</span><em>VALUE</em></div>
+        <div class="brand-tag">EVIDENCE BEFORE OPINION.</div>
+      </div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-route="overview"><span>01</span> Tổng quan</button>
+        <button class="nav-item" data-route="money"><span>02</span> Dòng tiền hệ thống</button>
+        <button class="nav-item" data-route="market"><span>03</span> Market flow</button>
+        <button class="nav-item" data-route="company"><span>04</span> Doanh nghiệp</button>
+        <button class="nav-item" data-route="data"><span>05</span> Dữ liệu</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="status-dot" id="pipelineDot"></div>
+        <div>
+          <strong id="pipelineLabel">Đang tải</strong>
+          <small id="generatedAt">—</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="mobile-head">
+        <div class="brand-word compact"><span>ROOT</span><em>VALUE</em></div>
+        <button id="refreshBtn" class="icon-btn" title="Reload data">↻</button>
+      </header>
+
+      <section class="screen active" data-screen="overview">
+        <div class="screen-head">
+          <div>
+            <div class="eyebrow">ROOTVALUE V1</div>
+            <h1>What changed?</h1>
+            <p class="lead">Từ liquidity của hệ thống đến doanh nghiệp. Không có dữ liệu thì để trống, không tự suy diễn.</p>
+          </div>
+          <div class="freshness-card">
+            <span>DATA</span>
+            <strong id="overviewFreshness">—</strong>
+          </div>
+        </div>
+        <div id="overviewNotice"></div>
+        <div class="metric-grid" id="systemMetrics"></div>
+        <div class="section-head"><div><span class="eyebrow">ATTENTION</span><h2>Biến động đáng xem</h2></div><span class="section-note">ranking trong V1 watchlist</span></div>
+        <div class="change-list" id="changeList"></div>
+      </section>
+
+      <section class="screen" data-screen="money">
+        <div class="screen-head">
+          <div>
+            <div class="eyebrow">TOP-DOWN</div>
+            <h1>Dòng tiền hệ thống</h1>
+            <p class="lead">External pressure → FX/SBV reaction → VND liquidity → asset allocation. SBV là reaction function, không phải một biến đơn lẻ.</p>
+          </div>
+        </div>
+        <div class="flow-map" id="flowMap">
+          <article class="flow-node"><span>01</span><h3>External</h3><p>DXY / Fed / trade / FDI / commodities / political shocks</p><div class="node-value" id="externalValue">N/A</div></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-node primary"><span>02</span><h3>FX + SBV</h3><p>USD/VND pressure, intervention, policy choice</p><div class="node-value" id="fxValue">N/A</div></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-node"><span>03</span><h3>VND liquidity</h3><p>Interbank / OMO / bills / Treasury / deposit-credit gap</p><div class="node-value" id="liquidityValue">N/A</div></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-node"><span>04</span><h3>Allocation</h3><p>Deposit / bond / equity / property / gold</p><div class="node-value" id="allocationValue">N/A</div></article>
+        </div>
+        <div class="two-col">
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow">SBV REACTION ENGINE</span><h2>V0 — framework only</h2></div><span class="pill warning" id="reactionStatus">Chưa đủ data</span></div><p>V1 cố tình chưa gán xác suất easing / neutral / defend cho đến khi OMO, interbank và các biến liquidity cốt lõi được nối và kiểm định schema.</p><div id="missingCore" class="missing-list"></div></article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow">AVAILABLE NOW</span><h2>Proxy đang có</h2></div></div><div id="macroMetrics" class="stack-list"></div></article>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="market">
+        <div class="screen-head">
+          <div>
+            <div class="eyebrow">CROSS-SECTIONAL</div>
+            <h1>Market flow</h1>
+            <p class="lead">Đây là relative strength + participation proxy. Không diễn giải price/volume thành bằng chứng tiền “chảy từ mã A sang mã B”.</p>
+          </div>
+        </div>
+        <div class="legend-row"><span><i class="dot leading"></i>Leading</span><span><i class="dot improving"></i>Improving</span><span><i class="dot neutral"></i>Neutral</span><span><i class="dot weakening"></i>Weakening</span></div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th>Mã</th><th>Ngành</th><th>Giá</th><th>1D</th><th>RS 20D</th><th>Rank</th><th>Δ Rank</th><th>Participation</th><th>20D range</th><th>State</th><th>30D</th></tr></thead><tbody id="marketBody"></tbody></table></div>
+        <div class="method-note" id="marketMethod"></div>
+      </section>
+
+      <section class="screen" data-screen="company">
+        <div class="screen-head company-head">
+          <div>
+            <div class="eyebrow">BOTTOM-UP</div>
+            <h1>Doanh nghiệp</h1>
+            <p class="lead">V1 giữ nguyên output chuẩn hoá từ provider trước khi tự map accounting semantics.</p>
+          </div>
+          <label class="select-box">Mã<select id="companySelect"></select></label>
+        </div>
+        <div id="companyNotice"></div>
+        <div class="report-tabs" id="reportTabs"></div>
+        <div class="table-wrap report-wrap"><table class="data-table financial-table" id="financialTable"></table></div>
+      </section>
+
+      <section class="screen" data-screen="data">
+        <div class="screen-head">
+          <div>
+            <div class="eyebrow">PROVENANCE</div>
+            <h1>Dữ liệu & kiểm soát</h1>
+            <p class="lead">Source, freshness, error và limitation là một phần của data model, không phải footnote.</p>
+          </div>
+        </div>
+        <div class="two-col" id="sourceCards"></div>
+        <article class="panel"><div class="panel-head"><div><span class="eyebrow">PIPELINE</span><h2>Lỗi / cảnh báo</h2></div></div><div id="healthList" class="health-list"></div></article>
+        <article class="panel"><div class="panel-head"><div><span class="eyebrow">FORMULAS</span><h2>Derived market metrics</h2></div></div><div id="methodList" class="formula-list"></div></article>
+      </section>
+    </main>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <button class="mobile-nav-item active" data-route="overview"><b>01</b><span>Home</span></button>
+      <button class="mobile-nav-item" data-route="money"><b>02</b><span>Flow</span></button>
+      <button class="mobile-nav-item" data-route="market"><b>03</b><span>Market</span></button>
+      <button class="mobile-nav-item" data-route="company"><b>04</b><span>Stocks</span></button>
+      <button class="mobile-nav-item" data-route="data"><b>05</b><span>Data</span></button>
+    </nav>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
