@@ -1,4 +1,11 @@
 // Rootvalue V1.1 overlays: larger investigation list + observable SBV trajectory.
+const enhancementStyle=document.createElement('style');enhancementStyle.textContent=`
+.pick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.pick-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-height:190px;box-shadow:var(--shadow);display:flex;flex-direction:column}.pick-card.leader{border-color:color-mix(in srgb,var(--brand) 36%,var(--line))}.pick-card.abnormal{border-color:color-mix(in srgb,var(--warning) 28%,var(--line))}.pick-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.pick-head>div{display:flex;align-items:baseline;gap:8px}.pick-head strong{font-size:25px;font-weight:650;letter-spacing:-.8px}.pick-index{font-size:9px;color:var(--subtle);font-weight:650}.pick-type{font-size:9px;font-weight:650;border-radius:999px;padding:5px 7px;background:var(--surface-2);color:var(--muted);white-space:nowrap}.pick-card.leader .pick-type{background:var(--brand-soft);color:var(--brand)}.pick-card.abnormal .pick-type{background:var(--warning-soft);color:var(--warning)}.pick-sector{font-size:11px;color:var(--muted);margin:5px 0 15px}.pick-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;padding-top:12px;border-top:1px solid var(--line)}.pick-stats div{display:grid;gap:2px}.pick-stats span{font-size:9px;color:var(--subtle)}.pick-stats b{font-size:12px;font-weight:620}.pick-foot{margin-top:auto;padding-top:15px;display:flex;align-items:center;justify-content:space-between}.trajectory-panel{margin:0 0 12px}.trajectory-note{margin-top:6px!important}.trajectory-meta{display:grid;text-align:right;gap:1px;min-width:130px}.trajectory-meta strong{font-size:25px;font-weight:650}.trajectory-meta span,.trajectory-meta small{font-size:9px;color:var(--subtle)}.trajectory-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.trajectory-card{border:1px solid var(--line);background:var(--surface-2);border-radius:13px;padding:13px;min-height:118px}.trajectory-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.trajectory-top>span{font-size:10px;color:var(--muted);font-weight:600}.trajectory-card>strong{display:block;font-size:20px;font-weight:650;margin:14px 0 4px;letter-spacing:-.4px}.trajectory-card>small{display:block;font-size:9px;color:var(--subtle);line-height:1.35}.trajectory-warning{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:10px;line-height:1.5;color:var(--warning)}
+@media(max-width:1180px){.pick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.trajectory-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:820px){.pick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.trajectory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pick-grid{grid-template-columns:1fr}.pick-card{min-height:170px}.trajectory-grid{grid-template-columns:1fr}.trajectory-meta{text-align:left;margin-top:10px}.trajectory-panel .panel-head{display:block}}
+`;document.head.appendChild(enhancementStyle);
+
 Object.assign(SECTORS,{
   'Securities':{vi:'Chứng khoán',en:'Securities'},
   'Real Estate':{vi:'Bất động sản',en:'Real Estate'},
@@ -15,7 +22,8 @@ Object.assign(I18N.vi,{
   'sbv.history':'Số quan sát','sbv.historyStart':'Bắt đầu lưu','sbv.current':'Hiện tại','sbv.change':'So với lần trước','sbv.noHistory':'Chưa đủ hai quan sát để tính thay đổi.',
   'metric.sbv_omo_awarded':'OMO trúng thầu','metric.sbv_omo_rate':'Lãi suất OMO','metric.sbv_m2_growth':'Tăng trưởng M2','metric.sbv_corp_deposit_growth':'Tiền gửi TCKT','metric.sbv_household_deposit_growth':'Tiền gửi dân cư',
   'sbv.backfillWarning':'Chuỗi quan sát chính thức đang được tích lũy từ Rootvalue; backfill 2018–nay vẫn chưa hoàn tất nên chưa dùng để gán xác suất phản ứng NHNN.',
-  'market.coverage':'Độ phủ universe','market.picks':'Mã đang được theo dõi','market.noData':'Chưa có dữ liệu market-flow. Pipeline thị trường chưa chạy thành công.'
+  'market.coverage':'Độ phủ universe','market.picks':'Mã đang được theo dõi','market.noData':'Chưa có dữ liệu dòng tiền thị trường. Pipeline thị trường chưa chạy thành công.',
+  'missing.interbank_rate':'Lãi suất liên ngân hàng','missing.policy_rate':'Lãi suất điều hành','missing.omo':'Nghiệp vụ thị trường mở','missing.credit':'Tăng trưởng tín dụng','missing.money_supply':'Tổng phương tiện thanh toán','missing.cpi':'Lạm phát CPI','missing.exchange_rate':'Tỷ giá'
 });
 Object.assign(I18N.en,{
   'attention.title':'Investigation list',
@@ -25,7 +33,8 @@ Object.assign(I18N.en,{
   'sbv.history':'Observations','sbv.historyStart':'Capture started','sbv.current':'Current','sbv.change':'Vs prior capture','sbv.noHistory':'At least two observations are needed to calculate a change.',
   'metric.sbv_omo_awarded':'OMO awarded','metric.sbv_omo_rate':'OMO rate','metric.sbv_m2_growth':'M2 growth','metric.sbv_corp_deposit_growth':'Corporate deposits','metric.sbv_household_deposit_growth':'Household deposits',
   'sbv.backfillWarning':'The verified official series is accumulating from Rootvalue capture date; the 2018–present backfill is not complete, so SBV reaction probabilities remain disabled.',
-  'market.coverage':'Universe coverage','market.picks':'Tracked names','market.noData':'No market-flow data yet. The dedicated market pipeline has not completed successfully.'
+  'market.coverage':'Universe coverage','market.picks':'Tracked names','market.noData':'No market-flow data yet. The dedicated market pipeline has not completed successfully.',
+  'missing.interbank_rate':'Interbank rate','missing.policy_rate':'Policy rate','missing.omo':'Open-market operations','missing.credit':'Credit growth','missing.money_supply':'Money supply','missing.cpi':'CPI inflation','missing.exchange_rate':'Exchange rate'
 });
 
 function enhancedMetricLabel(key){return t(`metric.${key}`);}
