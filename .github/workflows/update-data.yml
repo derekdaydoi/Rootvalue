@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/build_foundation.py'
+      - 'scripts/repair_financials.py'
       - 'scripts/publish_foundation.py'
       - 'scripts/validate_foundation.py'
       - 'config/foundation.json'
@@ -47,6 +48,9 @@ jobs:
 
       - name: Build 8Y company + SBV foundation
         run: python scripts/build_foundation.py
+
+      - name: Repair empty financial statements
+        run: python scripts/repair_financials.py
 
       - name: Publish foundation to frontend snapshot
         run: python scripts/publish_foundation.py
