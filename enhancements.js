@@ -1,0 +1,54 @@
+// Rootvalue V1.1 overlays: larger investigation list + observable SBV trajectory.
+Object.assign(SECTORS,{
+  'Securities':{vi:'Chứng khoán',en:'Securities'},
+  'Real Estate':{vi:'Bất động sản',en:'Real Estate'},
+  'Consumer & Retail':{vi:'Tiêu dùng & bán lẻ',en:'Consumer & Retail'},
+  'Materials':{vi:'Vật liệu',en:'Materials'},
+  'Energy':{vi:'Năng lượng',en:'Energy'}
+});
+
+Object.assign(I18N.vi,{
+  'attention.title':'Danh sách đáng điều tra',
+  'attention.note':'Tối đa 20 mã từ universe mở rộng; ưu tiên 3 dẫn dắt + 2 chuyển biến bất thường theo từng nhóm',
+  'pick.leader':'Dẫn dắt ngành','pick.abnormal':'Chuyển biến bất thường','pick.rank':'Hạng','pick.move':'Đổi hạng','pick.rs':'Sức mạnh 20P','pick.participation':'Mức tham gia',
+  'sbv.trajectory.kicker':'DIỄN BIẾN NHNN','sbv.trajectory.title':'Dữ liệu quan sát theo thời gian','sbv.trajectory.note':'Mỗi lần chạy hệ thống lưu lại quan sát chính thức của NHNN. Đây là dữ liệu diễn biến, không phải nhận định.',
+  'sbv.history':'Số quan sát','sbv.historyStart':'Bắt đầu lưu','sbv.current':'Hiện tại','sbv.change':'So với lần trước','sbv.noHistory':'Chưa đủ hai quan sát để tính thay đổi.',
+  'metric.sbv_omo_awarded':'OMO trúng thầu','metric.sbv_omo_rate':'Lãi suất OMO','metric.sbv_m2_growth':'Tăng trưởng M2','metric.sbv_corp_deposit_growth':'Tiền gửi TCKT','metric.sbv_household_deposit_growth':'Tiền gửi dân cư',
+  'sbv.backfillWarning':'Chuỗi quan sát chính thức đang được tích lũy từ Rootvalue; backfill 2018–nay vẫn chưa hoàn tất nên chưa dùng để gán xác suất phản ứng NHNN.',
+  'market.coverage':'Độ phủ universe','market.picks':'Mã đang được theo dõi','market.noData':'Chưa có dữ liệu market-flow. Pipeline thị trường chưa chạy thành công.'
+});
+Object.assign(I18N.en,{
+  'attention.title':'Investigation list',
+  'attention.note':'Up to 20 names from the expanded universe; 3 sector leaders + 2 unusual movers per group where available',
+  'pick.leader':'Sector leader','pick.abnormal':'Unusual mover','pick.rank':'Rank','pick.move':'Rank move','pick.rs':'20D strength','pick.participation':'Participation',
+  'sbv.trajectory.kicker':'SBV TRAJECTORY','sbv.trajectory.title':'Observed data through time','sbv.trajectory.note':'Each pipeline run preserves official SBV observations. This is trajectory data, not an opinion.',
+  'sbv.history':'Observations','sbv.historyStart':'Capture started','sbv.current':'Current','sbv.change':'Vs prior capture','sbv.noHistory':'At least two observations are needed to calculate a change.',
+  'metric.sbv_omo_awarded':'OMO awarded','metric.sbv_omo_rate':'OMO rate','metric.sbv_m2_growth':'M2 growth','metric.sbv_corp_deposit_growth':'Corporate deposits','metric.sbv_household_deposit_growth':'Household deposits',
+  'sbv.backfillWarning':'The verified official series is accumulating from Rootvalue capture date; the 2018–present backfill is not complete, so SBV reaction probabilities remain disabled.',
+  'market.coverage':'Universe coverage','market.picks':'Tracked names','market.noData':'No market-flow data yet. The dedicated market pipeline has not completed successfully.'
+});
+
+function enhancedMetricLabel(key){return t(`metric.${key}`);}
+function lastTwo(history,field){const vals=(history||[]).filter(x=>Number.isFinite(Number(x?.[field])));return vals.length>=2?[Number(vals.at(-2)[field]),Number(vals.at(-1)[field])]:[null,vals.length?Number(vals.at(-1)[field]):null];}
+function deltaNumber(a,b,d=2,suffix=''){if(a==null||b==null)return t('sbv.noHistory');const diff=b-a;return `${diff>0?'+':''}${fmt(diff,d)}${suffix}`;}
+function trajectoryCard(label,field,current,history,unit,decimals=2){const [prior,latest]=lastTwo(history,field);const series=(history||[]).map(x=>x?.[field]).filter(v=>Number.isFinite(Number(v))).map(Number);return `<article class="trajectory-card"><div class="trajectory-top"><span>${escapeHtml(label)}</span>${sparkline(series)}</div><strong>${latest==null?'N/A':`${fmt(latest,decimals)}${unit?' '+escapeHtml(unit):''}`}</strong><small>${escapeHtml(prior==null?t('sbv.noHistory'):deltaNumber(prior,latest,decimals,unit==='%'?'pp':''))}</small></article>`;}
+
+renderOverview=function(){const d=STATE.data;const root=$('#overviewNotice');if(d.pipeline_status==='not_run')root.innerHTML=notice(t('notice.notRun'),'warning');else if(d.health?.errors?.length)root.innerHTML=notice(`${t('notice.errors')} (${d.health.errors.length})`,'error');else if(d.pipeline_status==='partial')root.innerHTML=notice(t('notice.partial'),'warning');else root.innerHTML='';
+  const idx=d.market?.index||{};const usd=metricByKey('usd_vcb_sell');const gold=metricByKey('gold_sjc_sell');const rows=d.market?.rows||[];const leading=[...rows].sort((a,b)=>(a.rank_current??999)-(b.rank_current??999))[0];
+  $('#systemMetrics').innerHTML=[
+    metricCard(t('metric.vnindex'),fmt(idx.close,2),idx.return_1d==null?t('metric.noMove'):`1D ${signedPct(idx.return_1d)}`,d.market?.source||''),
+    metricCard(t('metric.fx'),usd?fmt(usd.value,0):'N/A',t('metric.fxDesc'),usd?.source||''),
+    metricCard(t('metric.gold'),gold?fmt(gold.value,0):'N/A',t('metric.goldDesc'),gold?.source||''),
+    metricCard(t('metric.leader'),leading?.symbol||'N/A',leading?`#${leading.rank_current} · ${t('table.rs20')} ${signedPct(leading.rs_20d_vs_vnindex)}`:'N/A',`${t('market.coverage')}: ${rows.length}`)
+  ].join('');
+  const picks=(d.market?.picks||[]).slice(0,20);const fallback=[...rows].filter(r=>r.rank_delta!=null).sort((a,b)=>Math.abs(b.rank_delta)-Math.abs(a.rank_delta)).slice(0,20);const list=picks.length?picks:fallback;
+  const box=$('#changeList');box.className='pick-grid';box.innerHTML=list.length?list.map((r,i)=>{const type=r.selection_type||((i<3)?'Leader':'Abnormal');const isLeader=type==='Leader';return `<article class="pick-card ${isLeader?'leader':'abnormal'}"><div class="pick-head"><div><span class="pick-index">${String(i+1).padStart(2,'0')}</span><strong>${escapeHtml(r.symbol)}</strong></div><span class="pick-type">${escapeHtml(isLeader?t('pick.leader'):t('pick.abnormal'))}</span></div><div class="pick-sector">${escapeHtml(sectorLabel(r.sector))}</div><div class="pick-stats"><div><span>${t('pick.rank')}</span><b>#${r.rank_current??'—'}</b></div><div><span>${t('pick.move')}</span><b class="${cls(r.rank_delta)}">${signed(r.rank_delta,0)}</b></div><div><span>${t('pick.rs')}</span><b class="${cls(r.rs_20d_vs_vnindex)}">${signedPct(r.rs_20d_vs_vnindex)}</b></div><div><span>${t('pick.participation')}</span><b>${r.volume_participation_5d_vs_20d==null?'N/A':`${fmt(r.volume_participation_5d_vs_20d,2)}x`}</b></div></div><div class="pick-foot"><span class="state-badge ${escapeHtml(r.state)}">${escapeHtml(stateLabel(r.state))}</span>${sparkline(r.sparkline)}</div></article>`}).join(''):notice(t('market.noData'),'warning');};
+
+renderMoney=function(){const d=STATE.data;const usd=metricByKey('usd_vcb_sell');const rows=d.market?.rows||[];const leader=[...rows].sort((a,b)=>(a.rank_current??999)-(b.rank_current??999))[0];$('#externalValue').textContent=t('money.externalMissing');$('#fxValue').textContent=usd?.value!=null?`${fmt(usd.value,0)} VND/USD`:t('money.fxMissing');const missing=d.macro?.missing_core||[];$('#liquidityValue').textContent=(d.macro?.sbv_current?.omo_awarded_bn_vnd!=null)?`${fmt(d.macro.sbv_current.omo_awarded_bn_vnd,0)} tỷ OMO`:t('money.liquidityMissing');$('#allocationValue').textContent=leader?`${t('money.rsLeader')}: ${leader.symbol}`:t('money.allocationMissing');const ready=d.macro?.reaction_engine_status==='data_ready';$('#reactionStatus').textContent=ready?t('reaction.ready'):t('reaction.missing');$('#reactionStatus').className=`pill ${ready?'ok':'warning'}`;$('#missingCore').innerHTML=missing.length?missing.map(x=>`<div class="missing-item"><strong>${escapeHtml(missingLabel(x))}</strong><span>${t('missing.status')}</span></div>`).join(''):`<div class="missing-item"><strong>${t('missing.coreSet')}</strong><span>${t('missing.available')}</span></div>`;
+  const metrics=d.macro?.metrics||[];$('#macroMetrics').innerHTML=metrics.length?metrics.map(m=>`<div class="stack-item"><div><strong>${escapeHtml(enhancedMetricLabel(m.key)||m.key)}</strong><small>${escapeHtml(sourceLabel(m.source||''))}</small></div><div>${fmt(m.value,2)} <small>${escapeHtml(m.unit||'')}</small></div></div>`).join(''):`<div class="stack-item"><span>${t('proxy.none')}</span><small>N/A</small></div>`;
+  const screen=$('[data-screen="money"]');let panel=$('#sbvTrajectoryPanel');if(!panel){panel=document.createElement('article');panel.className='panel trajectory-panel';panel.id='sbvTrajectoryPanel';const anchor=$('.two-col',screen);anchor?.before(panel);}const hist=d.macro?.sbv_history?.observations||[];const cur=d.macro?.sbv_current||{};const start=hist[0]?.capture_date||'—';panel.innerHTML=`<div class="panel-head"><div><span class="eyebrow">${t('sbv.trajectory.kicker')}</span><h2>${t('sbv.trajectory.title')}</h2><p class="trajectory-note">${t('sbv.trajectory.note')}</p></div><div class="trajectory-meta"><strong>${hist.length}</strong><span>${t('sbv.history')}</span><small>${t('sbv.historyStart')}: ${escapeHtml(start)}</small></div></div><div class="trajectory-grid" id="sbvTrajectoryGrid">${trajectoryCard(t('metric.sbv_omo_awarded'),'omo_awarded_bn_vnd',cur,hist,'tỷ',0)}${trajectoryCard(t('metric.sbv_omo_rate'),'omo_rate_pct',cur,hist,'%',2)}${trajectoryCard(t('metric.sbv_m2_growth'),'m2_growth_ytd_pct',cur,hist,'%',2)}${trajectoryCard(t('metric.sbv_corp_deposit_growth'),'corp_deposit_growth_ytd_pct',cur,hist,'%',2)}${trajectoryCard(t('metric.sbv_household_deposit_growth'),'household_deposit_growth_ytd_pct',cur,hist,'%',2)}</div><div class="trajectory-warning">${escapeHtml(t('sbv.backfillWarning'))}</div>`;};
+
+renderMarket=function(){const d=STATE.data;const rows=[...(d.market?.rows||[])].sort((a,b)=>(a.rank_current??999)-(b.rank_current??999));$('#marketBody').innerHTML=rows.length?rows.map(r=>`<tr><td><span class="ticker">${escapeHtml(r.symbol)}</span></td><td>${escapeHtml(sectorLabel(r.sector))}</td><td>${fmt(r.close,2)}</td><td class="${cls(r.return_1d)}">${signedPct(r.return_1d)}</td><td class="${cls(r.rs_20d_vs_vnindex)}">${signedPct(r.rs_20d_vs_vnindex)}</td><td>#${r.rank_current??'—'}</td><td class="${cls(r.rank_delta)}">${signed(r.rank_delta,0)}</td><td>${r.volume_participation_5d_vs_20d==null?'N/A':`${fmt(r.volume_participation_5d_vs_20d,2)}x`}</td><td>${pct(r.range_position_20d,0)}</td><td><span class="state-badge ${escapeHtml(r.state)}">${escapeHtml(stateLabel(r.state))}</span></td><td>${sparkline(r.sparkline)}</td></tr>`).join(''):`<tr><td colspan="11">${escapeHtml(t('market.noData'))}</td></tr>`;$('#marketMethod').innerHTML=`<strong>${t('market.coverage')}: ${rows.length}</strong> · `+METHOD_KEYS.map(k=>`<strong>${escapeHtml(k)}</strong>: ${escapeHtml(t(`method.${k}`))}`).join(' · ');};
+
+// If the base app finished loading before this overlay arrived, rerender with the enhanced views.
+if(STATE.data)renderAll();
