@@ -8,46 +8,54 @@ Rootvalue là hệ thống nghiên cứu đầu tư cá nhân cho thị trườn
 
 Rootvalue không đưa khuyến nghị MUA / BÁN / NẮM GIỮ và không gom dữ liệu thành một điểm số đầu tư giả chính xác. Hệ thống ưu tiên dữ liệu gốc, độ mới, nguồn gốc và phát hiện thay đổi.
 
+## Data Foundation — ưu tiên số 1
+
+Rootvalue chỉ coi nền dữ liệu là `READY` khi:
+
+- mọi doanh nghiệp cấu hình có tối thiểu **8 kỳ BCTC năm**;
+- lịch sử tiền tệ từ 2018 có đủ các biến cốt lõi cho SBV State: tỷ giá, liên ngân hàng, lãi suất điều hành, OMO, tín dụng, cung tiền và CPI;
+- dữ liệu chính thức NHNN và dữ liệu từ provider được tách provenance;
+- dữ liệu thiếu giữ nguyên trạng thái thiếu, không nội suy hoặc tạo số mẫu.
+
+Chi tiết: `docs/DATA_FOUNDATION.md`.
+
 ## Phạm vi V1
 
 1. **Tổng quan** — trạng thái hệ thống, độ mới dữ liệu, các thay đổi cần chú ý.
 2. **Dòng tiền hệ thống** — áp lực bên ngoài → tỷ giá / phản ứng NHNN → thanh khoản VND → phân bổ tài sản.
 3. **Dòng tiền thị trường** — sức mạnh tương đối, mức tham gia và vị trí trong biên 20 phiên của danh sách theo dõi.
 4. **Doanh nghiệp** — báo cáo tài chính theo chuỗi thời gian: cân đối kế toán, kết quả kinh doanh, lưu chuyển tiền tệ và tỷ số tài chính.
-5. **Dữ liệu** — nguồn, lần cập nhật, lỗi và trường còn thiếu. Không có dữ liệu thì hiển thị `N/A`, không tự tạo số.
+5. **Dữ liệu** — nguồn, lần cập nhật, lỗi và trường còn thiếu.
 
 ## Tự động hóa
 
-Hai luồng GitHub Actions được tách riêng để tránh việc sửa giao diện vô tình gọi API dữ liệu nhiều lần:
-
 ```text
-Nguồn dữ liệu
-    ↓
-scripts/update_data.py
-    ↓
-kiểm tra + chuẩn hóa + tính chỉ số
-    ↓
+Vnstock / Vnstock Data / NHNN chính thức
+            ↓
+scripts/build_foundation.py
+            ↓
+coverage QC + provenance + giữ snapshot tốt hơn
+            ↓
+data/foundation/
+            ↓
+scripts/publish_foundation.py
+            ↓
 data/rootvalue.json
-    ↓
-commit tự động
-    ↓
-GitHub Pages tự triển khai
+            ↓
+rootvalue-bot commit
+            ↓
+GitHub Pages
 ```
 
-- `.github/workflows/update-data.yml`: chạy theo lịch và khi bấm chạy thủ công.
-- `.github/workflows/pages.yml`: chỉ triển khai website khi mã nguồn hoặc dữ liệu thay đổi.
+`.github/workflows/update-data.yml` chạy 06:15 ICT mỗi ngày, chạy thủ công và tự chạy khi data pipeline/config thay đổi.
 
-## Lịch sử báo cáo tài chính 5–10 năm
+## BCTC 8 năm
 
-V1 đặt mục tiêu **8 năm báo cáo năm** cho mỗi doanh nghiệp.
+Nguồn V1 là MAS thông qua Vnstock.
 
-- Chế độ khách của Vnstock chỉ trả về tối đa 4 kỳ báo cáo.
-- API key cộng đồng miễn phí có thể tăng lên tối đa 8 kỳ.
-- Nếu cần đủ 10 năm hoặc hơn, Rootvalue phải dùng nguồn có lịch sử dài hơn / quyền truy cập dữ liệu mở rộng.
-
-Mỗi doanh nghiệp lưu `history.annual_periods`, `history.target_years` và `history.meets_minimum`; giao diện hiển thị đúng độ phủ thực tế.
-
-### Cấu hình API key Vnstock
+- Guest mode có thể không đủ 8 kỳ.
+- API key cộng đồng cho phép truy cập tối đa 8 kỳ tài chính.
+- Nếu runner có `vnstock_data`, Rootvalue ưu tiên provider này để lấy lịch sử dài hơn.
 
 Tạo GitHub Actions secret:
 
@@ -57,31 +65,34 @@ VNSTOCK_API_KEY=<api-key-của-bạn>
 
 Đường dẫn: **Repository → Settings → Secrets and variables → Actions → New repository secret**.
 
-Workflow đã truyền biến môi trường này cho thư viện. Nếu secret chưa có, pipeline tự chạy ở chế độ khách với tốc độ chậm hơn để tránh vượt giới hạn truy cập.
+Mỗi file `data/foundation/companies/<TICKER>.json` ghi rõ `annual_periods`, `annual_years`, `minimum_met`, provider và lỗi nếu có.
+
+## SBV State data
+
+Rootvalue dùng hai lớp:
+
+- **Primary official:** các bảng công khai trên website Ngân hàng Nhà nước Việt Nam để đối chiếu và giữ provenance chính thức.
+- **Historical normalized:** `vnstock_data Macro` khi quyền truy cập/package tồn tại, yêu cầu lịch sử từ 2018 cho interbank, policy rate, OMO, credit, money supply, CPI, FX và các biến bổ trợ.
+
+Nếu thiếu chuỗi bắt buộc, `state_engine` ở trạng thái `blocked_by_missing_history`; hệ thống chưa được phép sinh xác suất easing/defend.
 
 ## Ngôn ngữ và giao diện
 
-Rootvalue có hai công tắc độc lập:
-
-- `VIE / ENG`: toàn bộ giao diện chuyển theo một ngôn ngữ, không trộn nhãn Việt–Anh.
+- `VIE / ENG`: toàn bộ giao diện chuyển theo một ngôn ngữ.
 - Sáng / Tối: lưu lựa chọn trên trình duyệt.
-
-Typography ưu tiên `OpenAI Sans` nếu có trên máy, sau đó rơi về system UI font; không đóng gói font riêng trong repository.
+- Typography ưu tiên `OpenAI Sans` nếu có trên máy, sau đó rơi về system UI font; không đóng gói font riêng trong repository.
 
 ## Chạy cục bộ
 
 ```bash
 python -m pip install -r requirements.txt
-python scripts/update_data.py
+python scripts/build_foundation.py
+python scripts/publish_foundation.py
 python -m http.server 8000
 ```
 
 Mở `http://localhost:8000`.
 
-## GitHub Pages
-
-Bật **Settings → Pages → Source: GitHub Actions**.
-
 ## Danh sách theo dõi hiện tại
 
-V1 dùng danh sách nhỏ để kiểm định pipeline và giao diện trước khi mở rộng toàn thị trường. Chỉnh tại `config/watchlist.json`.
+V1 dùng danh sách nhỏ để kiểm định pipeline trước khi mở rộng toàn thị trường. Chỉnh tại `config/watchlist.json`.
