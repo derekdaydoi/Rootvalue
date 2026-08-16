@@ -5,11 +5,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from update_data import fetch_market, fetch_retail_macro, read_json
+from update_data import fetch_market, read_json
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config" / "watchlist.json"
-OUT = ROOT / "data" / "rootvalue.json"
+OUT = ROOT / "data" / "market.json"
 
 
 def save(path: Path, payload: Any) -> None:
@@ -24,7 +24,13 @@ def build_sector_selection(rows: list[dict[str, Any]], limit: int) -> tuple[list
 
     selected_by_sector: dict[str, list[dict[str, Any]]] = {}
     for sector, items in sectors.items():
-        ranked = sorted(items, key=lambda r: (r.get("rs_20d_vs_vnindex") is None, -(r.get("rs_20d_vs_vnindex") or -999)))
+        ranked = sorted(
+            items,
+            key=lambda r: (
+                r.get("rs_20d_vs_vnindex") is None,
+                -(r.get("rs_20d_vs_vnindex") if r.get("rs_20d_vs_vnindex") is not None else -999),
+            ),
+        )
         for i, row in enumerate(ranked, start=1):
             row["sector_rank"] = i
 
@@ -41,13 +47,11 @@ def build_sector_selection(rows: list[dict[str, Any]], limit: int) -> tuple[list
         abnormals = [r for r in abnormal_pool if r.get("rank_delta") is not None][:2]
 
         output: list[dict[str, Any]] = []
-        for row in leaders:
-            output.append({**row, "selection_type": "Leader"})
-        for row in abnormals:
-            output.append({**row, "selection_type": "Abnormal"})
+        output.extend({**row, "selection_type": "Leader"} for row in leaders)
+        output.extend({**row, "selection_type": "Abnormal"} for row in abnormals)
         selected_by_sector[sector] = output
 
-    # Round-robin sectors so the homepage does not get dominated by banks or brokers.
+    # Round-robin keeps the homepage from being dominated by one large sector.
     ordered_sectors = sorted(selected_by_sector)
     flat: list[dict[str, Any]] = []
     for slot in range(5):
@@ -60,24 +64,9 @@ def build_sector_selection(rows: list[dict[str, Any]], limit: int) -> tuple[list
     return flat, selected_by_sector
 
 
-def merge_macro_proxies(snapshot: dict[str, Any], warnings: list[str]) -> None:
-    metrics, sources = fetch_retail_macro(warnings)
-    macro = snapshot.setdefault("macro", {"status": "partial", "metrics": [], "datasets": {}, "missing_core": []})
-    old = list(macro.get("metrics") or [])
-    incoming = {m.get("key"): m for m in metrics if m.get("key")}
-    merged = [m for m in old if m.get("key") not in incoming]
-    merged.extend(incoming.values())
-    macro["metrics"] = merged
-    if sources:
-        old_sources = macro.get("source") or []
-        if not isinstance(old_sources, list):
-            old_sources = [old_sources]
-        macro["source"] = list(dict.fromkeys([*old_sources, *sources]))
-
-
 def main() -> None:
     config = read_json(CONFIG, {})
-    snapshot = read_json(OUT, {})
+    previous = read_json(OUT, {})
     warnings: list[str] = []
     errors: list[str] = []
 
@@ -87,44 +76,51 @@ def main() -> None:
         market["picks"] = picks
         market["selection_by_sector"] = by_sector
         market["selection_method"] = {
-            "leader": "Top 3 relative-strength names inside each configured sector.",
-            "abnormal": "Two non-leaders with the largest absolute 5-session rank change; participation and RS break ties.",
-            "purpose": "Attention allocation only, not a buy/sell recommendation or investment score.",
+            "leader": "Top 3 relative-strength names inside each configured economic peer group.",
+            "abnormal": "Two non-leaders with the largest absolute five-session rank change; participation and relative strength break ties.",
+            "purpose": "Attention allocation only; not a buy/sell recommendation or investment score.",
         }
-        snapshot["market"] = market
+        market["schema_version"] = "1.1.0"
+        market["generated_at"] = datetime.now(timezone.utc).isoformat()
+        market["health"] = {"errors": errors, "warnings": warnings}
+        save(OUT, market)
     except Exception as exc:
         errors.append(f"market:{exc}")
-        old = snapshot.get("market", {})
-        if old:
-            old["status"] = "stale"
-            old["last_error"] = str(exc)
-            snapshot["market"] = old
+        if previous:
+            previous["status"] = "stale"
+            previous["last_error"] = str(exc)
+            previous["last_attempt_at"] = datetime.now(timezone.utc).isoformat()
+            previous["health"] = {"errors": errors, "warnings": warnings}
+            save(OUT, previous)
         else:
-            snapshot["market"] = {"status": "error", "as_of": None, "index": {}, "rows": [], "picks": [], "last_error": str(exc)}
+            save(
+                OUT,
+                {
+                    "schema_version": "1.1.0",
+                    "status": "error",
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "as_of": None,
+                    "index": {},
+                    "rows": [],
+                    "picks": [],
+                    "selection_by_sector": {},
+                    "health": {"errors": errors, "warnings": warnings},
+                },
+            )
 
-    try:
-        merge_macro_proxies(snapshot, warnings)
-    except Exception as exc:
-        warnings.append(f"market:macro-proxies:{exc}")
-
-    health = snapshot.setdefault("health", {"errors": [], "warnings": []})
-    prior_errors = [x for x in health.get("errors", []) if not str(x).startswith("market:")]
-    prior_warnings = [x for x in health.get("warnings", []) if not str(x).startswith("market:")]
-    health["errors"] = prior_errors + errors
-    health["warnings"] = prior_warnings + warnings
-    snapshot["generated_at"] = datetime.now(timezone.utc).isoformat()
-
-    statuses = [snapshot.get(k, {}).get("status") for k in ("market", "macro", "companies")]
-    snapshot["pipeline_status"] = "ok" if all(s == "ok" for s in statuses) else "partial"
-    save(OUT, snapshot)
-    print(json.dumps({
-        "market_status": snapshot.get("market", {}).get("status"),
-        "market_rows": len(snapshot.get("market", {}).get("rows", [])),
-        "picks": len(snapshot.get("market", {}).get("picks", [])),
-        "macro_metrics": len(snapshot.get("macro", {}).get("metrics", [])),
-        "warnings": len(warnings),
-        "errors": errors,
-    }, ensure_ascii=False))
+    current = read_json(OUT, {})
+    print(
+        json.dumps(
+            {
+                "market_status": current.get("status"),
+                "market_rows": len(current.get("rows", [])),
+                "picks": len(current.get("picks", [])),
+                "warnings": len(current.get("health", {}).get("warnings", [])),
+                "errors": current.get("health", {}).get("errors", []),
+            },
+            ensure_ascii=False,
+        )
+    )
 
 
 if __name__ == "__main__":
