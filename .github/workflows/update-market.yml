@@ -16,8 +16,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: rootvalue-market-flow
-  cancel-in-progress: true
+  group: rootvalue-data-write
+  cancel-in-progress: false
 
 jobs:
   refresh-market:
