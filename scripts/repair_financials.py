@@ -61,41 +61,66 @@ def years(df: pd.DataFrame) -> list[int]:
     return sorted(found)
 
 
-def call_balance_sheet(fun: Any, symbol: str) -> pd.DataFrame:
-    attempts = []
-    # Free Vnstock 4.x documentation supports both utility and symbol-bound syntax.
-    try:
-        fn = fun.equity.balance_sheet
-        for kwargs in (
-            {"symbol": symbol, "period": "year", "orient": "report"},
-            {"symbol": symbol, "period": "year"},
-        ):
-            try:
-                df = fn(**kwargs)
-                if isinstance(df, pd.DataFrame) and not df.empty:
-                    return df
-            except Exception as exc:
-                attempts.append(str(exc))
-    except Exception as exc:
-        attempts.append(str(exc))
-
+def call_unified_balance_sheet(fun: Any, symbol: str, period: str) -> pd.DataFrame:
+    errors: list[str] = []
     try:
         obj = fun.equity(symbol)
         fn = obj.balance_sheet
         for kwargs in (
-            {"period": "year", "orient": "report"},
-            {"period": "year"},
+            {"period": period, "orient": "report", "dropna": False},
+            {"period": period, "orient": "report"},
+            {"period": period, "dropna": False},
+            {"period": period},
         ):
             try:
                 df = fn(**kwargs)
                 if isinstance(df, pd.DataFrame) and not df.empty:
                     return df
             except Exception as exc:
-                attempts.append(str(exc))
+                errors.append(str(exc))
     except Exception as exc:
-        attempts.append(str(exc))
+        errors.append(str(exc))
+    raise RuntimeError("Unified UI empty: " + "; ".join(errors[-4:]))
 
-    raise RuntimeError("balance_sheet fallback returned empty; " + "; ".join(attempts[-4:]))
+
+def call_legacy_balance_sheet(symbol: str, period: str) -> tuple[pd.DataFrame, str]:
+    # Vnstock's official v4 documentation still exposes the legacy Finance facade.
+    # Keep it only as a resilience fallback when Unified UI returns an empty balance sheet.
+    errors: list[str] = []
+    try:
+        from vnstock import Finance  # type: ignore
+    except Exception as exc:
+        raise RuntimeError(f"Finance import unavailable: {exc}")
+
+    for source in ("KBS", "VCI"):
+        try:
+            finance = Finance(symbol=symbol, source=source)
+            fn = finance.balance_sheet
+            for kwargs in (
+                {"period": period, "lang": "vi", "dropna": False},
+                {"period": period, "lang": "vi"},
+                {"period": period},
+            ):
+                try:
+                    df = fn(**kwargs)
+                    if isinstance(df, pd.DataFrame) and not df.empty:
+                        return df, source
+                except Exception as exc:
+                    errors.append(f"{source}:{exc}")
+        except Exception as exc:
+            errors.append(f"{source}:{exc}")
+    raise RuntimeError("Legacy Finance empty: " + "; ".join(errors[-6:]))
+
+
+def repair_balance_sheet(fun: Any, symbol: str, period: str) -> tuple[pd.DataFrame, str]:
+    try:
+        return call_unified_balance_sheet(fun, symbol, period), "Unified UI"
+    except Exception as first:
+        try:
+            df, source = call_legacy_balance_sheet(symbol, period)
+            return df, f"Legacy Finance/{source}"
+        except Exception as second:
+            raise RuntimeError(f"{first}; {second}")
 
 
 def main() -> None:
@@ -104,38 +129,50 @@ def main() -> None:
     watch = load(WATCHLIST, {})
     symbols = [str(x).upper() for x in watch.get("fundamental_symbols", [])]
     fun = Fundamental()
-    repaired = []
-    failures = []
+    repaired: list[str] = []
+    failures: list[str] = []
 
     for symbol in symbols:
         path = COMPANY_DIR / f"{symbol}.json"
         item = load(path, {})
         if not item:
             continue
-        # Correct provenance for the community provider. Current free Unified UI routes financials through KBS.
         if item.get("provider") == "vnstock":
             mode = "authenticated" if API_KEY_PRESENT else "guest"
-            item["source"] = f"KBS via Vnstock community ({mode})"
-        annual_bs = item.get("reports", {}).get("annual", {}).get("balance_sheet", {})
-        if annual_bs.get("data", {}).get("rows"):
-            save(path, item)
-            continue
-        try:
-            time.sleep(RATE_SECONDS)
-            df = call_balance_sheet(fun, symbol)
-            ys = years(df)
-            item["reports"]["annual"]["balance_sheet"] = {"status": "ok", "years": ys, "data": payload(df), "fallback": "Vnstock community default dropna/orient"}
-            merged = sorted(set(item.get("coverage", {}).get("annual_years", [])) | set(ys))
-            item["coverage"]["annual_years"] = merged
-            item["coverage"]["annual_periods"] = len(merged)
-            minimum = int(item["coverage"].get("minimum_annual_periods", 8) or 8)
-            item["coverage"]["minimum_met"] = len(merged) >= minimum
-            item["status"] = "ready" if item["coverage"]["minimum_met"] else "partial"
-            item["last_repair_at"] = datetime.now(timezone.utc).isoformat()
-            repaired.append(symbol)
-        except Exception as exc:
-            item.setdefault("warnings", []).append(f"annual.balance_sheet fallback: {exc}")
-            failures.append(f"{symbol}: {exc}")
+            item["source"] = f"KBS/VCI via Vnstock community ({mode})"
+
+        for bucket, period in (("annual", "year"), ("quarterly", "quarter")):
+            bs = item.get("reports", {}).get(bucket, {}).get("balance_sheet", {})
+            if bs.get("data", {}).get("rows"):
+                continue
+            try:
+                time.sleep(RATE_SECONDS)
+                df, fallback = repair_balance_sheet(fun, symbol, period)
+                ys = years(df)
+                item["reports"][bucket]["balance_sheet"] = {
+                    "status": "ok",
+                    "years": ys,
+                    "data": payload(df),
+                    "fallback": fallback,
+                }
+                if bucket == "annual":
+                    merged = sorted(set(item.get("coverage", {}).get("annual_years", [])) | set(ys))
+                    item["coverage"]["annual_years"] = merged
+                    item["coverage"]["annual_periods"] = len(merged)
+                    minimum = int(item["coverage"].get("minimum_annual_periods", 8) or 8)
+                    item["coverage"]["minimum_met"] = len(merged) >= minimum
+                    item["status"] = "ready" if item["coverage"]["minimum_met"] else "partial"
+                else:
+                    merged_q = sorted(set(item.get("coverage", {}).get("quarterly_years", [])) | set(ys))
+                    item["coverage"]["quarterly_years"] = merged_q
+                item["last_repair_at"] = datetime.now(timezone.utc).isoformat()
+                repaired.append(f"{symbol}:{bucket}:{fallback}")
+            except Exception as exc:
+                message = f"{bucket}.balance_sheet fallback: {exc}"
+                warnings = item.setdefault("warnings", [])
+                if message not in warnings:
+                    warnings.append(message)
+                failures.append(f"{symbol}:{bucket}: {exc}")
         save(path, item)
 
     print(json.dumps({"repaired": repaired, "failures": failures}, ensure_ascii=False))
