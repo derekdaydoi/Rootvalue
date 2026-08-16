@@ -22,8 +22,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: rootvalue-foundation
-  cancel-in-progress: true
+  group: rootvalue-data-write
+  cancel-in-progress: false
 
 jobs:
   refresh:
