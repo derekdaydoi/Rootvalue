@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/build_foundation.py'
       - 'scripts/repair_financials.py'
+      - 'scripts/repair_sbv_official.py'
       - 'scripts/publish_foundation.py'
       - 'scripts/validate_foundation.py'
       - 'config/foundation.json'
@@ -51,6 +52,9 @@ jobs:
 
       - name: Repair empty financial statements
         run: python scripts/repair_financials.py
+
+      - name: Parse official SBV tables with vi-VN numeric locale
+        run: python scripts/repair_sbv_official.py
 
       - name: Publish foundation to frontend snapshot
         run: python scripts/publish_foundation.py
