@@ -58,11 +58,7 @@ def report_rows(report: dict[str, Any]) -> list[dict[str, Any]]:
     rows = report.get("rows", []) or []
     if not cols or not rows:
         return []
-    out = []
-    for row in rows:
-        d = {cols[i]: row[i] if i < len(row) else None for i in range(len(cols))}
-        out.append(d)
-    return out
+    return [{cols[i]: row[i] if i < len(row) else None for i in range(len(cols))} for row in rows]
 
 
 def row_identity(row: dict[str, Any]) -> tuple[str, str]:
@@ -144,20 +140,22 @@ def build_frequency(reports: dict[str, Any]) -> dict[str, Any]:
     balance = report_rows(reports.get("balance_sheet", {}).get("data", {}))
     ratios = report_rows(reports.get("ratio", {}).get("data", {}))
 
-    # Income statement. Prefer net revenue when providers duplicate gross and net sales under the same item_id.
     revenue = row_series(choose_row(income, ids=["net_revenue", "revenue"], contains=["doanh thu thuần"], prefer=["thuần"]))
     if not revenue:
         revenue = row_series(choose_row(income, ids=["revenue"], contains=["doanh thu bán hàng"]))
+    cogs = row_series(choose_row(income, ids=["cost_of_goods_sold"], contains=["giá vốn hàng bán", "cost of goods sold"]))
     gross_profit = row_series(choose_row(income, ids=["gross_profit"], contains=["lợi nhuận gộp", "gross profit"]))
+    selling_expenses = row_series(choose_row(income, ids=["selling_expenses"], contains=["chi phí bán hàng", "selling expenses"]))
+    admin_expenses = row_series(choose_row(income, ids=["admin_expenses", "general_and_administration_expenses"], contains=["chi phí quản lý doanh nghiệp", "administrative expenses"]))
+    financial_income = row_series(choose_row(income, ids=["financial_income"], contains=["doanh thu hoạt động tài chính", "financial income"]))
+    finance_expenses = row_series(choose_row(income, ids=["finance_expenses"], contains=["chi phí tài chính", "finance expenses"]))
     operating_profit = row_series(choose_row(income, ids=["operating_profit"], contains=["lợi nhuận thuần từ hoạt động kinh doanh", "operating profit"]))
     net_profit = row_series(choose_row(income, ids=["profit_after_tax_for_shareholders_of_parent_company", "net_profit"], contains=["lợi nhuận sau thuế", "net profit"], prefer=["công ty mẹ", "parent"]))
     interest_expense = row_series(choose_row(income, ids=["of_which_interest_expense", "interest_expense"], contains=["chi phí đi vay", "interest expense"]))
 
-    # Cash flow.
     cfo = row_series(choose_row(cashflow, ids=["net_cash_flows_from_operating_activities", "net_cash_flow_from_operating_activities"], contains=["lưu chuyển tiền thuần từ hoạt động kinh doanh", "net cash flow from operating"]))
     capex = row_series(choose_row(cashflow, ids=["purchase_of_fixed_assets", "purchase_of_fixed_assets_and_other_long_term_assets"], contains=["mua sắm, xây dựng tài sản cố định", "purchase of fixed assets"]))
 
-    # Balance sheet.
     total_assets = row_series(choose_row(balance, ids=["total_assets", "total_asset"], contains=["tổng cộng tài sản", "tổng tài sản", "total assets"]))
     current_assets = row_series(choose_row(balance, ids=["current_assets", "total_current_assets"], contains=["tài sản ngắn hạn", "current assets"]))
     current_liabilities = row_series(choose_row(balance, ids=["current_liabilities", "total_current_liabilities"], contains=["nợ ngắn hạn", "current liabilities"]))
@@ -171,7 +169,6 @@ def build_frequency(reports: dict[str, Any]) -> dict[str, Any]:
     long_debt = row_series(choose_row(balance, ids=["long_term_borrowings", "long_term_debt", "long_term_borrowings_and_finance_lease_liabilities"], contains=["vay và nợ thuê tài chính dài hạn", "long-term borrowings"]))
     equity = row_series(choose_row(balance, ids=["owners_equity", "total_equity", "equity"], contains=["vốn chủ sở hữu", "owners' equity", "total equity"]))
 
-    # Derived series. NWC = current assets - current liabilities. Operating NWC is narrower where components exist.
     nwc = binary_series(current_assets, current_liabilities, lambda a, b: a - b)
     operating_nwc = []
     if receivables and inventory and payables:
@@ -195,7 +192,12 @@ def build_frequency(reports: dict[str, Any]) -> dict[str, Any]:
     return {
         "series": {
             "revenue": revenue,
+            "cogs": cogs,
             "gross_profit": gross_profit,
+            "selling_expenses": selling_expenses,
+            "admin_expenses": admin_expenses,
+            "financial_income": financial_income,
+            "finance_expenses": finance_expenses,
             "operating_profit": operating_profit,
             "net_profit": net_profit,
             "interest_expense": interest_expense,
