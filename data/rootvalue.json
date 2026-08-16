@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": null,
+  "pipeline_status": "not_run",
+  "meta": {
+    "principle": "Missing data stays missing. Rootvalue does not fabricate market, macro or financial values.",
+    "market_universe": "V1 validation watchlist"
+  },
+  "macro": {
+    "status": "not_run",
+    "as_of": null,
+    "source": [],
+    "metrics": [],
+    "datasets": {},
+    "missing_core": [
+      "SBV central exchange rate",
+      "Interbank O/N",
+      "OMO outstanding/rate",
+      "SBV bills outstanding",
+      "Treasury liquidity proxy",
+      "Credit growth",
+      "Deposit growth"
+    ]
+  },
+  "market": {
+    "status": "not_run",
+    "as_of": null,
+    "source": "Vnstock community",
+    "universe_note": "Ranking is within the V1 watchlist, not the whole Vietnam market.",
+    "index": {},
+    "rows": []
+  },
+  "companies": {
+    "status": "not_run",
+    "as_of": null,
+    "source": "Vnstock community Fundamental",
+    "rows": {}
+  },
+  "health": {
+    "errors": [],
+    "warnings": ["Initial placeholder. GitHub Actions has not generated the first snapshot yet."]
+  }
+}
