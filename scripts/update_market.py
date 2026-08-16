@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from update_data import fetch_market, read_json
+from update_data import fetch_market, fetch_retail_macro, read_json
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config" / "watchlist.json"
@@ -60,6 +60,21 @@ def build_sector_selection(rows: list[dict[str, Any]], limit: int) -> tuple[list
     return flat, selected_by_sector
 
 
+def merge_macro_proxies(snapshot: dict[str, Any], warnings: list[str]) -> None:
+    metrics, sources = fetch_retail_macro(warnings)
+    macro = snapshot.setdefault("macro", {"status": "partial", "metrics": [], "datasets": {}, "missing_core": []})
+    old = list(macro.get("metrics") or [])
+    incoming = {m.get("key"): m for m in metrics if m.get("key")}
+    merged = [m for m in old if m.get("key") not in incoming]
+    merged.extend(incoming.values())
+    macro["metrics"] = merged
+    if sources:
+        old_sources = macro.get("source") or []
+        if not isinstance(old_sources, list):
+            old_sources = [old_sources]
+        macro["source"] = list(dict.fromkeys([*old_sources, *sources]))
+
+
 def main() -> None:
     config = read_json(CONFIG, {})
     snapshot = read_json(OUT, {})
@@ -87,6 +102,11 @@ def main() -> None:
         else:
             snapshot["market"] = {"status": "error", "as_of": None, "index": {}, "rows": [], "picks": [], "last_error": str(exc)}
 
+    try:
+        merge_macro_proxies(snapshot, warnings)
+    except Exception as exc:
+        warnings.append(f"market:macro-proxies:{exc}")
+
     health = snapshot.setdefault("health", {"errors": [], "warnings": []})
     prior_errors = [x for x in health.get("errors", []) if not str(x).startswith("market:")]
     prior_warnings = [x for x in health.get("warnings", []) if not str(x).startswith("market:")]
@@ -101,6 +121,7 @@ def main() -> None:
         "market_status": snapshot.get("market", {}).get("status"),
         "market_rows": len(snapshot.get("market", {}).get("rows", [])),
         "picks": len(snapshot.get("market", {}).get("picks", [])),
+        "macro_metrics": len(snapshot.get("macro", {}).get("metrics", [])),
         "warnings": len(warnings),
         "errors": errors,
     }, ensure_ascii=False))
