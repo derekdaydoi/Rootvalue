@@ -7,6 +7,7 @@ on:
       - 'scripts/build_foundation.py'
       - 'scripts/repair_financials.py'
       - 'scripts/repair_sbv_official.py'
+      - 'scripts/build_sbv_history.py'
       - 'scripts/publish_foundation.py'
       - 'scripts/validate_foundation.py'
       - 'config/foundation.json'
@@ -55,6 +56,9 @@ jobs:
 
       - name: Parse official SBV tables with vi-VN numeric locale
         run: python scripts/repair_sbv_official.py
+
+      - name: Persist official SBV trajectory
+        run: python scripts/build_sbv_history.py
 
       - name: Publish foundation to frontend snapshot
         run: python scripts/publish_foundation.py
