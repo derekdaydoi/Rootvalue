@@ -1,6 +1,10 @@
 name: Rootvalue data refresh
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-data.yml'
   schedule:
     - cron: '20 9 * * 1-5'   # 16:20 ICT, after VN cash-market close
     - cron: '15 23 * * *'    # 06:15 ICT, overnight/macro refresh
