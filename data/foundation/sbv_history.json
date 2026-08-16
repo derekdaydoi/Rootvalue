@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-16T07:32:17.343332+00:00",
+  "status": "accumulating",
+  "history_type": "official daily capture history",
+  "warning": "This is not yet a 2018-backfilled series. It accumulates verified SBV observations from the date Rootvalue started capturing them.",
+  "observations": [
+    {
+      "captured_at": "2026-08-16T07:32:17.343332+00:00",
+      "capture_date": "2026-08-16",
+      "provenance": "primary_official_capture",
+      "source": "State Bank of Vietnam official website",
+      "m2_balance_bn_vnd": 20414616.0,
+      "m2_growth_ytd_pct": 4.99,
+      "corp_deposit_bn_vnd": 6371536.0,
+      "corp_deposit_growth_ytd_pct": 3.09,
+      "household_deposit_bn_vnd": 11068825.0,
+      "household_deposit_growth_ytd_pct": 7.1,
+      "omo_awarded_bn_vnd": 10894.1,
+      "omo_rate_pct": 4.5,
+      "omo_terms": [
+        {
+          "term": "Kỳ hạn 7 ngày",
+          "awarded_bn_vnd": 6307.47,
+          "rate_pct": 4.5
+        },
+        {
+          "term": "Kỳ hạn 35 ngày",
+          "awarded_bn_vnd": 3466.54,
+          "rate_pct": 4.5
+        },
+        {
+          "term": "Kỳ hạn 63 ngày",
+          "awarded_bn_vnd": 210.17,
+          "rate_pct": 4.5
+        },
+        {
+          "term": "Kỳ hạn 91 ngày",
+          "awarded_bn_vnd": 909.92,
+          "rate_pct": 4.5
+        }
+      ]
+    }
+  ]
+}

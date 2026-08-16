@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T07:10:02.553397+00:00",
+  "generated_at": "2026-08-16T07:25:35.925565+00:00",
   "history_start": "2018-01-01",
   "historical_provider": null,
   "historical_provider_error": "No module named 'vnstock_data'",
