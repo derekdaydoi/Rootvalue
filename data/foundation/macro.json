@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T06:59:13.533911+00:00",
+  "generated_at": "2026-08-16T07:10:02.553397+00:00",
   "history_start": "2018-01-01",
   "historical_provider": null,
   "historical_provider_error": "No module named 'vnstock_data'",
@@ -12,7 +12,8 @@
       "url": "https://sbv.gov.vn/vi/t%E1%BB%95ng-ph%C6%B0%C6%A1ng-ti%E1%BB%87n-thanh-to%C3%A1n-v%C3%A0-ti%E1%BB%81n-g%E1%BB%ADi-c%E1%BB%A7a-kh%C3%A1ch-h%C3%A0ng-t%E1%BA%A1i-tctd",
       "source": "State Bank of Vietnam official website",
       "provenance": "primary_official",
-      "fetched_at": "2026-08-16T06:59:13.533911+00:00",
+      "numeric_locale": "vi-VN: decimal comma, thousands dot",
+      "as_of": null,
       "tables": [
         {
           "columns": [
@@ -23,8 +24,8 @@
           "rows": [
             [
               "Tổng phương tiện thanh toán (*)",
-              "20.414.616",
-              499.0
+              20414616.0,
+              4.99
             ],
             [
               "Trong đó:",
@@ -33,13 +34,13 @@
             ],
             [
               "- Tiền gửi của các TCKT",
-              "6.371.536",
-              309.0
+              6371536.0,
+              3.09
             ],
             [
               "- Tiền gửi của dân cư",
-              "11.068.825",
-              710.0
+              11068825.0,
+              7.1
             ],
             [
               null,
@@ -57,7 +58,8 @@
       "url": "https://sbv.gov.vn/vi/nghi%E1%BB%87p-v%E1%BB%A5-th%E1%BB%8B-tr%C6%B0%E1%BB%9Dng-m%E1%BB%9F",
       "source": "State Bank of Vietnam official website",
       "provenance": "primary_official",
-      "fetched_at": "2026-08-16T06:59:13.533911+00:00",
+      "numeric_locale": "vi-VN: decimal comma, thousands dot",
+      "as_of": null,
       "tables": [
         {
           "columns": [
@@ -76,31 +78,31 @@
             [
               "- Kỳ hạn 7 ngày",
               "4/4",
-              "6.307,47",
-              "45"
+              "6307.47",
+              "4.5"
             ],
             [
               "- Kỳ hạn 35 ngày",
               "4/4",
-              "3.466,54",
-              "45"
+              "3466.54",
+              "4.5"
             ],
             [
               "- Kỳ hạn 63 ngày",
               "1/1",
-              "21017",
-              "45"
+              "210.17",
+              "4.5"
             ],
             [
               "- Kỳ hạn 91 ngày",
               "3/3",
-              "90992",
-              "45"
+              "909.92",
+              "4.5"
             ],
             [
               "Tổng cộng",
               null,
-              "10.894,10",
+              "10894.10",
               null
             ]
           ],
@@ -134,5 +136,10 @@
   "state_engine": {
     "status": "blocked_by_missing_history",
     "note": "Rootvalue does not assign SBV regime/probabilities until required historical series are present and validated against official SBV publications."
+  },
+  "official_validation": {
+    "status": "pass",
+    "warnings": [],
+    "policy": "Official SBV tables are not promoted into historical state series until dates/schema are validated."
   }
 }
