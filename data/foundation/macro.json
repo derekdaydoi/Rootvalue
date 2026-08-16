@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-16T06:59:13.533911+00:00",
+  "history_start": "2018-01-01",
+  "historical_provider": null,
+  "historical_provider_error": "No module named 'vnstock_data'",
+  "datasets": {},
+  "official_checks": {
+    "money_supply_deposits": {
+      "status": "ok",
+      "label": "Tổng phương tiện thanh toán và tiền gửi",
+      "url": "https://sbv.gov.vn/vi/t%E1%BB%95ng-ph%C6%B0%C6%A1ng-ti%E1%BB%87n-thanh-to%C3%A1n-v%C3%A0-ti%E1%BB%81n-g%E1%BB%ADi-c%E1%BB%A7a-kh%C3%A1ch-h%C3%A0ng-t%E1%BA%A1i-tctd",
+      "source": "State Bank of Vietnam official website",
+      "provenance": "primary_official",
+      "fetched_at": "2026-08-16T06:59:13.533911+00:00",
+      "tables": [
+        {
+          "columns": [
+            "Chỉ tiêu",
+            "Số dư(Tỷ đồng)",
+            "Tốc động tăng (Giảm) so với cuối năm trước đó (%)"
+          ],
+          "rows": [
+            [
+              "Tổng phương tiện thanh toán (*)",
+              "20.414.616",
+              499.0
+            ],
+            [
+              "Trong đó:",
+              null,
+              null
+            ],
+            [
+              "- Tiền gửi của các TCKT",
+              "6.371.536",
+              309.0
+            ],
+            [
+              "- Tiền gửi của dân cư",
+              "11.068.825",
+              710.0
+            ],
+            [
+              null,
+              null,
+              null
+            ]
+          ],
+          "row_count": 5
+        }
+      ]
+    },
+    "omo_latest": {
+      "status": "ok",
+      "label": "Nghiệp vụ thị trường mở",
+      "url": "https://sbv.gov.vn/vi/nghi%E1%BB%87p-v%E1%BB%A5-th%E1%BB%8B-tr%C6%B0%E1%BB%9Dng-m%E1%BB%9F",
+      "source": "State Bank of Vietnam official website",
+      "provenance": "primary_official",
+      "fetched_at": "2026-08-16T06:59:13.533911+00:00",
+      "tables": [
+        {
+          "columns": [
+            "Loại hình giao dịch",
+            "Số thành viên tham gia/trúng thầu",
+            "Khối lượng trúng thầu (Tỷ đồng)",
+            "Lãi suất trúng thầu (%/năm)"
+          ],
+          "rows": [
+            [
+              "Mua kỳ hạn",
+              "Mua kỳ hạn",
+              "Mua kỳ hạn",
+              "Mua kỳ hạn"
+            ],
+            [
+              "- Kỳ hạn 7 ngày",
+              "4/4",
+              "6.307,47",
+              "45"
+            ],
+            [
+              "- Kỳ hạn 35 ngày",
+              "4/4",
+              "3.466,54",
+              "45"
+            ],
+            [
+              "- Kỳ hạn 63 ngày",
+              "1/1",
+              "21017",
+              "45"
+            ],
+            [
+              "- Kỳ hạn 91 ngày",
+              "3/3",
+              "90992",
+              "45"
+            ],
+            [
+              "Tổng cộng",
+              null,
+              "10.894,10",
+              null
+            ]
+          ],
+          "row_count": 6
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "required_for_state": [
+      "interbank_rate",
+      "policy_rate",
+      "omo",
+      "credit",
+      "money_supply",
+      "cpi",
+      "exchange_rate"
+    ],
+    "available": [],
+    "missing": [
+      "interbank_rate",
+      "policy_rate",
+      "omo",
+      "credit",
+      "money_supply",
+      "cpi",
+      "exchange_rate"
+    ],
+    "state_ready": false
+  },
+  "state_engine": {
+    "status": "blocked_by_missing_history",
+    "note": "Rootvalue does not assign SBV regime/probabilities until required historical series are present and validated against official SBV publications."
+  }
+}

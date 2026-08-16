@@ -1,0 +1,1895 @@
+{
+  "schema_version": "1.0.0",
+  "symbol": "MWG",
+  "generated_at": "2026-08-16T06:59:13.533911+00:00",
+  "provider": "vnstock",
+  "source": "MAS via Vnstock community (guest)",
+  "provenance": "secondary_normalized_provider",
+  "access_mode": "guest",
+  "coverage": {
+    "annual_years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "annual_periods": 4,
+    "minimum_annual_periods": 8,
+    "minimum_met": false,
+    "quarterly_years": [
+      2025,
+      2026
+    ],
+    "quarterly_target_periods": 32
+  },
+  "status": "partial",
+  "reports": {
+    "annual": {
+      "balance_sheet": {
+        "status": "ok",
+        "years": [],
+        "data": {
+          "columns": [],
+          "rows": [],
+          "row_count": 0
+        }
+      },
+      "income_statement": {
+        "status": "ok",
+        "years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "data": {
+          "columns": [
+            "item",
+            "item_id",
+            "2025",
+            "2024",
+            "2023",
+            "2022"
+          ],
+          "rows": [
+            [
+              "4. Giá vốn hàng bán ",
+              "cost_of_goods_sold",
+              102542735094000.0,
+              95759175292000.0,
+              106841942772000.0,
+              124926268220000.0
+            ],
+            [
+              "16. Chi phí thuế TNDN hiện hành",
+              "current_corporate_income_tax_expenses",
+              1792998810000.0,
+              433257177000.0,
+              1282537117000.0,
+              1721559523000.0
+            ],
+            [
+              "2. Các khoản giảm trừ doanh thu",
+              "deduction_from_revenue",
+              1317471297000.0,
+              954396370000.0,
+              883948450000.0,
+              907969436000.0
+            ],
+            [
+              "17. Chi phí thuế TNDN hoãn lại ",
+              "deferred_income_tax_expenses",
+              161642139000.0,
+              88606036000.0,
+              -190062333000.0,
+              -161114826000.0
+            ],
+            [
+              "20. Lãi suy giảm trên cổ phiếu (*)",
+              "diluted_earnings_per_share",
+              3000.0,
+              0.0,
+              3000.0,
+              5000.0
+            ],
+            [
+              "19. Lãi cơ bản trên cổ phiếu (VNÐ)",
+              "earnings_per_share_vnd",
+              2810000.0,
+              115000.0,
+              2546000.0,
+              4774000.0
+            ],
+            [
+              "8. Chi phí tài chính ",
+              "finance_expenses",
+              1382620455000.0,
+              1556146107000.0,
+              1188465610000.0,
+              1542518673000.0
+            ],
+            [
+              "7. Doanh thu hoạt động tài chính ",
+              "financial_income",
+              1313137304000.0,
+              2166963715000.0,
+              2376502605000.0,
+              3107348734000.0
+            ],
+            [
+              "6. Lãi/Lỗ của hoạt động bán, thanh lý bất động sản đầu tư",
+              "gain_loss_on_disposal_of_investment_property",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "10. Chi phí quản lý doanh nghiệp ",
+              "admin_expenses",
+              1881027580000.0,
+              1167651663000.0,
+              3565767583000.0,
+              4596074513000.0
+            ],
+            [
+              "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+              "gross_profit",
+              30862042496000.0,
+              22520613164000.0,
+              27499210077000.0,
+              31001877400000.0
+            ],
+            [
+              "Lợi ích của cổ đông thiểu số",
+              "minority_interest",
+              1951398000.0,
+              159762000.0,
+              11419787000.0,
+              38892116000.0
+            ],
+            [
+              "18. Lợi nhuận sau thuế thu nhập doanh nghiệp",
+              "net_profit",
+              4101714425000.0,
+              167829155000.0,
+              3733288229000.0,
+              7072622886000.0
+            ],
+            [
+              "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+              "revenue",
+              133404777591000.0,
+              118279788455000.0,
+              134341152849000.0,
+              155928145619000.0
+            ],
+            [
+              "   Trong đó: Chi phí đi vay",
+              "of_which_interest_expense",
+              1362143909000.0,
+              1447718355000.0,
+              1137236130000.0,
+              1470675594000.0
+            ],
+            [
+              "11. Lợi nhuận thuần từ hoạt động kinh doanh",
+              "operating_profit",
+              6574693699000.0,
+              1047068354000.0,
+              5227045425000.0,
+              8664080489000.0
+            ],
+            [
+              "13. Chi phí khác ",
+              "other_expenses",
+              579945038000.0,
+              394259405000.0,
+              427026307000.0,
+              83790677000.0
+            ],
+            [
+              "12. Thu nhập khác ",
+              "other_income",
+              61606713000.0,
+              36883419000.0,
+              25743896000.0,
+              52777771000.0
+            ],
+            [
+              "14. Lợi nhuận khác",
+              "other_profit",
+              -518338325000.0,
+              -357375986000.0,
+              -401282412000.0,
+              -31012906000.0
+            ],
+            [
+              "Lợi nhuận sau thuế của cổ đông của Công ty mẹ",
+              "profit_after_tax_for_shareholders_of_parent_company",
+              4099763027000.0,
+              167669393000.0,
+              3721868442000.0,
+              7033730770000.0
+            ],
+            [
+              "15. Tổng lợi nhuận kế toán trước thuế",
+              "profit_before_tax",
+              6056355374000.0,
+              689692368000.0,
+              4825763013000.0,
+              8633067583000.0
+            ],
+            [
+              "1. Doanh thu bán hàng và cung cấp dịch vụ ",
+              "revenue",
+              134722248888000.0,
+              119234184825000.0,
+              135225101299000.0,
+              156836115055000.0
+            ],
+            [
+              "9. Chi phí bán hàng ",
+              "selling_expenses",
+              22336838068000.0,
+              20916710755000.0,
+              19849837610000.0,
+              19330903537000.0
+            ],
+            [
+              "8. Phần lãi/lỗ trong công ty liên doanh, liên kết",
+              "share_of_associates_and_joint_ventures_result",
+              null,
+              null,
+              -44596455000.0,
+              24351079000.0
+            ],
+            [
+              "Phần lợi nhuận/lỗ từ công ty liên kết liên doanh",
+              "share_of_associates_and_joint_ventures_result_2",
+              null,
+              null,
+              null,
+              null
+            ]
+          ],
+          "row_count": 25
+        }
+      },
+      "cash_flow": {
+        "status": "ok",
+        "years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "data": {
+          "columns": [
+            "item",
+            "item_id",
+            "2025",
+            "2024",
+            "2023",
+            "2022"
+          ],
+          "rows": [
+            [
+              "Phân bổ lợi thế thương mại",
+              "allocation_of_goodwill",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Chi phí đi vay",
+              "borrowing_costs",
+              1362143909000.0,
+              1447718355000.0,
+              1137236130000.0,
+              1470675594000.0
+            ],
+            [
+              "Tiền và tương đương tiền đầu kỳ",
+              "cash_and_cash_equivalents_at_beginning_of_the_period",
+              4142015763000.0,
+              5061020547000.0,
+              5365704857000.0,
+              4897331541000.0
+            ],
+            [
+              "Tiền và tương đương tiền cuối kỳ",
+              "cash_and_cash_equivalents_at_end_of_the_period",
+              5061020547000.0,
+              5365704857000.0,
+              4897331541000.0,
+              4999925717000.0
+            ],
+            [
+              "2. Tiền trả lại vốn góp cho các chủ sở hữu, mua lại cổ phiếu đã phát hành",
+              "cash_paid_to_repurchased_or_redeem_the_entitys_shares_and_to_owners_for_capital_withdrawal",
+              -5025640000.0,
+              -9783280000.0,
+              -9141790000.0,
+              -815870711000.0
+            ],
+            [
+              "Tăng, giảm chứng khoán kinh doanh",
+              "changes_in_available_for_sale_securities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "6. Tiền thu hồi đầu tư góp vốn vào đơn vị khác",
+              "collections_on_investment_in_other_entities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Thuế thu nhập doanh nghiệp đã nộp",
+              "corporate_income_tax_paid",
+              -1805340844000.0,
+              -860429603000.0,
+              -958914978000.0,
+              -1546459474000.0
+            ],
+            [
+              " Khấu hao TSCĐ và BĐSĐT",
+              "depreciation_of_fixed_assets_and_investment_properties",
+              3540324726000.0,
+              3351314268000.0,
+              2913419081000.0,
+              1890882109000.0
+            ],
+            [
+              "7. Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",
+              "dividends_interest_and_profit_received",
+              1137542622000.0,
+              1114378023000.0,
+              2377309655000.0,
+              2514887980000.0
+            ],
+            [
+              "6. Cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+              "dividends_paid_profits_distributed_to_owners",
+              -731854815000.0,
+              -731280024000.0,
+              -730957694000.0,
+              -1478456763000.0
+            ],
+            [
+              "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+              "exchange_difference_due_to_re_valuation_of_ending_balances",
+              -61919000.0,
+              368728000.0,
+              104134000.0,
+              57132000.0
+            ],
+            [
+              "Lãi, lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ",
+              "foreign_exchange_gain_loss_from_revaluation_of_monetary_items_denominated_in_foreign_currencies",
+              284374000.0,
+              83631272000.0,
+              25689581000.0,
+              48281411000.0
+            ],
+            [
+              "Lãi, lỗ từ hoạt động đầu tư, tài chính",
+              "gains_losses_from_investing_and_financing_activities",
+              -348599792000.0,
+              -1509203341000.0,
+              -1729164103000.0,
+              -2908766492000.0
+            ],
+            [
+              "I. Lưu chuyển tiền từ hoạt động kinh doanh",
+              "i_cash_flows_from_operating_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "II. Lưu chuyển tiền từ hoạt động đầu tư",
+              "ii_cash_flows_from_investing_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "III. Lưu chuyển tiền từ hoạt động tài chính",
+              "iii_cash_flows_from_financing_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Tăng, giảm chi phí chờ phân bổ",
+              "increase_decrease_in_deferred_expenses",
+              -101041271000.0,
+              130000103000.0,
+              127788871000.0,
+              -123379603000.0
+            ],
+            [
+              "Tăng, giảm hàng tồn kho",
+              "increase_decrease_in_inventories",
+              3791937421000.0,
+              4169031757000.0,
+              -636927914000.0,
+              -5207942331000.0
+            ],
+            [
+              "Tăng, giảm các khoản phải trả (không kể lãi vay phải trả, thuế thu nhập doanh nghiệp phải nộp)",
+              "increase_decrease_in_payables_excluding_interest_payables_and_corporate_income_tax_payables",
+              -2286756979000.0,
+              -3136706601000.0,
+              3581806725000.0,
+              5339106069000.0
+            ],
+            [
+              "Tăng, giảm các khoản phải thu",
+              "increase_decrease_in_receivables",
+              -588827639000.0,
+              672440537000.0,
+              151205191000.0,
+              -308618710000.0
+            ],
+            [
+              "8. Tăng giảm tiền gửi ngân hàng có kỳ hạn",
+              "increase_decrease_in_term_deposit",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Chi phí đi vay đã trả",
+              "interest_expenses_paid",
+              -1322381109000.0,
+              -1435731871000.0,
+              -1141521541000.0,
+              -1396460328000.0
+            ],
+            [
+              "Thu nhập lãi vay và cổ tức",
+              "interest_income_and_dividends",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3. Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",
+              "loans_purchases_of_other_entities_debt_instruments",
+              -20799334065000.0,
+              -34151374181000.0,
+              -52159250995000.0,
+              -56848212766000.0
+            ],
+            [
+              "Lãi, lỗ từ thanh lý TSCĐ",
+              "loss_profits_from_disposal_of_fixed_asset",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2. Điều chỉnh cho các khoản",
+              "n_2_adjustments_for",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Lưu chuyển tiền thuần trong kỳ",
+              "net_cash_flows_during_the_period",
+              919066704000.0,
+              304315582000.0,
+              -468477450000.0,
+              102537044000.0
+            ],
+            [
+              "Lưu chuyển tiền thuần từ hoạt động tài chính",
+              "financing_cash_flow",
+              -8606343521000.0,
+              7699783103000.0,
+              2757475514000.0,
+              667171746000.0
+            ],
+            [
+              "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+              "investing_cash_flow",
+              1549111423000.0,
+              -10831294697000.0,
+              -11743285670000.0,
+              -6660775392000.0
+            ],
+            [
+              "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+              "operating_cash_flow",
+              7976298802000.0,
+              3435827176000.0,
+              8517332707000.0,
+              6096140690000.0
+            ],
+            [
+              "3. Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động",
+              "operating_profit_before_changes_in_working_capital",
+              10288709224000.0,
+              3897222853000.0,
+              7393896353000.0,
+              9339895068000.0
+            ],
+            [
+              "Các khoản điều chỉnh khác ",
+              "other_adjustments",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "8. Tiền chi khác cho hoạt động tài chính",
+              "other_payments_for_financing_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "11. Tiền chi khác cho hoạt động đầu tư",
+              "other_payments_for_investing_activities",
+              null,
+              -1710049000.0,
+              -1523581000.0,
+              -4824456000.0
+            ],
+            [
+              "Tiền chi khác cho hoạt động kinh doanh",
+              "other_payments_for_operating_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "7. Tiền thu khác từ hoạt động tài chính",
+              "other_receipts_from_financing_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "10. Tiền thu khác từ hoạt động đầu tư",
+              "other_receipts_from_investing_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Tiền thu khác từ hoạt động kinh doanh",
+              "other_receipts_from_operating_activities",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1. Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",
+              "payment_for_fixed_assets_constructions_and_other_long_term_assets",
+              -4465359524000.0,
+              -523383331000.0,
+              -303747827000.0,
+              -888461890000.0
+            ],
+            [
+              "5. Tiền chi đầu tư góp vốn vào đơn vị khác",
+              "payments_for_investment_in_other_entities",
+              -181034840000.0,
+              -105597413000.0,
+              null,
+              -104772188000.0
+            ],
+            [
+              "4. Tiền trả nợ gốc vay",
+              "principal_repayments",
+              -73313739287000.0,
+              -61933329857000.0,
+              -73030338420000.0,
+              -95872137945000.0
+            ],
+            [
+              "3. Tiền thu từ đi vay",
+              "proceeds_from_borrowings",
+              65251647851000.0,
+              70373733044000.0,
+              74756279080000.0,
+              98550109185000.0
+            ],
+            [
+              "1. Lợi nhuận trước thuế",
+              "profit_before_tax",
+              6056355374000.0,
+              689692368000.0,
+              4825763013000.0,
+              8633067583000.0
+            ],
+            [
+              "9. Mua lại khoản góp vốn của cổ đông thiểu số trong công ty con",
+              "purchases_of_minority_shares_of_subsidiaries",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2. Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",
+              "receipts_from_disposal_of_fixed_assets_and_other_long_term_assets",
+              5331160000.0,
+              31276791000.0,
+              54661690000.0,
+              10165413000.0
+            ],
+            [
+              "1. Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",
+              "receipts_from_equity_issue_and_owners_capital_contribution",
+              192628370000.0,
+              443220000.0,
+              1771634339000.0,
+              283527980000.0
+            ],
+            [
+              "4. Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",
+              "receipts_from_loan_repayments_sale_of_other_entities_debt_instruments",
+              25851966071000.0,
+              22805115462000.0,
+              38289265387000.0,
+              48660442516000.0
+            ],
+            [
+              "5. Tiền trả nợ gốc thuê tài chính",
+              "repayment_of_financial_leases",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "Các khoản dự phòng",
+              "reversal_of_provisions_provisions",
+              -321799367000.0,
+              -165930068000.0,
+              220952652000.0,
+              205754863000.0
+            ]
+          ],
+          "row_count": 50
+        }
+      },
+      "ratio": {
+        "status": "ok",
+        "years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "data": {
+          "columns": [
+            "item",
+            "item_id",
+            "2025",
+            "2024",
+            "2023",
+            "2022"
+          ],
+          "rows": [
+            [
+              "Thu nhập trên mỗi cổ phần của 4 quý gần nhất (EPS)",
+              "trailing_eps",
+              4772.8,
+              2545.57,
+              114.61,
+              3646.08
+            ],
+            [
+              "Giá trị sổ sách của cổ phiếu (BVPS)",
+              "book_value_per_share_bvps",
+              22439.69,
+              19241.79,
+              15973.46,
+              16354.35
+            ],
+            [
+              "Chỉ số giá thị trường trên thu nhập (P/E)",
+              "pe_ratio",
+              18.52,
+              23.96,
+              373.43,
+              11.77
+            ],
+            [
+              "Chỉ số giá thị trường trên giá trị sổ sách (P/B)",
+              "pb_ratio",
+              3.94,
+              3.17,
+              2.68,
+              2.62
+            ],
+            [
+              "Chỉ số giá thị trường trên doanh thu thuần (P/S)",
+              "ps_ratio",
+              0.84,
+              0.66,
+              0.53,
+              0.47
+            ],
+            [
+              "Tỷ suất cổ tức",
+              "dividend_yield",
+              1.13,
+              0.82,
+              1.17,
+              2.33
+            ],
+            [
+              "Beta",
+              "beta",
+              1.21,
+              1.33,
+              1.52,
+              1.06
+            ],
+            [
+              "Giá trị doanh nghiệp trên lợi nhuận trước thuế và lãi vay (EV/EBIT)",
+              "ev_ebit",
+              15.32,
+              18.73,
+              38.53,
+              10.02
+            ],
+            [
+              "Giá trị doanh nghiệp trên lợi nhuận trước thuế, khấu hao và lãi vay (EV/EBITDA)",
+              "ev_ebitda",
+              0.0,
+              0.0,
+              15.0,
+              6.78
+            ],
+            [
+              "Tỷ suất lợi nhuận gộp biên",
+              "gross_margin",
+              19.88,
+              20.47,
+              19.04,
+              23.13
+            ],
+            [
+              "Tỷ lệ lãi EBIT",
+              "ebit_margin",
+              6.48,
+              4.44,
+              1.81,
+              5.56
+            ],
+            [
+              "Tỷ lệ lãi EBITDA",
+              "ebitda_net_revenue",
+              7.69,
+              6.61,
+              4.64,
+              8.21
+            ],
+            [
+              "Tỷ suất sinh lợi trên doanh thu thuần",
+              "net_margin",
+              4.54,
+              2.78,
+              0.14,
+              3.07
+            ],
+            [
+              "Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA)",
+              "roe",
+              22.95,
+              14.46,
+              0.71,
+              18.5
+            ],
+            [
+              "Tỷ suất sinh lợi trên vốn dài hạn bình quân (ROCE)",
+              "return_on_capital_employed_roce",
+              32.97,
+              20.75,
+              7.22,
+              29.55
+            ],
+            [
+              "Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)",
+              "roa",
+              9.11,
+              5.7,
+              0.29,
+              6.9
+            ],
+            [
+              "ROE bình quân 4 quý gần nhất",
+              "roe_trailling",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "ROA bình quân 4 quý gần nhất",
+              "roa_trailling",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Tăng trưởng  doanh thu thuần",
+              "net_revenue",
+              16.07,
+              13.58,
+              -11.34,
+              8.5
+            ],
+            [
+              "Tăng trưởng  lợi nhuận gộp",
+              "gross_profit",
+              12.74,
+              22.11,
+              -27.03,
+              11.69
+            ],
+            [
+              "Tăng trưởng lợi nhuận trước thuế ",
+              "profit_before_tax",
+              78.9,
+              599.7,
+              -88.61,
+              -6.42
+            ],
+            [
+              "Tăng trưởng lợi nhuận sau thuế của CĐ công ty mẹ",
+              "profit_after_tax_for_shareholders_of_the_parent_company",
+              88.98,
+              2119.77,
+              -95.91,
+              -16.31
+            ],
+            [
+              "Tăng trưởng tổng tài sản",
+              "total_assets",
+              19.18,
+              17.18,
+              7.66,
+              -11.33
+            ],
+            [
+              "Tăng trưởng nợ dài hạn",
+              "long_term_liabilities",
+              0.0,
+              -100.0,
+              1.44,
+              0.0
+            ],
+            [
+              "Tăng trưởng nợ phải trả",
+              "liabilities",
+              19.98,
+              15.14,
+              15.2,
+              -25.1
+            ],
+            [
+              "Tăng trưởng vốn chủ sở hữu",
+              "owners_equity",
+              17.97,
+              20.39,
+              -2.39,
+              17.44
+            ],
+            [
+              "Tăng trưởng vốn điều lệ",
+              "charter_capital",
+              0.51,
+              -0.08,
+              -0.03,
+              105.29
+            ],
+            [
+              "Tỷ số thanh toán bằng tiền mặt",
+              "cash_ratio",
+              0.1,
+              0.12,
+              0.17,
+              0.19
+            ],
+            [
+              "Tỷ số thanh toán nhanh",
+              "quick_ratio",
+              0.98,
+              1.03,
+              0.98,
+              0.73
+            ],
+            [
+              "Tỷ số thanh toán nhanh  (Đã loại trừ HTK, Phải thu ngắn hạn - Tham khảo)",
+              "quick_ratio_except_inventories_short_term_receivables_reference",
+              0.77,
+              0.81,
+              0.79,
+              0.58
+            ],
+            [
+              "Tỷ số thanh toán hiện hành (ngắn hạn)",
+              "short_term_ratio",
+              1.52,
+              1.56,
+              1.69,
+              1.71
+            ],
+            [
+              "Khả năng thanh toán lãi vay",
+              "interest_coverage",
+              6.87,
+              5.24,
+              1.48,
+              5.45
+            ],
+            [
+              "Vòng quay phải thu khách hàng",
+              "receivables_turnover",
+              630.31,
+              488.62,
+              486.21,
+              474.5
+            ],
+            [
+              "Thời gian thu tiền khách hàng bình quân",
+              "days_of_sales_outstanding",
+              0.58,
+              0.75,
+              0.75,
+              0.77
+            ],
+            [
+              "Vòng quay hàng tồn kho",
+              "inventory_turnover",
+              5.05,
+              4.85,
+              4.03,
+              3.74
+            ],
+            [
+              "Thời gian tồn kho bình quân",
+              "days_of_inventory_on_hand",
+              72.33,
+              75.28,
+              90.57,
+              97.64
+            ],
+            [
+              "Vòng quay phải trả nhà cung cấp",
+              "payables_turnover",
+              11.21,
+              12.49,
+              11.49,
+              9.8
+            ],
+            [
+              "Thời gian trả tiền khách hàng bình quân",
+              "number_of_days_of_payables",
+              32.57,
+              29.22,
+              31.78,
+              37.24
+            ],
+            [
+              "Vòng quay tài sản cố định (Hiệu suất sử dụng tài sản cố định)",
+              "fixed_asset_turnover",
+              50.42,
+              26.64,
+              14.58,
+              13.77
+            ],
+            [
+              "Vòng quay tổng tài sản (Hiệu suất sử dụng toàn bộ tài sản)",
+              "total_asset_turnover",
+              2.02,
+              2.06,
+              2.04,
+              2.25
+            ],
+            [
+              "Vòng quay vốn chủ sở hữu",
+              "equity_turnover",
+              5.09,
+              5.22,
+              5.0,
+              6.02
+            ],
+            [
+              "Tỷ số Nợ ngắn hạn trên Tổng nợ phải trả",
+              "short_term_liabilities_to_total_liabilities",
+              100.0,
+              100.0,
+              83.71,
+              81.5
+            ],
+            [
+              "Tỷ số Nợ vay trên Tổng tài sản",
+              "debt_to_assets",
+              35.66,
+              38.76,
+              41.78,
+              29.71
+            ],
+            [
+              "Tỷ số Nợ trên Tổng tài sản",
+              "liabilities_to_assets",
+              60.48,
+              60.08,
+              61.14,
+              57.14
+            ],
+            [
+              "Tỷ số Vốn chủ sở hữu trên Tổng tài sản",
+              "equity_to_assets",
+              39.52,
+              39.92,
+              38.86,
+              42.86
+            ],
+            [
+              "Tỷ số Nợ ngắn hạn trên Vốn chủ sở hữu",
+              "short_term_liabilities_to_equity",
+              153.03,
+              150.48,
+              131.7,
+              108.64
+            ],
+            [
+              "Tỷ số Nợ vay trên Vốn chủ sở hữu",
+              "debt_to_equity",
+              90.22,
+              97.08,
+              107.51,
+              69.32
+            ],
+            [
+              "Tỷ số Nợ trên Vốn chủ sở hữu",
+              "liabilities_to_equity",
+              153.03,
+              150.48,
+              157.33,
+              133.3
+            ],
+            [
+              "Tỷ số dòng tiền HĐKD trên doanh thu thuần",
+              "accrual_ratio_cf",
+              3.91,
+              6.34,
+              2.9,
+              5.98
+            ],
+            [
+              "Khả năng chi trả nợ ngắn hạn từ dòng tiền HĐKD",
+              "cash_to_income",
+              12.01,
+              20.13,
+              11.17,
+              30.68
+            ],
+            [
+              "Khả năng chi trả nợ ngắn hạn từ lưu chuyển tiền thuần trong kỳ",
+              "net_cash_flows_short_term_liabilities",
+              0.2,
+              -1.11,
+              0.99,
+              3.53
+            ],
+            [
+              "Tỷ lệ dồn tích (Phương pháp Cân đối kế toán)",
+              "accrual_ratio_balance_sheet_method",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Tỷ lệ dồn tích (Phương pháp Dòng tiền)",
+              "accrual_ratio_cash_flow_method",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Dòng tiền từ HĐKD trên Tổng tài sản",
+              "cash_return_to_assets",
+              7.26,
+              12.09,
+              5.72,
+              14.29
+            ],
+            [
+              "Dòng tiền từ HĐKD trên Vốn chủ sở hữu",
+              "cash_return_on_equity",
+              18.38,
+              30.29,
+              14.71,
+              33.33
+            ],
+            [
+              "Dòng tiền từ HĐKD trên Lợi nhuận thuần từ HĐKD",
+              "cash_to_income_2",
+              70.36,
+              162.95,
+              328.14,
+              121.32
+            ],
+            [
+              "Khả năng thanh toán nợ từ dòng tiền HĐKD",
+              "debt_coverage",
+              12.01,
+              20.13,
+              9.35,
+              25.0
+            ],
+            [
+              "Dòng tiền từ HĐKD trên mỗi cổ phần (CPS)",
+              "cash_flow_per_share_cps",
+              4123.31,
+              5827.87,
+              2349.45,
+              5450.61
+            ]
+          ],
+          "row_count": 58
+        }
+      }
+    },
+    "quarterly": {
+      "balance_sheet": {
+        "status": "ok",
+        "years": [],
+        "data": {
+          "columns": [],
+          "rows": [],
+          "row_count": 0
+        }
+      },
+      "income_statement": {
+        "status": "ok",
+        "years": [
+          2025,
+          2026
+        ],
+        "data": {
+          "columns": [
+            "item",
+            "item_id",
+            "2026-Q2",
+            "2026-Q1",
+            "2025-Q4",
+            "2025-Q3"
+          ],
+          "rows": [
+            [
+              "4. Giá vốn hàng bán ",
+              "cost_of_goods_sold",
+              32374320275000.0,
+              34804147835000.0,
+              28934547803000.0,
+              37942073480000.0
+            ],
+            [
+              "16. Chi phí thuế TNDN hiện hành",
+              "current_corporate_income_tax_expenses",
+              477289656000.0,
+              476897215000.0,
+              397722416000.0,
+              736654017000.0
+            ],
+            [
+              "2. Các khoản giảm trừ doanh thu",
+              "deduction_from_revenue",
+              238836480000.0,
+              246985876000.0,
+              197955061000.0,
+              283217942000.0
+            ],
+            [
+              "17. Chi phí thuế TNDN hoãn lại ",
+              "deferred_income_tax_expenses",
+              -88604124000.0,
+              -62204442000.0,
+              -10894797000.0,
+              -58555241000.0
+            ],
+            [
+              "20. Lãi suy giảm trên cổ phiếu (*)",
+              "diluted_earnings_per_share",
+              1000.0,
+              2000.0,
+              1000.0,
+              2000.0
+            ],
+            [
+              "19. Lãi cơ bản trên cổ phiếu (VNÐ)",
+              "earnings_per_share_vnd",
+              1198000.0,
+              1562000.0,
+              1058000.0,
+              2255000.0
+            ],
+            [
+              "8. Chi phí tài chính ",
+              "finance_expenses",
+              410743276000.0,
+              390297766000.0,
+              339023163000.0,
+              453084596000.0
+            ],
+            [
+              "7. Doanh thu hoạt động tài chính ",
+              "financial_income",
+              809068897000.0,
+              836153922000.0,
+              693293668000.0,
+              957393430000.0
+            ],
+            [
+              "6. Lãi/Lỗ của hoạt động bán, thanh lý bất động sản đầu tư",
+              "gain_loss_on_disposal_of_investment_property",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "10. Chi phí quản lý doanh nghiệp ",
+              "admin_expenses",
+              1119414263000.0,
+              1060394370000.0,
+              1214599787000.0,
+              1317458502000.0
+            ],
+            [
+              "5. Lợi nhuận gộp về bán hàng và cung cấp dịch vụ",
+              "gross_profit",
+              7478186878000.0,
+              8046244888000.0,
+              7200410615000.0,
+              10809210072000.0
+            ],
+            [
+              "Lợi ích của cổ đông thiểu số",
+              "minority_interest",
+              12766717000.0,
+              14845847000.0,
+              1896678000.0,
+              52350747000.0
+            ],
+            [
+              "18. Lợi nhuận sau thuế thu nhập doanh nghiệp",
+              "net_profit",
+              1783665634000.0,
+              2086492115000.0,
+              1547833769000.0,
+              3354897721000.0
+            ],
+            [
+              "3. Doanh thu thuần về bán hàng và cung cấp dịch vụ",
+              "revenue",
+              39852507153000.0,
+              42850392723000.0,
+              36134958418000.0,
+              48751283552000.0
+            ],
+            [
+              "   Trong đó: Chi phí đi vay",
+              "of_which_interest_expense",
+              388038375000.0,
+              384665886000.0,
+              322792851000.0,
+              436321055000.0
+            ],
+            [
+              "11. Lợi nhuận thuần từ hoạt động kinh doanh",
+              "operating_profit",
+              2190441447000.0,
+              2495518122000.0,
+              1940204764000.0,
+              4034437503000.0
+            ],
+            [
+              "13. Chi phí khác ",
+              "other_expenses",
+              25005997000.0,
+              26921362000.0,
+              17630927000.0,
+              7738687000.0
+            ],
+            [
+              "12. Thu nhập khác ",
+              "other_income",
+              6915716000.0,
+              32588129000.0,
+              12087550000.0,
+              6297681000.0
+            ],
+            [
+              "14. Lợi nhuận khác",
+              "other_profit",
+              -18090281000.0,
+              5666767000.0,
+              -5543377000.0,
+              -1441006000.0
+            ],
+            [
+              "Lợi nhuận sau thuế của cổ đông của Công ty mẹ",
+              "profit_after_tax_for_shareholders_of_parent_company",
+              1770898917000.0,
+              2071646268000.0,
+              1545937091000.0,
+              3302546973000.0
+            ],
+            [
+              "15. Tổng lợi nhuận kế toán trước thuế",
+              "profit_before_tax",
+              2172351166000.0,
+              2501184888000.0,
+              1934661387000.0,
+              4032996497000.0
+            ],
+            [
+              "1. Doanh thu bán hàng và cung cấp dịch vụ ",
+              "revenue",
+              40091343632000.0,
+              43097378599000.0,
+              36332913479000.0,
+              49034501494000.0
+            ],
+            [
+              "9. Chi phí bán hàng ",
+              "selling_expenses",
+              4570833492000.0,
+              4942111524000.0,
+              4403006344000.0,
+              5980272601000.0
+            ],
+            [
+              "8. Phần lãi/lỗ trong công ty liên doanh, liên kết",
+              "share_of_associates_and_joint_ventures_result",
+              4176701000.0,
+              5922973000.0,
+              3129774000.0,
+              18649699000.0
+            ],
+            [
+              "Phần lợi nhuận/lỗ từ công ty liên kết liên doanh",
+              "share_of_associates_and_joint_ventures_result_2",
+              null,
+              null,
+              null,
+              null
+            ]
+          ],
+          "row_count": 25
+        }
+      },
+      "cash_flow": {
+        "status": "ok",
+        "years": [],
+        "data": {
+          "columns": [],
+          "rows": [],
+          "row_count": 0
+        }
+      },
+      "ratio": {
+        "status": "ok",
+        "years": [
+          2025,
+          2026
+        ],
+        "data": {
+          "columns": [
+            "item",
+            "item_id",
+            "2026-Q2",
+            "2025-Q4",
+            "2026-Q1",
+            "2025-Q4_1"
+          ],
+          "rows": [
+            [
+              "Thu nhập trên mỗi cổ phần của 4 quý gần nhất (EPS)",
+              "trailing_eps",
+              3955.55,
+              2986.11,
+              4774.77,
+              3955.55
+            ],
+            [
+              "Giá trị sổ sách của cổ phiếu (BVPS)",
+              "book_value_per_share_bvps",
+              21507.0,
+              20301.0,
+              22442.0,
+              21507.0
+            ],
+            [
+              "Chỉ số giá thị trường trên thu nhập (P/E)",
+              "pe_ratio",
+              19.64,
+              19.76,
+              18.51,
+              19.64
+            ],
+            [
+              "Chỉ số giá thị trường trên giá trị sổ sách (P/B)",
+              "pb_ratio",
+              3.61,
+              2.91,
+              3.94,
+              3.61
+            ],
+            [
+              "Chỉ số giá thị trường trên doanh thu thuần (P/S)",
+              "ps_ratio",
+              2.88,
+              2.39,
+              3.05,
+              2.88
+            ],
+            [
+              "Tỷ suất cổ tức",
+              "dividend_yield",
+              0.01,
+              0.01,
+              1.13,
+              1.29
+            ],
+            [
+              "Beta",
+              "beta",
+              1.24,
+              1.37,
+              1.21,
+              1.24
+            ],
+            [
+              "Giá trị doanh nghiệp trên lợi nhuận trước thuế và lãi vay (EV/EBIT)",
+              "ev_ebit",
+              53.48,
+              48.69,
+              53.62,
+              53.48
+            ],
+            [
+              "Giá trị doanh nghiệp trên lợi nhuận trước thuế, khấu hao và lãi vay (EV/EBITDA)",
+              "ev_ebitda",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Tỷ suất lợi nhuận gộp biên",
+              "gross_margin",
+              18.76,
+              19.93,
+              18.78,
+              18.76
+            ],
+            [
+              "Tỷ lệ lãi EBIT",
+              "ebit_margin",
+              6.42,
+              6.25,
+              6.73,
+              6.42
+            ],
+            [
+              "Tỷ lệ lãi EBITDA",
+              "ebitda_net_revenue",
+              7.4,
+              7.66,
+              6.76,
+              7.4
+            ],
+            [
+              "Tỷ suất sinh lợi trên doanh thu thuần",
+              "net_margin",
+              4.48,
+              4.28,
+              4.87,
+              4.48
+            ],
+            [
+              "Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA)",
+              "roe",
+              5.73,
+              5.35,
+              6.38,
+              5.73
+            ],
+            [
+              "Tỷ suất sinh lợi trên vốn dài hạn bình quân (ROCE)",
+              "return_on_capital_employed_roce",
+              8.28,
+              7.81,
+              8.88,
+              8.28
+            ],
+            [
+              "Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)",
+              "roa",
+              2.2,
+              2.16,
+              2.52,
+              2.2
+            ],
+            [
+              "ROE bình quân 4 quý gần nhất",
+              "roe_trailling",
+              19.68,
+              15.86,
+              22.89,
+              19.68
+            ],
+            [
+              "ROA bình quân 4 quý gần nhất",
+              "roa_trailling",
+              7.64,
+              6.33,
+              8.85,
+              7.64
+            ],
+            [
+              "Tăng trưởng  doanh thu thuần",
+              "net_revenue",
+              16.71,
+              14.76,
+              23.94,
+              16.71
+            ],
+            [
+              "Tăng trưởng  lợi nhuận gộp",
+              "gross_profit",
+              8.51,
+              7.27,
+              22.15,
+              8.51
+            ],
+            [
+              "Tăng trưởng lợi nhuận trước thuế ",
+              "profit_before_tax",
+              103.4,
+              60.39,
+              141.55,
+              103.4
+            ],
+            [
+              "Tăng trưởng lợi nhuận sau thuế của CĐ công ty mẹ",
+              "profit_after_tax_for_shareholders_of_the_parent_company",
+              121.32,
+              71.31,
+              144.59,
+              121.32
+            ],
+            [
+              "Tăng trưởng tổng tài sản",
+              "total_assets",
+              20.01,
+              14.38,
+              19.57,
+              20.01
+            ],
+            [
+              "Tăng trưởng nợ dài hạn",
+              "long_term_liabilities",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Tăng trưởng nợ phải trả",
+              "liabilities",
+              22.38,
+              14.66,
+              20.62,
+              22.38
+            ],
+            [
+              "Tăng trưởng vốn chủ sở hữu",
+              "owners_equity",
+              16.58,
+              13.96,
+              17.98,
+              16.58
+            ],
+            [
+              "Tăng trưởng vốn điều lệ",
+              "charter_capital",
+              1.19,
+              -0.08,
+              0.51,
+              1.19
+            ],
+            [
+              "Tỷ số thanh toán bằng tiền mặt",
+              "cash_ratio",
+              0.11,
+              0.06,
+              0.1,
+              0.11
+            ],
+            [
+              "Tỷ số thanh toán nhanh",
+              "quick_ratio",
+              1.05,
+              1.06,
+              0.98,
+              1.05
+            ],
+            [
+              "Tỷ số thanh toán nhanh  (Đã loại trừ HTK, Phải thu ngắn hạn - Tham khảo)",
+              "quick_ratio_except_inventories_short_term_receivables_reference",
+              0.8,
+              0.81,
+              0.77,
+              0.8
+            ],
+            [
+              "Tỷ số thanh toán hiện hành (ngắn hạn)",
+              "short_term_ratio",
+              1.55,
+              1.59,
+              1.52,
+              1.55
+            ],
+            [
+              "Khả năng thanh toán lãi vay",
+              "interest_coverage",
+              6.6,
+              6.99,
+              7.5,
+              6.6
+            ],
+            [
+              "Vòng quay phải thu khách hàng",
+              "receivables_turnover",
+              155.91,
+              150.65,
+              186.33,
+              155.91
+            ],
+            [
+              "Thời gian thu tiền khách hàng bình quân",
+              "days_of_sales_outstanding",
+              2.34,
+              2.42,
+              1.96,
+              2.34
+            ],
+            [
+              "Vòng quay hàng tồn kho",
+              "inventory_turnover",
+              1.35,
+              1.28,
+              1.36,
+              1.35
+            ],
+            [
+              "Thời gian tồn kho bình quân",
+              "days_of_inventory_on_hand",
+              269.42,
+              284.17,
+              269.36,
+              269.42
+            ],
+            [
+              "Vòng quay phải trả nhà cung cấp",
+              "payables_turnover",
+              2.72,
+              2.83,
+              2.7,
+              2.72
+            ],
+            [
+              "Thời gian trả tiền khách hàng bình quân",
+              "number_of_days_of_payables",
+              134.15,
+              128.96,
+              135.3,
+              134.15
+            ],
+            [
+              "Vòng quay tài sản cố định (Hiệu suất sử dụng tài sản cố định)",
+              "fixed_asset_turnover",
+              14.27,
+              10.6,
+              16.47,
+              14.27
+            ],
+            [
+              "Vòng quay tổng tài sản (Hiệu suất sử dụng toàn bộ tài sản)",
+              "total_asset_turnover",
+              0.49,
+              0.51,
+              0.52,
+              0.49
+            ],
+            [
+              "Vòng quay vốn chủ sở hữu",
+              "equity_turnover",
+              1.29,
+              1.25,
+              1.32,
+              1.29
+            ],
+            [
+              "Tỷ số Nợ ngắn hạn trên Tổng nợ phải trả",
+              "short_term_liabilities_to_total_liabilities",
+              100.0,
+              100.0,
+              100.0,
+              100.0
+            ],
+            [
+              "Tỷ số Nợ vay trên Tổng tài sản",
+              "debt_to_assets",
+              35.75,
+              36.08,
+              35.65,
+              35.75
+            ],
+            [
+              "Tỷ số Nợ trên Tổng tài sản",
+              "liabilities_to_assets",
+              60.4,
+              59.18,
+              60.48,
+              60.4
+            ],
+            [
+              "Tỷ số Vốn chủ sở hữu trên Tổng tài sản",
+              "equity_to_assets",
+              39.6,
+              40.82,
+              39.52,
+              39.6
+            ],
+            [
+              "Tỷ số Nợ ngắn hạn trên Vốn chủ sở hữu",
+              "short_term_liabilities_to_equity",
+              152.5,
+              144.97,
+              153.05,
+              152.5
+            ],
+            [
+              "Tỷ số Nợ vay trên Vốn chủ sở hữu",
+              "debt_to_equity",
+              90.28,
+              88.38,
+              90.21,
+              90.28
+            ],
+            [
+              "Tỷ số Nợ trên Vốn chủ sở hữu",
+              "liabilities_to_equity",
+              152.5,
+              144.97,
+              153.05,
+              152.5
+            ],
+            [
+              "Tỷ số dòng tiền HĐKD trên doanh thu thuần",
+              "accrual_ratio_cf",
+              0.0,
+              6.89,
+              0.0,
+              0.0
+            ],
+            [
+              "Khả năng chi trả nợ ngắn hạn từ dòng tiền HĐKD",
+              "cash_to_income",
+              0.0,
+              5.79,
+              0.0,
+              0.0
+            ],
+            [
+              "Khả năng chi trả nợ ngắn hạn từ lưu chuyển tiền thuần trong kỳ",
+              "net_cash_flows_short_term_liabilities",
+              0.0,
+              -5.21,
+              0.0,
+              0.0
+            ],
+            [
+              "Tỷ lệ dồn tích (Phương pháp Cân đối kế toán)",
+              "accrual_ratio_balance_sheet_method",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Tỷ lệ dồn tích (Phương pháp Dòng tiền)",
+              "accrual_ratio_cash_flow_method",
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              "Dòng tiền từ HĐKD trên Tổng tài sản",
+              "cash_return_to_assets",
+              0.0,
+              3.43,
+              0.0,
+              0.0
+            ],
+            [
+              "Dòng tiền từ HĐKD trên Vốn chủ sở hữu",
+              "cash_return_on_equity",
+              0.0,
+              8.39,
+              0.0,
+              0.0
+            ],
+            [
+              "Dòng tiền từ HĐKD trên Lợi nhuận thuần từ HĐKD",
+              "cash_to_income_2",
+              0.0,
+              128.31,
+              0.0,
+              0.0
+            ],
+            [
+              "Khả năng thanh toán nợ từ dòng tiền HĐKD",
+              "debt_coverage",
+              0.0,
+              5.79,
+              0.0,
+              0.0
+            ],
+            [
+              "Dòng tiền từ HĐKD trên mỗi cổ phần (CPS)",
+              "cash_flow_per_share_cps",
+              0.0,
+              1703.42,
+              0.0,
+              0.0
+            ]
+          ],
+          "row_count": 58
+        }
+      }
+    }
+  },
+  "warnings": [],
+  "policy": "No synthetic values. Missing periods remain missing."
+}

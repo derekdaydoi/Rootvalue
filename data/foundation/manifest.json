@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-16T06:59:13.533911+00:00",
+  "history_target": {
+    "start": "2018-01-01",
+    "annual_min_periods": 8,
+    "quarterly_target_periods": 32
+  },
+  "access": {
+    "vnstock_api_key_present": false,
+    "fundamental_provider": "vnstock",
+    "fundamental_source": "MAS via Vnstock community (guest)",
+    "fundamental_error": null,
+    "note": "Authenticated community access is required for up to 8 financial periods; vnstock_data is preferred when available for longer history."
+  },
+  "companies": [
+    {
+      "symbol": "TCB",
+      "status": "partial",
+      "annual_periods": 4,
+      "minimum_met": false,
+      "provider": "vnstock"
+    },
+    {
+      "symbol": "HPG",
+      "status": "partial",
+      "annual_periods": 4,
+      "minimum_met": false,
+      "provider": "vnstock"
+    },
+    {
+      "symbol": "FPT",
+      "status": "partial",
+      "annual_periods": 4,
+      "minimum_met": false,
+      "provider": "vnstock"
+    },
+    {
+      "symbol": "MWG",
+      "status": "partial",
+      "annual_periods": 4,
+      "minimum_met": false,
+      "provider": "vnstock"
+    },
+    {
+      "symbol": "VNM",
+      "status": "partial",
+      "annual_periods": 4,
+      "minimum_met": false,
+      "provider": "vnstock"
+    },
+    {
+      "symbol": "GMD",
+      "status": "partial",
+      "annual_periods": 4,
+      "minimum_met": false,
+      "provider": "vnstock"
+    }
+  ],
+  "company_qc": {
+    "requested": 6,
+    "minimum_8y_ready": 0,
+    "all_minimum_ready": false
+  },
+  "macro_qc": {
+    "required_for_state": [
+      "interbank_rate",
+      "policy_rate",
+      "omo",
+      "credit",
+      "money_supply",
+      "cpi",
+      "exchange_rate"
+    ],
+    "available": [],
+    "missing": [
+      "interbank_rate",
+      "policy_rate",
+      "omo",
+      "credit",
+      "money_supply",
+      "cpi",
+      "exchange_rate"
+    ],
+    "state_ready": false
+  },
+  "foundation_ready": false,
+  "policy": "Data foundation is READY only when every configured company has >=8 annual periods and every required SBV-state historical series is present."
+}
