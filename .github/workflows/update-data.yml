@@ -1,6 +1,15 @@
 name: Rootvalue data foundation
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_foundation.py'
+      - 'scripts/publish_foundation.py'
+      - 'config/foundation.json'
+      - 'config/watchlist.json'
+      - 'requirements.txt'
+      - '.github/workflows/update-data.yml'
   schedule:
     - cron: '15 23 * * *'    # 06:15 ICT daily: financial + SBV foundation refresh
   workflow_dispatch:
