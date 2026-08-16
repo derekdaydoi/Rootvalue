@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: rootvalue-data-write
+  group: rootvalue-market-flow
   cancel-in-progress: false
 
 jobs:
@@ -47,13 +47,14 @@ jobs:
 
       - name: Commit market snapshot if changed
         run: |
-          if git diff --quiet -- data/rootvalue.json; then
+          if git diff --quiet -- data/market.json && [ -z "$(git ls-files --others --exclude-standard data/market.json)" ]; then
             echo "No market data changes"
           else
             git config user.name "rootvalue-bot"
             git config user.email "rootvalue-bot@users.noreply.github.com"
-            git add data/rootvalue.json
+            git add data/market.json
             git commit -m "data: refresh Rootvalue market flow"
+            # market.json is isolated from foundation outputs, so a normal rebase is safe.
             git pull --rebase origin main
             git push origin HEAD:main
           fi
