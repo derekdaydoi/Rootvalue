@@ -23,10 +23,38 @@ def save(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
 
 
+def sbv_metrics(history: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    observations = history.get("observations") or []
+    latest = observations[-1] if observations else {}
+    source = "State Bank of Vietnam official website"
+    specs = [
+        ("sbv_omo_awarded", "omo_awarded_bn_vnd", "Tỷ đồng"),
+        ("sbv_omo_rate", "omo_rate_pct", "%/năm"),
+        ("sbv_m2_growth", "m2_growth_ytd_pct", "%"),
+        ("sbv_corp_deposit_growth", "corp_deposit_growth_ytd_pct", "%"),
+        ("sbv_household_deposit_growth", "household_deposit_growth_ytd_pct", "%"),
+    ]
+    metrics = []
+    for key, field, unit in specs:
+        value = latest.get(field)
+        if value is None:
+            continue
+        metrics.append({
+            "key": key,
+            "value": value,
+            "unit": unit,
+            "as_of": latest.get("captured_at"),
+            "source": source,
+            "provenance": "primary_official_capture",
+        })
+    return metrics, latest
+
+
 def main() -> None:
     previous = load(OUT, {})
     manifest = load(FOUNDATION / "manifest.json", {})
     macro = load(FOUNDATION / "macro.json", {})
+    history = load(FOUNDATION / "sbv_history.json", {"status": "empty", "observations": []})
     watch = load(WATCHLIST, {})
 
     company_rows: dict[str, Any] = {}
@@ -51,12 +79,15 @@ def main() -> None:
         }
 
     missing_core = macro.get("coverage", {}).get("missing", [])
+    metrics, current_sbv = sbv_metrics(history)
     warnings: list[str] = []
     errors: list[str] = []
     if not manifest.get("access", {}).get("vnstock_api_key_present"):
         warnings.append("VNSTOCK_API_KEY is not configured; community guest mode may expose fewer than 8 annual periods.")
     if not macro.get("coverage", {}).get("state_ready"):
         warnings.append("SBV historical state layer is not ready: " + ", ".join(missing_core))
+    if history.get("status") != "accumulating":
+        warnings.append("SBV official observation history has not started accumulating.")
     for row in manifest.get("companies", []):
         if not row.get("minimum_met"):
             warnings.append(f"{row.get('symbol')}: annual history {row.get('annual_periods', 0)}/8")
@@ -65,13 +96,13 @@ def main() -> None:
 
     old_market = previous.get("market", {})
     if not old_market:
-        old_market = {"status": "not_run", "as_of": None, "source": None, "index": {}, "rows": [], "methodology": {}}
+        old_market = {"status": "not_run", "as_of": None, "source": None, "index": {}, "rows": [], "picks": [], "methodology": {}}
 
     ready = bool(manifest.get("foundation_ready"))
     snapshot = {
-        "schema_version": "1.1.0",
+        "schema_version": "1.2.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "pipeline_status": "ok" if ready and not errors else "partial",
+        "pipeline_status": "ok" if ready and not errors and old_market.get("status") == "ok" else "partial",
         "meta": {
             "principle": "Missing data stays missing. Rootvalue never fabricates financial or macro values.",
             "foundation_ready": ready,
@@ -82,11 +113,14 @@ def main() -> None:
             "status": "ok" if macro.get("coverage", {}).get("state_ready") else "partial",
             "as_of": macro.get("generated_at"),
             "source": ["State Bank of Vietnam official website", macro.get("historical_provider") or "historical provider unavailable"],
-            "metrics": [],
+            "metrics": metrics,
             "datasets": macro.get("datasets", {}),
             "official_checks": macro.get("official_checks", {}),
+            "official_validation": macro.get("official_validation", {}),
             "missing_core": missing_core,
             "reaction_engine_status": "data_ready" if macro.get("coverage", {}).get("state_ready") else "framework_only",
+            "sbv_current": current_sbv,
+            "sbv_history": history,
         },
         "market": old_market,
         "companies": {
@@ -99,7 +133,7 @@ def main() -> None:
         "health": {"errors": errors, "warnings": warnings},
     }
     save(OUT, snapshot)
-    print(f"published foundation -> data/rootvalue.json; ready={ready}; companies={len(company_rows)}")
+    print(f"published foundation -> data/rootvalue.json; ready={ready}; companies={len(company_rows)}; sbv_observations={len(history.get('observations') or [])}")
 
 
 if __name__ == "__main__":
