@@ -16,136 +16,30 @@
 <body>
   <div id="app" class="app-shell">
     <aside class="sidebar">
-      <div class="brand-lockup">
-        <div class="brand-word"><span>ROOT</span><em>VALUE</em></div>
-        <div class="brand-tag" data-i18n="brand.tag">DỮ KIỆN TRƯỚC NHẬN ĐỊNH.</div>
-      </div>
-
-      <div class="utility-row" aria-label="Display controls">
-        <button class="utility-btn lang-toggle" type="button" aria-label="Đổi ngôn ngữ"><span>VIE</span><i></i><span>ENG</span></button>
-        <button class="utility-btn theme-toggle" type="button" aria-label="Đổi giao diện"><span class="theme-icon">☾</span><span class="theme-label" data-i18n="theme.dark">Tối</span></button>
-      </div>
-
-      <nav class="side-nav" aria-label="Main navigation">
-        <button class="nav-item active" data-route="overview"><span>01</span><b data-i18n="nav.overview">Tổng quan</b></button>
-        <button class="nav-item" data-route="money"><span>02</span><b data-i18n="nav.money">Dòng tiền hệ thống</b></button>
-        <button class="nav-item" data-route="market"><span>03</span><b data-i18n="nav.market">Dòng tiền thị trường</b></button>
-        <button class="nav-item" data-route="company"><span>04</span><b data-i18n="nav.company">Doanh nghiệp</b></button>
-        <button class="nav-item" data-route="data"><span>05</span><b data-i18n="nav.data">Dữ liệu</b></button>
-      </nav>
-
-      <div class="sidebar-foot">
-        <div class="status-dot" id="pipelineDot"></div>
-        <div>
-          <strong id="pipelineLabel" data-i18n="pipeline.loading">Đang tải</strong>
-          <small id="generatedAt">—</small>
-        </div>
-      </div>
+      <div class="brand-lockup"><div class="brand-word"><span>ROOT</span><em>VALUE</em></div><div class="brand-tag" data-i18n="brand.tag">DỮ KIỆN TRƯỚC NHẬN ĐỊNH.</div></div>
+      <div class="utility-row" aria-label="Display controls"><button class="utility-btn lang-toggle" type="button" aria-label="Đổi ngôn ngữ"><span>VIE</span><i></i><span>ENG</span></button><button class="utility-btn theme-toggle" type="button" aria-label="Đổi giao diện"><span class="theme-icon">☾</span><span class="theme-label" data-i18n="theme.dark">Tối</span></button></div>
+      <nav class="side-nav" aria-label="Main navigation"><button class="nav-item active" data-route="overview"><span>01</span><b data-i18n="nav.overview">Tổng quan</b></button><button class="nav-item" data-route="money"><span>02</span><b data-i18n="nav.money">Dòng tiền hệ thống</b></button><button class="nav-item" data-route="market"><span>03</span><b data-i18n="nav.market">Dòng tiền thị trường</b></button><button class="nav-item" data-route="company"><span>04</span><b data-i18n="nav.company">Doanh nghiệp</b></button><button class="nav-item" data-route="data"><span>05</span><b data-i18n="nav.data">Dữ liệu</b></button></nav>
+      <div class="sidebar-foot"><div class="status-dot" id="pipelineDot"></div><div><strong id="pipelineLabel" data-i18n="pipeline.loading">Đang tải</strong><small id="generatedAt">—</small></div></div>
     </aside>
-
     <main class="main">
-      <header class="mobile-head">
-        <div class="brand-word compact"><span>ROOT</span><em>VALUE</em></div>
-        <div class="mobile-tools">
-          <button class="mini-btn lang-toggle" type="button" aria-label="Đổi ngôn ngữ">VIE/ENG</button>
-          <button class="mini-btn theme-toggle" type="button" aria-label="Đổi giao diện"><span class="theme-icon">☾</span></button>
-          <button id="refreshBtn" class="mini-btn" type="button" data-i18n-title="action.refresh" title="Tải lại dữ liệu">↻</button>
-        </div>
-      </header>
+      <header class="mobile-head"><div class="brand-word compact"><span>ROOT</span><em>VALUE</em></div><div class="mobile-tools"><button class="mini-btn lang-toggle" type="button" aria-label="Đổi ngôn ngữ">VIE/ENG</button><button class="mini-btn theme-toggle" type="button" aria-label="Đổi giao diện"><span class="theme-icon">☾</span></button><button id="refreshBtn" class="mini-btn" type="button" data-i18n-title="action.refresh" title="Tải lại dữ liệu">↻</button></div></header>
 
-      <section class="screen active" data-screen="overview">
-        <div class="screen-head">
-          <div>
-            <div class="eyebrow">ROOTVALUE V1</div>
-            <h1 data-i18n="overview.title">Điều gì đã thay đổi?</h1>
-            <p class="lead" data-i18n="overview.lead">Từ thanh khoản hệ thống đến doanh nghiệp. Chỉ hiển thị dữ kiện có nguồn và độ mới rõ ràng.</p>
-          </div>
-          <div class="freshness-card">
-            <span data-i18n="data.label">DỮ LIỆU</span>
-            <strong id="overviewFreshness">—</strong>
-          </div>
-        </div>
-        <div id="overviewNotice"></div>
-        <div class="metric-grid" id="systemMetrics"></div>
-        <div class="section-head"><div><span class="eyebrow" data-i18n="attention.kicker">ĐÁNG CHÚ Ý</span><h2 data-i18n="attention.title">Biến động cần xem</h2></div><span class="section-note" data-i18n="attention.note">xếp hạng trong danh sách theo dõi V1</span></div>
-        <div class="change-list" id="changeList"></div>
-      </section>
+      <section class="screen active" data-screen="overview"><div class="screen-head"><div><div class="eyebrow">ROOTVALUE V1</div><h1 data-i18n="overview.title">Điều gì đã thay đổi?</h1><p class="lead" data-i18n="overview.lead">Từ thanh khoản hệ thống đến doanh nghiệp. Chỉ hiển thị dữ kiện có nguồn và độ mới rõ ràng.</p></div><div class="freshness-card"><span data-i18n="data.label">DỮ LIỆU</span><strong id="overviewFreshness">—</strong></div></div><div id="overviewNotice"></div><div class="metric-grid" id="systemMetrics"></div><div class="section-head"><div><span class="eyebrow" data-i18n="attention.kicker">ĐÁNG CHÚ Ý</span><h2 data-i18n="attention.title">Biến động cần xem</h2></div><span class="section-note" data-i18n="attention.note">xếp hạng trong danh sách theo dõi V1</span></div><div class="change-list" id="changeList"></div></section>
 
-      <section class="screen" data-screen="money">
-        <div class="screen-head">
-          <div>
-            <div class="eyebrow" data-i18n="money.kicker">TỪ TRÊN XUỐNG</div>
-            <h1 data-i18n="money.title">Dòng tiền hệ thống</h1>
-            <p class="lead" data-i18n="money.lead">Áp lực bên ngoài → tỷ giá và phản ứng của NHNN → thanh khoản VND → phân bổ tài sản.</p>
-          </div>
-        </div>
-        <div class="flow-map" id="flowMap">
-          <article class="flow-node"><span>01</span><h3 data-i18n="flow.external.title">Bên ngoài</h3><p data-i18n="flow.external.desc">DXY / Fed / thương mại / FDI / hàng hóa / biến động chính trị</p><div class="node-value" id="externalValue">N/A</div></article>
-          <div class="flow-arrow">→</div>
-          <article class="flow-node primary"><span>02</span><h3 data-i18n="flow.sbv.title">Tỷ giá + NHNN</h3><p data-i18n="flow.sbv.desc">Áp lực USD/VND, can thiệp và lựa chọn chính sách</p><div class="node-value" id="fxValue">N/A</div></article>
-          <div class="flow-arrow">→</div>
-          <article class="flow-node"><span>03</span><h3 data-i18n="flow.liquidity.title">Thanh khoản VND</h3><p data-i18n="flow.liquidity.desc">Liên ngân hàng / OMO / tín phiếu / Kho bạc / chênh lệch huy động-tín dụng</p><div class="node-value" id="liquidityValue">N/A</div></article>
-          <div class="flow-arrow">→</div>
-          <article class="flow-node"><span>04</span><h3 data-i18n="flow.allocation.title">Phân bổ</h3><p data-i18n="flow.allocation.desc">Tiền gửi / trái phiếu / cổ phiếu / bất động sản / vàng</p><div class="node-value" id="allocationValue">N/A</div></article>
-        </div>
-        <div class="two-col">
-          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="reaction.kicker">MÔ HÌNH PHẢN ỨNG NHNN</span><h2 data-i18n="reaction.title">V0 — mới có khung</h2></div><span class="pill warning" id="reactionStatus" data-i18n="reaction.missing">Chưa đủ dữ liệu</span></div><p data-i18n="reaction.desc">Chưa gán xác suất nới lỏng / trung lập / phòng thủ cho đến khi OMO, lãi suất liên ngân hàng và các biến thanh khoản cốt lõi được nối và kiểm định.</p><div id="missingCore" class="missing-list"></div></article>
-          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="proxy.kicker">DỮ LIỆU ĐÃ CÓ</span><h2 data-i18n="proxy.title">Các biến đại diện</h2></div></div><div id="macroMetrics" class="stack-list"></div></article>
-        </div>
-      </section>
+      <section class="screen" data-screen="money"><div class="screen-head"><div><div class="eyebrow" data-i18n="money.kicker">TỪ TRÊN XUỐNG</div><h1 data-i18n="money.title">Dòng tiền hệ thống</h1><p class="lead" data-i18n="money.lead">Áp lực bên ngoài → tỷ giá và phản ứng của NHNN → thanh khoản VND → phân bổ tài sản.</p></div></div><div class="flow-map" id="flowMap"><article class="flow-node"><span>01</span><h3 data-i18n="flow.external.title">Bên ngoài</h3><p data-i18n="flow.external.desc">DXY / Fed / thương mại / FDI / hàng hóa / biến động chính trị</p><div class="node-value" id="externalValue">N/A</div></article><div class="flow-arrow">→</div><article class="flow-node primary"><span>02</span><h3 data-i18n="flow.sbv.title">Tỷ giá + NHNN</h3><p data-i18n="flow.sbv.desc">Áp lực USD/VND, can thiệp và lựa chọn chính sách</p><div class="node-value" id="fxValue">N/A</div></article><div class="flow-arrow">→</div><article class="flow-node"><span>03</span><h3 data-i18n="flow.liquidity.title">Thanh khoản VND</h3><p data-i18n="flow.liquidity.desc">Liên ngân hàng / OMO / tín phiếu / Kho bạc / chênh lệch huy động-tín dụng</p><div class="node-value" id="liquidityValue">N/A</div></article><div class="flow-arrow">→</div><article class="flow-node"><span>04</span><h3 data-i18n="flow.allocation.title">Phân bổ</h3><p data-i18n="flow.allocation.desc">Tiền gửi / trái phiếu / cổ phiếu / bất động sản / vàng</p><div class="node-value" id="allocationValue">N/A</div></article></div><div class="two-col"><article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="reaction.kicker">MÔ HÌNH PHẢN ỨNG NHNN</span><h2 data-i18n="reaction.title">V0 — mới có khung</h2></div><span class="pill warning" id="reactionStatus" data-i18n="reaction.missing">Chưa đủ dữ liệu</span></div><p data-i18n="reaction.desc">Chưa gán xác suất nới lỏng / trung lập / phòng thủ cho đến khi OMO, lãi suất liên ngân hàng và các biến thanh khoản cốt lõi được nối và kiểm định.</p><div id="missingCore" class="missing-list"></div></article><article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="proxy.kicker">DỮ LIỆU ĐÃ CÓ</span><h2 data-i18n="proxy.title">Các biến đại diện</h2></div></div><div id="macroMetrics" class="stack-list"></div></article></div></section>
 
-      <section class="screen" data-screen="market">
-        <div class="screen-head">
-          <div>
-            <div class="eyebrow" data-i18n="market.kicker">SO SÁNH CHÉO</div>
-            <h1 data-i18n="market.title">Dòng tiền thị trường</h1>
-            <p class="lead" data-i18n="market.lead">Dùng sức mạnh tương đối và mức tham gia để nhận diện sự thay đổi vị thế. Không coi giá và khối lượng là bằng chứng tiền chuyển trực tiếp từ mã A sang mã B.</p>
-          </div>
-        </div>
-        <div class="legend-row"><span><i class="dot leading"></i><b data-state-label="Leading">Dẫn dắt</b></span><span><i class="dot improving"></i><b data-state-label="Improving">Cải thiện</b></span><span><i class="dot neutral"></i><b data-state-label="Neutral">Trung tính</b></span><span><i class="dot weakening"></i><b data-state-label="Weakening">Suy yếu</b></span></div>
-        <div class="table-wrap"><table class="data-table"><thead><tr><th data-i18n="table.symbol">Mã</th><th data-i18n="table.sector">Ngành</th><th data-i18n="table.price">Giá</th><th>1D</th><th data-i18n="table.rs20">Sức mạnh 20P</th><th data-i18n="table.rank">Xếp hạng</th><th data-i18n="table.rankChange">Δ hạng</th><th data-i18n="table.participation">Mức tham gia</th><th data-i18n="table.range20">Vị trí 20P</th><th data-i18n="table.state">Trạng thái</th><th>30D</th></tr></thead><tbody id="marketBody"></tbody></table></div>
-        <div class="method-note" id="marketMethod"></div>
-      </section>
+      <section class="screen" data-screen="market"><div class="screen-head"><div><div class="eyebrow" data-i18n="market.kicker">SO SÁNH CHÉO</div><h1 data-i18n="market.title">Dòng tiền thị trường</h1><p class="lead" data-i18n="market.lead">Dùng sức mạnh tương đối và mức tham gia để nhận diện sự thay đổi vị thế. Không coi giá và khối lượng là bằng chứng tiền chuyển trực tiếp từ mã A sang mã B.</p></div></div><div class="legend-row"><span><i class="dot leading"></i><b data-state-label="Leading">Dẫn dắt</b></span><span><i class="dot improving"></i><b data-state-label="Improving">Cải thiện</b></span><span><i class="dot neutral"></i><b data-state-label="Neutral">Trung tính</b></span><span><i class="dot weakening"></i><b data-state-label="Weakening">Suy yếu</b></span></div><div class="table-wrap"><table class="data-table"><thead><tr><th data-i18n="table.symbol">Mã</th><th data-i18n="table.sector">Ngành</th><th data-i18n="table.price">Giá</th><th>1D</th><th data-i18n="table.rs20">Sức mạnh 20P</th><th data-i18n="table.rank">Xếp hạng</th><th data-i18n="table.rankChange">Δ hạng</th><th data-i18n="table.participation">Mức tham gia</th><th data-i18n="table.range20">Vị trí 20P</th><th data-i18n="table.state">Trạng thái</th><th>30D</th></tr></thead><tbody id="marketBody"></tbody></table></div><div class="method-note" id="marketMethod"></div></section>
 
-      <section class="screen" data-screen="company">
-        <div class="screen-head company-head">
-          <div>
-            <div class="eyebrow" data-i18n="company.kicker">TỪ DƯỚI LÊN</div>
-            <h1 data-i18n="company.title">Doanh nghiệp</h1>
-            <p class="lead" data-i18n="company.lead">Báo cáo tài chính theo chuỗi thời gian, ưu tiên 5–10 năm. Nếu nguồn chỉ trả về ít kỳ hơn, hệ thống ghi rõ độ phủ thay vì lấp bằng số giả.</p>
-          </div>
-          <label class="select-box"><span data-i18n="company.symbol">Mã</span><select id="companySelect"></select></label>
-        </div>
-        <div id="companyNotice"></div>
-        <div class="history-strip" id="historyCoverage"></div>
-        <div class="report-tabs" id="reportTabs"></div>
-        <div class="table-wrap report-wrap"><table class="data-table financial-table" id="financialTable"></table></div>
-      </section>
+      <section class="screen" data-screen="company"><div class="screen-head company-head"><div><div class="eyebrow" data-i18n="company.kicker">TỪ DƯỚI LÊN</div><h1 data-i18n="company.title">Doanh nghiệp</h1><p class="lead" data-i18n="company.lead">Báo cáo tài chính theo chuỗi thời gian, ưu tiên 5–10 năm. Nếu nguồn chỉ trả về ít kỳ hơn, hệ thống ghi rõ độ phủ thay vì lấp bằng số giả.</p></div><label class="select-box"><span data-i18n="company.symbol">Mã</span><select id="companySelect"></select></label></div><div id="companyNotice"></div><div class="history-strip" id="historyCoverage"></div><div class="report-tabs" id="reportTabs"></div><div class="table-wrap report-wrap"><table class="data-table financial-table" id="financialTable"></table></div></section>
 
-      <section class="screen" data-screen="data">
-        <div class="screen-head">
-          <div>
-            <div class="eyebrow" data-i18n="provenance.kicker">NGUỒN GỐC DỮ LIỆU</div>
-            <h1 data-i18n="data.title">Dữ liệu & kiểm soát</h1>
-            <p class="lead" data-i18n="data.lead">Nguồn, độ mới, lỗi và giới hạn nằm ngay trong mô hình dữ liệu.</p>
-          </div>
-        </div>
-        <div class="two-col" id="sourceCards"></div>
-        <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="pipeline.kicker">LUỒNG CẬP NHẬT</span><h2 data-i18n="pipeline.health">Lỗi / cảnh báo</h2></div></div><div id="healthList" class="health-list"></div></article>
-        <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="formula.kicker">CÔNG THỨC</span><h2 data-i18n="formula.title">Chỉ số thị trường suy ra</h2></div></div><div id="methodList" class="formula-list"></div></article>
-      </section>
+      <section class="screen" data-screen="data"><div class="screen-head"><div><div class="eyebrow" data-i18n="provenance.kicker">NGUỒN GỐC DỮ LIỆU</div><h1 data-i18n="data.title">Dữ liệu & kiểm soát</h1><p class="lead" data-i18n="data.lead">Nguồn, độ mới, lỗi và giới hạn nằm ngay trong mô hình dữ liệu.</p></div></div><div class="two-col" id="sourceCards"></div><article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="pipeline.kicker">LUỒNG CẬP NHẬT</span><h2 data-i18n="pipeline.health">Lỗi / cảnh báo</h2></div></div><div id="healthList" class="health-list"></div></article><article class="panel"><div class="panel-head"><div><span class="eyebrow" data-i18n="formula.kicker">CÔNG THỨC</span><h2 data-i18n="formula.title">Chỉ số thị trường suy ra</h2></div></div><div id="methodList" class="formula-list"></div></article></section>
     </main>
 
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <button class="mobile-nav-item active" data-route="overview"><b>01</b><span data-i18n="nav.overview.short">Tổng quan</span></button>
-      <button class="mobile-nav-item" data-route="money"><b>02</b><span data-i18n="nav.money.short">Hệ thống</span></button>
-      <button class="mobile-nav-item" data-route="market"><b>03</b><span data-i18n="nav.market.short">Thị trường</span></button>
-      <button class="mobile-nav-item" data-route="company"><b>04</b><span data-i18n="nav.company.short">Cổ phiếu</span></button>
-      <button class="mobile-nav-item" data-route="data"><b>05</b><span data-i18n="nav.data.short">Dữ liệu</span></button>
-    </nav>
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="mobile-nav-item active" data-route="overview"><b>01</b><span data-i18n="nav.overview.short">Tổng quan</span></button><button class="mobile-nav-item" data-route="money"><b>02</b><span data-i18n="nav.money.short">Hệ thống</span></button><button class="mobile-nav-item" data-route="market"><b>03</b><span data-i18n="nav.market.short">Thị trường</span></button><button class="mobile-nav-item" data-route="company"><b>04</b><span data-i18n="nav.company.short">Cổ phiếu</span></button><button class="mobile-nav-item" data-route="data"><b>05</b><span data-i18n="nav.data.short">Dữ liệu</span></button></nav>
   </div>
   <script src="app.js"></script>
   <script src="enhancements.js"></script>
   <script src="analysis.js"></script>
+  <script src="polish.js"></script>
 </body>
 </html>
