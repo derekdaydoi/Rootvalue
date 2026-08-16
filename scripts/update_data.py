@@ -14,12 +14,15 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "watchlist.json"
 OUT_PATH = ROOT / "data" / "rootvalue.json"
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 UTC_NOW = datetime.now(timezone.utc)
 TODAY = UTC_NOW.date()
+HAS_VNSTOCK_KEY = bool(os.getenv("VNSTOCK_API_KEY", "").strip())
 
-# Vnstock guest mode is documented at 20 requests/minute. 3.2s keeps V1 below that ceiling.
-RATE_SECONDS = 3.2
+# Vnstock guest mode can stop the entire process when its rate ceiling is reached.
+# A generous interval is intentional: correctness > refresh speed for this research tool.
+# With a free Community API key, the interval can be reduced safely.
+RATE_SECONDS = 1.5 if HAS_VNSTOCK_KEY else 7.0
 _LAST_CALL = 0.0
 
 
@@ -72,7 +75,7 @@ def jsonable(value: Any) -> Any:
     return str(value)
 
 
-def df_payload(df: pd.DataFrame | None, max_rows: int = 220) -> dict[str, Any]:
+def df_payload(df: pd.DataFrame | None, max_rows: int = 260) -> dict[str, Any]:
     if df is None or not isinstance(df, pd.DataFrame) or df.empty:
         return {"columns": [], "rows": []}
     safe = df.copy()
@@ -83,6 +86,14 @@ def df_payload(df: pd.DataFrame | None, max_rows: int = 220) -> dict[str, Any]:
         "columns": [str(c) for c in safe.columns],
         "rows": [[jsonable(v) for v in row] for row in safe.itertuples(index=False, name=None)],
     }
+
+
+def annual_period_count(payload: dict[str, Any]) -> int:
+    columns = [str(c) for c in payload.get("columns", [])]
+    ignore = {"item", "item_en", "unit", "ticker", "symbol", "index"}
+    periods = [c for c in columns if c.lower() not in ignore]
+    year_like = [c for c in periods if any(ch.isdigit() for ch in c)]
+    return len(year_like) if year_like else len(periods)
 
 
 def pick_column(df: pd.DataFrame, names: list[str]) -> str | None:
@@ -173,7 +184,6 @@ def preserve_previous(previous: dict[str, Any], key: str, error: str) -> dict[st
 
 
 def market_index_ohlcv(market: Any, symbol: str, start: str, end: str) -> pd.DataFrame:
-    # Current v4 docs expose property-style Unified UI; callable proxy is retained in some docs/builds.
     try:
         return market.index.ohlcv(symbol=symbol, start=start, end=end, interval="1D")
     except (AttributeError, TypeError):
@@ -191,7 +201,7 @@ def fetch_market(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
     from vnstock import Market
 
     market = Market()
-    start = (TODAY - timedelta(days=170)).isoformat()
+    start = (TODAY - timedelta(days=190)).isoformat()
     end = (TODAY + timedelta(days=1)).isoformat()
     index_df = normalize_ohlcv(provider_call(lambda: market_index_ohlcv(market, "VNINDEX", start, end)))
     index_summary = market_metrics(index_df)
@@ -205,7 +215,7 @@ def fetch_market(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
             metric.update({"symbol": symbol, "sector": item.get("sector", "")})
             rows.append(metric)
         except Exception as exc:
-            warnings.append(f"market {symbol}: {exc}")
+            warnings.append(f"market:{symbol}:{exc}")
 
     current = sorted([r for r in rows if r.get("rs_20d_vs_vnindex") is not None], key=lambda r: r["rs_20d_vs_vnindex"], reverse=True)
     prior = sorted([r for r in rows if r.get("rs_20d_vs_vnindex_5d_ago") is not None], key=lambda r: r["rs_20d_vs_vnindex_5d_ago"], reverse=True)
@@ -228,7 +238,7 @@ def fetch_market(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
     return {
         "status": "ok" if len(rows) == len(config["symbols"]) else "partial",
         "as_of": index_summary.get("as_of"),
-        "source": "Vnstock 4.0.4 community / Market Unified UI",
+        "source": "Vnstock community / Market Unified UI",
         "universe_note": config.get("market_universe_note"),
         "methodology": {
             "rs_20d": "stock 20-session return minus VNINDEX 20-session return",
@@ -253,16 +263,16 @@ def fetch_retail_macro(warnings: list[str]) -> tuple[list[dict[str, Any]], list[
             usd = fx[fx["currency"].astype(str).str.upper() == "USD"]
             if not usd.empty:
                 row = usd.iloc[0]
-                metrics.append({"key": "usd_vcb_sell", "label": "USD/VND VCB sell", "value": finite(row.get("sell")), "unit": "VND/USD", "as_of": jsonable(row.get("time")), "source": "Vietcombank via Vnstock Retail", "interpretation": "FX market proxy; not SBV central rate"})
+                metrics.append({"key": "usd_vcb_sell", "label": "USD/VND VCB", "value": finite(row.get("sell")), "unit": "VND/USD", "as_of": jsonable(row.get("time")), "source": "Vietcombank via Vnstock Retail", "interpretation": "fx_proxy"})
     except Exception as exc:
-        warnings.append(f"retail FX: {exc}")
+        warnings.append(f"macro:fx:{exc}")
     try:
         gold = provider_call(lambda: retail.gold(source="sjc"))
         if isinstance(gold, pd.DataFrame) and not gold.empty:
             row = gold.iloc[0]
-            metrics.append({"key": "gold_sjc_sell", "label": "SJC gold sell", "value": finite(row.get("sell")), "unit": "provider unit", "as_of": jsonable(row.get("time")), "source": "SJC via Vnstock Retail", "interpretation": "domestic defensive-asset proxy"})
+            metrics.append({"key": "gold_sjc_sell", "label": "SJC", "value": finite(row.get("sell")), "unit": "provider unit", "as_of": jsonable(row.get("time")), "source": "SJC via Vnstock Retail", "interpretation": "defensive_asset_proxy"})
     except Exception as exc:
-        warnings.append(f"retail gold: {exc}")
+        warnings.append(f"macro:gold:{exc}")
     return metrics, ["Vietcombank + SJC via Vnstock Retail community"]
 
 
@@ -271,7 +281,7 @@ def fetch_optional_sponsor_macro(warnings: list[str]) -> tuple[dict[str, Any], l
     try:
         from vnstock_data import Macro
     except Exception:
-        warnings.append("vnstock_data sponsor package not installed: SBV/interbank/OMO macro layer is intentionally unavailable in public V1")
+        warnings.append("macro:sponsor-package-not-installed")
         return datasets, []
 
     macro = Macro()
@@ -288,7 +298,7 @@ def fetch_optional_sponsor_macro(warnings: list[str]) -> tuple[dict[str, Any], l
         try:
             datasets[key] = df_payload(provider_call(fn), 120)
         except Exception as exc:
-            warnings.append(f"sponsor macro {key}: {exc}")
+            warnings.append(f"macro:{key}:{exc}")
     return datasets, (["Vnstock Data sponsor Macro Unified UI"] if datasets else [])
 
 
@@ -311,7 +321,6 @@ def fetch_macro(warnings: list[str]) -> dict[str, Any]:
         "datasets": datasets,
         "missing_core": missing,
         "reaction_engine_status": "framework_only" if missing else "data_ready",
-        "note": "No SBV scenario probability is generated until core liquidity variables are wired and schema-validated.",
     }
 
 
@@ -324,12 +333,16 @@ def fundamental_report(fundamental: Any, symbol: str, report: str) -> pd.DataFra
         "ratio": "ratios",
     }
     method = property_methods[report]
+    kwargs = {"period": "year", "orient": "report"}
     try:
-        return getattr(proxy, method)(symbol=symbol, period="year")
+        return getattr(proxy, method)(symbol=symbol, **kwargs)
     except (AttributeError, TypeError):
         obj = fundamental.equity(symbol)
         fallback = "ratio" if report == "ratio" and not hasattr(obj, "ratios") else method
-        return getattr(obj, fallback)(period="year")
+        try:
+            return getattr(obj, fallback)(**kwargs)
+        except TypeError:
+            return getattr(obj, fallback)(period="year")
 
 
 def fetch_companies(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
@@ -339,22 +352,44 @@ def fetch_companies(config: dict[str, Any], warnings: list[str]) -> dict[str, An
     companies: dict[str, Any] = {}
     for symbol in config.get("fundamental_symbols", []):
         reports: dict[str, Any] = {}
+        counts: list[int] = []
         for name in ("balance_sheet", "income_statement", "cash_flow", "ratio"):
             try:
-                reports[name] = df_payload(provider_call(lambda s=symbol, n=name: fundamental_report(fundamental, s, n)))
+                payload = df_payload(provider_call(lambda s=symbol, n=name: fundamental_report(fundamental, s, n)))
+                reports[name] = payload
+                c = annual_period_count(payload)
+                if c:
+                    counts.append(c)
             except Exception as exc:
-                warnings.append(f"fundamental {symbol} {name}: {exc}")
+                warnings.append(f"fundamental:{symbol}:{name}:{exc}")
                 reports[name] = {"columns": [], "rows": [], "error": str(exc)}
-        companies[symbol] = {"symbol": symbol, "period": "year", "reports": reports, "note": "V1 retains provider-normalized report output; accounting semantics are not guessed."}
+        annual_periods = max(counts) if counts else 0
+        companies[symbol] = {
+            "symbol": symbol,
+            "period": "year",
+            "reports": reports,
+            "history": {
+                "annual_periods": annual_periods,
+                "target_years": 8,
+                "minimum_years": 5,
+                "meets_minimum": annual_periods >= 5,
+                "access_mode": "community_key" if HAS_VNSTOCK_KEY else "guest",
+            },
+        }
 
     ok = sum(1 for c in companies.values() for r in c["reports"].values() if r.get("rows"))
     total = max(len(companies) * 4, 1)
     status = "ok" if ok == total else ("partial" if ok else "error")
+    history_periods = [c["history"]["annual_periods"] for c in companies.values() if c["history"]["annual_periods"]]
     return {
         "status": status,
         "as_of": UTC_NOW.isoformat(),
-        "source": "Vnstock 4.0.4 community / Fundamental Unified UI",
-        "limitations": "Guest mode is limited to 4 financial periods; authenticated community mode can expose more. V1 surfaces the limitation rather than claiming a 10-year history.",
+        "source": "Vnstock community / Fundamental Unified UI",
+        "access_mode": "community_key" if HAS_VNSTOCK_KEY else "guest",
+        "history_target_years": 8,
+        "history_min_periods_observed": min(history_periods) if history_periods else 0,
+        "history_max_periods_observed": max(history_periods) if history_periods else 0,
+        "limitations": "Vnstock community guest mode exposes up to 4 financial periods; authenticated Community access can expose up to 8 periods. Rootvalue reports actual coverage per company.",
         "rows": companies,
     }
 
@@ -368,18 +403,25 @@ def main() -> None:
         "schema_version": SCHEMA_VERSION,
         "generated_at": UTC_NOW.isoformat(),
         "pipeline_status": "partial",
-        "meta": {"principle": "Missing data stays missing. No fabricated financial or macro values.", "market_universe": "V1 validation watchlist", "python": os.sys.version.split()[0]},
+        "meta": {
+            "principle": "Missing data stays missing. No fabricated financial or macro values.",
+            "market_universe": "V1 validation watchlist",
+            "python": os.sys.version.split()[0],
+            "vnstock_auth": "community_key" if HAS_VNSTOCK_KEY else "guest",
+            "provider_interval_seconds": RATE_SECONDS,
+        },
     }
 
+    # Fundamentals first because long-history company analysis is the primary V1 requirement.
     for key, fn in (
+        ("companies", lambda: fetch_companies(config, warnings)),
         ("market", lambda: fetch_market(config, warnings)),
         ("macro", lambda: fetch_macro(warnings)),
-        ("companies", lambda: fetch_companies(config, warnings)),
     ):
         try:
             snapshot[key] = fn()
         except Exception as exc:
-            errors.append(f"{key}: {exc}")
+            errors.append(f"{key}:{exc}")
             snapshot[key] = preserve_previous(previous, key, str(exc))
 
     statuses = [snapshot.get(k, {}).get("status") for k in ("market", "macro", "companies")]
@@ -387,7 +429,7 @@ def main() -> None:
     snapshot["health"] = {"errors": errors, "warnings": warnings}
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
-    print(f"Rootvalue snapshot: status={snapshot['pipeline_status']} warnings={len(warnings)} errors={len(errors)}")
+    print(f"Rootvalue snapshot: status={snapshot['pipeline_status']} warnings={len(warnings)} errors={len(errors)} auth={'key' if HAS_VNSTOCK_KEY else 'guest'}")
 
 
 if __name__ == "__main__":
