@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "history_start": "2018-01-01",
+  "annual_min_periods": 8,
+  "quarterly_target_periods": 32,
+  "macro_start": "2018-01-01",
+  "macro_period": "month",
+  "official_sbv_sources": {
+    "money_supply_deposits": "https://sbv.gov.vn/vi/t%E1%BB%95ng-ph%C6%B0%C6%A1ng-ti%E1%BB%87n-thanh-to%C3%A1n-v%C3%A0-ti%E1%BB%81n-g%E1%BB%ADi-c%E1%BB%A7a-kh%C3%A1ch-h%C3%A0ng-t%E1%BA%A1i-tctd",
+    "omo": "https://sbv.gov.vn/vi/nghi%E1%BB%87p-v%E1%BB%A5-th%E1%BB%8B-tr%C6%B0%E1%BB%9Dng-m%E1%BB%9F",
+    "sbv_home": "https://sbv.gov.vn/vi/web/sbv_portal/trang-chu"
+  },
+  "policy": {
+    "missing_data": "keep_missing",
+    "minimum_company_history": "8 annual periods",
+    "macro_state_requires": [
+      "interbank_rate",
+      "policy_rate",
+      "omo",
+      "credit",
+      "money_supply",
+      "cpi",
+      "exchange_rate"
+    ]
+  }
+}
