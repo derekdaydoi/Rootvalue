@@ -1,48 +1,74 @@
 # Rootvalue
 
-Rootvalue là hệ thống research đầu tư cá nhân cho thị trường Việt Nam, kết hợp top-down money flow và bottom-up fundamental analysis.
+Rootvalue là hệ thống nghiên cứu đầu tư cá nhân cho thị trường Việt Nam, kết hợp phân tích từ trên xuống về dòng tiền với phân tích doanh nghiệp từ dưới lên.
 
-## Product thesis
+## Luận điểm sản phẩm
 
-> Show me where money is, what changed, and which business deserves investigation.
+> Cho tôi biết tiền đang ở đâu, điều gì đã thay đổi và doanh nghiệp nào đáng điều tra sâu hơn.
 
-Rootvalue **không** đưa BUY / SELL / HOLD và không biến dữ liệu thành một investment score giả chính xác. Hệ thống ưu tiên 4 thứ: dữ liệu gốc, độ mới, provenance và change detection.
+Rootvalue không đưa khuyến nghị MUA / BÁN / NẮM GIỮ và không gom dữ liệu thành một điểm số đầu tư giả chính xác. Hệ thống ưu tiên dữ liệu gốc, độ mới, nguồn gốc và phát hiện thay đổi.
 
-## V1 scope
+## Phạm vi V1
 
-1. **Overview** — trạng thái hệ thống, data freshness, các biến cần chú ý.
-2. **Money Flow** — causal map: external pressure → FX/SBV reaction → VND liquidity → market allocation.
-3. **Market Flow** — relative strength, participation và 20D range position của watchlist.
-4. **Company** — BCTC theo time-series: Balance Sheet, Income Statement, Cash Flow + các ratio nền tảng.
-5. **Data** — nguồn, lần cập nhật, lỗi và missing fields. Không có data thì hiển thị `N/A`, không fabricate.
+1. **Tổng quan** — trạng thái hệ thống, độ mới dữ liệu, các thay đổi cần chú ý.
+2. **Dòng tiền hệ thống** — áp lực bên ngoài → tỷ giá / phản ứng NHNN → thanh khoản VND → phân bổ tài sản.
+3. **Dòng tiền thị trường** — sức mạnh tương đối, mức tham gia và vị trí trong biên 20 phiên của danh sách theo dõi.
+4. **Doanh nghiệp** — báo cáo tài chính theo chuỗi thời gian: cân đối kế toán, kết quả kinh doanh, lưu chuyển tiền tệ và tỷ số tài chính.
+5. **Dữ liệu** — nguồn, lần cập nhật, lỗi và trường còn thiếu. Không có dữ liệu thì hiển thị `N/A`, không tự tạo số.
 
-## Automation
+## Tự động hóa
 
-GitHub Actions chạy Python theo lịch và khi bấm manual dispatch:
+Hai luồng GitHub Actions được tách riêng để tránh việc sửa giao diện vô tình gọi API dữ liệu nhiều lần:
 
 ```text
-Data providers
+Nguồn dữ liệu
     ↓
 scripts/update_data.py
     ↓
-validate + normalize + derive
+kiểm tra + chuẩn hóa + tính chỉ số
     ↓
 data/rootvalue.json
     ↓
-HTML/CSS/JS static frontend
+commit tự động
     ↓
-GitHub Pages
+GitHub Pages tự triển khai
 ```
 
-### Data policy
+- `.github/workflows/update-data.yml`: chạy theo lịch và khi bấm chạy thủ công.
+- `.github/workflows/pages.yml`: chỉ triển khai website khi mã nguồn hoặc dữ liệu thay đổi.
 
-- Market + fundamental: ưu tiên `vnstock` community API ở V1.
-- Macro/SBV: adapter riêng; nếu nguồn không khả dụng hoặc schema thay đổi, pipeline ghi rõ lỗi và giữ dữ liệu cũ thay vì tự suy diễn.
-- Mỗi section có `source`, `as_of`, `status`.
-- Derived metric luôn có công thức trong code.
-- V1 không gọi price move = “money flow” nếu chỉ có OHLCV. Thuật ngữ dùng là **relative strength / participation**.
+## Lịch sử báo cáo tài chính 5–10 năm
 
-## Local run
+V1 đặt mục tiêu **8 năm báo cáo năm** cho mỗi doanh nghiệp.
+
+- Chế độ khách của Vnstock chỉ trả về tối đa 4 kỳ báo cáo.
+- API key cộng đồng miễn phí có thể tăng lên tối đa 8 kỳ.
+- Nếu cần đủ 10 năm hoặc hơn, Rootvalue phải dùng nguồn có lịch sử dài hơn / quyền truy cập dữ liệu mở rộng.
+
+Mỗi doanh nghiệp lưu `history.annual_periods`, `history.target_years` và `history.meets_minimum`; giao diện hiển thị đúng độ phủ thực tế.
+
+### Cấu hình API key Vnstock
+
+Tạo GitHub Actions secret:
+
+```text
+VNSTOCK_API_KEY=<api-key-của-bạn>
+```
+
+Đường dẫn: **Repository → Settings → Secrets and variables → Actions → New repository secret**.
+
+Workflow đã truyền biến môi trường này cho thư viện. Nếu secret chưa có, pipeline tự chạy ở chế độ khách với tốc độ chậm hơn để tránh vượt giới hạn truy cập.
+
+## Ngôn ngữ và giao diện
+
+Rootvalue có hai công tắc độc lập:
+
+- `VIE / ENG`: toàn bộ giao diện chuyển theo một ngôn ngữ, không trộn nhãn Việt–Anh.
+- Sáng / Tối: lưu lựa chọn trên trình duyệt.
+
+Typography ưu tiên `OpenAI Sans` nếu có trên máy, sau đó rơi về system UI font; không đóng gói font riêng trong repository.
+
+## Chạy cục bộ
 
 ```bash
 python -m pip install -r requirements.txt
@@ -54,12 +80,8 @@ Mở `http://localhost:8000`.
 
 ## GitHub Pages
 
-Workflow `.github/workflows/update-data.yml` vừa cập nhật data vừa deploy Pages. Repo cần bật **Settings → Pages → Source: GitHub Actions**.
+Bật **Settings → Pages → Source: GitHub Actions**.
 
-## Current watchlist
+## Danh sách theo dõi hiện tại
 
-V1 dùng một watchlist nhỏ để kiểm định pipeline và UI trước khi mở rộng universe. Chỉnh tại `config/watchlist.json`.
-
----
-
-Personal research system. Evidence first.
+V1 dùng danh sách nhỏ để kiểm định pipeline và giao diện trước khi mở rộng toàn thị trường. Chỉnh tại `config/watchlist.json`.
