@@ -1,0 +1,18 @@
+{
+  "market_universe_note": "V1 watchlist only. Ranking is cross-sectional inside this list, not the whole Vietnam market.",
+  "symbols": [
+    {"symbol": "VCB", "sector": "Banking"},
+    {"symbol": "TCB", "sector": "Banking"},
+    {"symbol": "MBB", "sector": "Banking"},
+    {"symbol": "HPG", "sector": "Steel"},
+    {"symbol": "HSG", "sector": "Steel"},
+    {"symbol": "FPT", "sector": "Technology"},
+    {"symbol": "MWG", "sector": "Retail"},
+    {"symbol": "VNM", "sector": "Consumer"},
+    {"symbol": "GMD", "sector": "Ports & Logistics"},
+    {"symbol": "VSC", "sector": "Ports & Logistics"},
+    {"symbol": "PVT", "sector": "Energy Transport"},
+    {"symbol": "REE", "sector": "Utilities & Infrastructure"}
+  ],
+  "fundamental_symbols": ["TCB", "HPG", "FPT", "MWG", "VNM", "GMD"]
+}
