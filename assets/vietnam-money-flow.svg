@@ -1,63 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 940" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 780" role="img" aria-labelledby="title desc">
   <title id="title">Sơ đồ dòng tiền hệ thống Việt Nam</title>
   <desc id="desc">Sơ đồ Rootvalue mô tả áp lực bên ngoài, phản ứng NHNN, thanh khoản TT2, bảng cân đối ngân hàng, nguồn vốn TT1, Kho bạc, dân cư, doanh nghiệp và phân bổ tài sản.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,4 L0,8 Z" fill="#14614A"/></marker>
-    <clipPath id="panelClip"><rect x="36" y="28" width="1528" height="884" rx="30"/></clipPath>
+    <clipPath id="panelClip"><rect x="36" y="28" width="1528" height="724" rx="30"/></clipPath>
     <style>
-      .panel{fill:#f7f8f6;stroke:#d7ded9;stroke-width:2}.headerBand{fill:#ffffff}.card{fill:#fff;stroke:#cbd5cf;stroke-width:2}.primary{fill:#edf5f1;stroke:#14614A;stroke-width:2.4}
+      .panel{fill:#f7f8f6;stroke:#d7ded9;stroke-width:2}.card{fill:#fff;stroke:#cbd5cf;stroke-width:2}.primary{fill:#edf5f1;stroke:#14614A;stroke-width:2.4}
       .eyebrow{font:700 14px Arial,sans-serif;fill:#14614A;letter-spacing:1.2px}.title{font:700 27px Arial,sans-serif;fill:#202123}.body{font:17px Arial,sans-serif;fill:#62676b}
-      .header{font:700 14px Arial,sans-serif;fill:#14614A;letter-spacing:1.3px}.headline{font:700 28px Arial,sans-serif;fill:#202123}
       .line{stroke:#14614A;stroke-width:4;fill:none;marker-end:url(#arrow)}.dash{stroke:#7b8881;stroke-width:2.5;stroke-dasharray:9 8;fill:none;marker-end:url(#arrow)}
     </style>
   </defs>
 
-  <!-- One explicit outer panel owns all visual content. -->
-  <rect x="36" y="28" width="1528" height="884" rx="30" class="panel"/>
+  <!-- The SVG is diagram-only. Article title/subtitle live outside the asset, so nothing can drift out of the diagram block. -->
+  <rect x="36" y="28" width="1528" height="724" rx="30" class="panel"/>
   <g clip-path="url(#panelClip)">
-    <!-- Header band is aligned to the exact inner content width. -->
-    <rect x="36" y="28" width="1528" height="132" class="headerBand"/>
-    <line x1="72" y1="160" x2="1528" y2="160" stroke="#e3e7e4" stroke-width="2"/>
-    <text x="82" y="76" class="header">ROOTVALUE · DÒNG TIỀN HỆ THỐNG VIỆT NAM</text>
-    <text x="82" y="120" class="headline">Tồn lượng → dòng giao dịch → giá của tiền → truyền dẫn</text>
+    <rect x="82" y="85" width="270" height="140" rx="20" class="card"/>
+    <text x="112" y="125" class="eyebrow">BÊN NGOÀI</text><text x="112" y="163" class="title">Ngoại lực</text><text x="112" y="195" class="body">Fed · USD · thương mại · FDI · FII</text>
 
-    <rect x="82" y="205" width="270" height="140" rx="20" class="card"/>
-    <text x="112" y="245" class="eyebrow">BÊN NGOÀI</text><text x="112" y="283" class="title">Ngoại lực</text><text x="112" y="315" class="body">Fed · USD · thương mại · FDI · FII</text>
+    <rect x="417" y="85" width="270" height="140" rx="20" class="card"/>
+    <text x="447" y="125" class="eyebrow">ÁP LỰC TỶ GIÁ</text><text x="447" y="163" class="title">USD/VND</text><text x="447" y="195" class="body">DXY · dòng vốn · cán cân ngoại tệ</text>
 
-    <rect x="417" y="205" width="270" height="140" rx="20" class="card"/>
-    <text x="447" y="245" class="eyebrow">ÁP LỰC TỶ GIÁ</text><text x="447" y="283" class="title">USD/VND</text><text x="447" y="315" class="body">DXY · dòng vốn · cán cân ngoại tệ</text>
+    <rect x="752" y="70" width="310" height="170" rx="20" class="primary"/>
+    <text x="787" y="112" class="eyebrow">NGÂN HÀNG NHÀ NƯỚC</text><text x="787" y="154" class="title">NHNN / SBV</text><text x="787" y="188" class="body">FX · OMO · tín phiếu · lãi suất</text><text x="787" y="216" class="body">Phản ứng theo trạng thái hệ thống</text>
 
-    <rect x="752" y="190" width="310" height="170" rx="20" class="primary"/>
-    <text x="787" y="232" class="eyebrow">NGÂN HÀNG NHÀ NƯỚC</text><text x="787" y="274" class="title">NHNN / SBV</text><text x="787" y="308" class="body">FX · OMO · tín phiếu · lãi suất</text><text x="787" y="336" class="body">Phản ứng theo trạng thái hệ thống</text>
+    <rect x="1137" y="85" width="300" height="140" rx="20" class="card"/>
+    <text x="1169" y="125" class="eyebrow">TÀI KHÓA</text><text x="1169" y="163" class="title">KBNN / Kho bạc</text><text x="1169" y="195" class="body">Thuế · chi tiêu · TGA · trái phiếu</text>
 
-    <rect x="1137" y="205" width="300" height="140" rx="20" class="card"/>
-    <text x="1169" y="245" class="eyebrow">TÀI KHÓA</text><text x="1169" y="283" class="title">KBNN / Kho bạc</text><text x="1169" y="315" class="body">Thuế · chi tiêu · TGA · trái phiếu</text>
+    <path d="M352 155 H417" class="line"/><path d="M687 155 H752" class="line"/><path d="M1137 155 H1062" class="dash"/>
 
-    <path d="M352 275 H417" class="line"/><path d="M687 275 H752" class="line"/><path d="M1137 275 H1062" class="dash"/>
+    <rect x="272" y="330" width="300" height="160" rx="20" class="primary"/>
+    <text x="306" y="372" class="eyebrow">TT2 · LIÊN NGÂN HÀNG</text><text x="306" y="415" class="title">Thanh khoản cận biên</text><text x="306" y="450" class="body">O/N · 1W · repo · OMO</text>
 
-    <rect x="272" y="465" width="300" height="160" rx="20" class="primary"/>
-    <text x="306" y="507" class="eyebrow">TT2 · LIÊN NGÂN HÀNG</text><text x="306" y="550" class="title">Thanh khoản cận biên</text><text x="306" y="585" class="body">O/N · 1W · repo · OMO</text>
+    <rect x="662" y="305" width="360" height="210" rx="20" class="primary"/>
+    <text x="698" y="348" class="eyebrow">BẢNG CÂN ĐỐI NGÂN HÀNG</text><text x="698" y="390" class="title">Big 4 + ngân hàng khác</text><text x="698" y="428" class="body">Tiền gửi · cho vay · vốn · RWA</text><text x="698" y="459" class="body">ALM · NIM · thanh khoản · CAR</text><text x="698" y="490" class="body">Ràng buộc thanh khoản ≠ ràng buộc vốn</text>
 
-    <rect x="662" y="440" width="360" height="210" rx="20" class="primary"/>
-    <text x="698" y="483" class="eyebrow">BẢNG CÂN ĐỐI NGÂN HÀNG</text><text x="698" y="525" class="title">Big 4 + ngân hàng khác</text><text x="698" y="563" class="body">Tiền gửi · cho vay · vốn · RWA</text><text x="698" y="594" class="body">ALM · NIM · thanh khoản · CAR</text><text x="698" y="625" class="body">Ràng buộc thanh khoản ≠ ràng buộc vốn</text>
+    <rect x="1112" y="330" width="325" height="160" rx="20" class="card"/>
+    <text x="1146" y="372" class="eyebrow">TT1 · KHÁCH HÀNG</text><text x="1146" y="415" class="title">Huy động &amp; tín dụng</text><text x="1146" y="450" class="body">Dân cư · doanh nghiệp · lãi suất</text>
 
-    <rect x="1112" y="465" width="325" height="160" rx="20" class="card"/>
-    <text x="1146" y="507" class="eyebrow">TT1 · KHÁCH HÀNG</text><text x="1146" y="550" class="title">Huy động &amp; tín dụng</text><text x="1146" y="585" class="body">Dân cư · doanh nghiệp · lãi suất</text>
+    <path d="M907 240 V275 H422 V330" class="line"/><path d="M1287 225 V270 H842 V305" class="dash"/><path d="M572 410 H662" class="line"/><path d="M1022 410 H1112" class="line"/>
 
-    <path d="M907 360 V405 H422 V465" class="line"/><path d="M1287 345 V400 H842 V440" class="dash"/><path d="M572 545 H662" class="line"/><path d="M1022 545 H1112" class="line"/>
+    <rect x="202" y="600" width="300" height="135" rx="20" class="card"/>
+    <text x="236" y="641" class="eyebrow">DÂN CƯ</text><text x="236" y="682" class="title">Tiền gửi · tiêu dùng</text><text x="236" y="712" class="body">Tiết kiệm · vàng · BĐS · cổ phiếu</text>
 
-    <rect x="202" y="760" width="300" height="135" rx="20" class="card"/>
-    <text x="236" y="801" class="eyebrow">DÂN CƯ</text><text x="236" y="842" class="title">Tiền gửi · tiêu dùng</text><text x="236" y="872" class="body">Tiết kiệm · vàng · BĐS · cổ phiếu</text>
+    <rect x="632" y="600" width="330" height="135" rx="20" class="card"/>
+    <text x="666" y="641" class="eyebrow">DOANH NGHIỆP</text><text x="666" y="682" class="title">Vốn lưu động · đầu tư</text><text x="666" y="712" class="body">Capex · lương · thuế · tiền gửi</text>
 
-    <rect x="632" y="760" width="330" height="135" rx="20" class="card"/>
-    <text x="666" y="801" class="eyebrow">DOANH NGHIỆP</text><text x="666" y="842" class="title">Vốn lưu động · đầu tư</text><text x="666" y="872" class="body">Capex · lương · thuế · tiền gửi</text>
+    <rect x="1092" y="585" width="345" height="150" rx="20" class="card"/>
+    <text x="1126" y="627" class="eyebrow">PHÂN BỔ TÀI SẢN</text><text x="1126" y="669" class="title">Tiền đi vào đâu?</text><text x="1126" y="704" class="body">Tiền gửi · trái phiếu · cổ phiếu</text><text x="1126" y="730" class="body">BĐS · vàng · margin</text>
 
-    <rect x="1092" y="745" width="345" height="150" rx="20" class="card"/>
-    <text x="1126" y="787" class="eyebrow">PHÂN BỔ TÀI SẢN</text><text x="1126" y="829" class="title">Tiền đi vào đâu?</text><text x="1126" y="864" class="body">Tiền gửi · trái phiếu · cổ phiếu</text><text x="1126" y="890" class="body">BĐS · vàng · margin</text>
-
-    <path d="M1222 625 V690 H352 V760" class="dash"/>
-    <path d="M1312 625 V700 H797 V760" class="line"/>
-    <path d="M962 827 H1092" class="line"/>
-    <path d="M502 827 H572 V725 H1047 V860 H1092" class="dash"/>
+    <path d="M1222 490 V550 H352 V600" class="dash"/>
+    <path d="M1312 490 V560 H797 V600" class="line"/>
+    <path d="M962 667 H1092" class="line"/>
+    <path d="M502 667 H572 V550 H1047 V700 H1092" class="dash"/>
   </g>
 </svg>
