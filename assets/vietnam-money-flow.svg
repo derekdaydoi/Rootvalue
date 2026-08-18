@@ -6,12 +6,11 @@
     <clipPath id="panelClip"><rect x="36" y="28" width="1528" height="724" rx="30"/></clipPath>
     <style>
       .panel{fill:#f7f8f6;stroke:#d7ded9;stroke-width:2}.card{fill:#fff;stroke:#cbd5cf;stroke-width:2}.primary{fill:#edf5f1;stroke:#14614A;stroke-width:2.4}
-      .eyebrow{font:700 14px Arial,sans-serif;fill:#14614A;letter-spacing:1.2px}.title{font:700 27px Arial,sans-serif;fill:#202123}.body{font:17px Arial,sans-serif;fill:#62676b}
+      .eyebrow{font:700 14px Arial,sans-serif;fill:#14614A;letter-spacing:1.2px}.title{font:700 27px Arial,sans-serif;fill:#202123}.titleCompact{font:700 24px Arial,sans-serif;fill:#202123}.body{font:17px Arial,sans-serif;fill:#62676b}
       .line{stroke:#14614A;stroke-width:4;fill:none;marker-end:url(#arrow)}.dash{stroke:#7b8881;stroke-width:2.5;stroke-dasharray:9 8;fill:none;marker-end:url(#arrow)}
     </style>
   </defs>
 
-  <!-- The SVG is diagram-only. Article title/subtitle live outside the asset, so nothing can drift out of the diagram block. -->
   <rect x="36" y="28" width="1528" height="724" rx="30" class="panel"/>
   <g clip-path="url(#panelClip)">
     <rect x="82" y="85" width="270" height="140" rx="20" class="card"/>
@@ -29,15 +28,17 @@
     <path d="M352 155 H417" class="line"/><path d="M687 155 H752" class="line"/><path d="M1137 155 H1062" class="dash"/>
 
     <rect x="272" y="330" width="300" height="160" rx="20" class="primary"/>
-    <text x="306" y="372" class="eyebrow">TT2 · LIÊN NGÂN HÀNG</text><text x="306" y="415" class="title">Thanh khoản cận biên</text><text x="306" y="450" class="body">O/N · 1W · repo · OMO</text>
+    <text x="306" y="372" class="eyebrow">TT2 · LIÊN NGÂN HÀNG</text><text x="306" y="414" class="titleCompact">Thanh khoản cận biên</text><text x="306" y="450" class="body">O/N · 1W · repo · OMO</text>
 
     <rect x="662" y="305" width="360" height="210" rx="20" class="primary"/>
-    <text x="698" y="348" class="eyebrow">BẢNG CÂN ĐỐI NGÂN HÀNG</text><text x="698" y="390" class="title">Big 4 + ngân hàng khác</text><text x="698" y="428" class="body">Tiền gửi · cho vay · vốn · RWA</text><text x="698" y="459" class="body">ALM · NIM · thanh khoản · CAR</text><text x="698" y="490" class="body">Ràng buộc thanh khoản ≠ ràng buộc vốn</text>
+    <text x="698" y="348" class="eyebrow">BẢNG CÂN ĐỐI NGÂN HÀNG</text><text x="698" y="390" class="titleCompact">Big 4 + ngân hàng khác</text><text x="698" y="428" class="body">Tiền gửi · cho vay · vốn · RWA</text><text x="698" y="459" class="body">ALM · NIM · thanh khoản · CAR</text><text x="698" y="490" class="body">Ràng buộc thanh khoản ≠ ràng buộc vốn</text>
 
     <rect x="1112" y="330" width="325" height="160" rx="20" class="card"/>
     <text x="1146" y="372" class="eyebrow">TT1 · KHÁCH HÀNG</text><text x="1146" y="415" class="title">Huy động &amp; tín dụng</text><text x="1146" y="450" class="body">Dân cư · doanh nghiệp · lãi suất</text>
 
-    <path d="M907 240 V275 H422 V330" class="line"/><path d="M1287 225 V270 H842 V305" class="dash"/><path d="M572 410 H662" class="line"/><path d="M1022 410 H1112" class="line"/>
+    <path d="M907 240 V275 H422 V330" class="line"/><path d="M1287 225 V270 H842 V305" class="dash"/>
+    <path d="M572 470 H617 V410 H662" class="line"/>
+    <path d="M1022 410 H1112" class="line"/>
 
     <rect x="202" y="600" width="300" height="135" rx="20" class="card"/>
     <text x="236" y="641" class="eyebrow">DÂN CƯ</text><text x="236" y="682" class="title">Tiền gửi · tiêu dùng</text><text x="236" y="712" class="body">Tiết kiệm · vàng · BĐS · cổ phiếu</text>
