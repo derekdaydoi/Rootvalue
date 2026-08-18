@@ -13,7 +13,7 @@
 
 <rect x="395" y="365" width="250" height="145" rx="18" class="g"/><text x="425" y="403" class="h">TT2</text><text x="425" y="439" class="t">Interbank liquidity</text><text x="425" y="470" class="s">O/N · 1W · OMO · repo</text>
 <rect x="750" y="350" width="250" height="175" rx="18" class="g"/><text x="780" y="388" class="h">BANK BALANCE SHEETS</text><text x="780" y="425" class="t">Big 4 + other banks</text><text x="780" y="457" class="s">Deposits · loans · capital · RWA</text><text x="780" y="486" class="s">ALM · NIM · liquidity constraints</text>
-<rect x="1085" y="365" width="245" height="145" rx="18" class="b"/><text x="1115" y="403" class="h">TT1</text><text x="1115" y="439" class="t">Deposits & credit</text><text x="1115" y="470" class="s">Households · corporates</text>
+<rect x="1085" y="365" width="245" height="145" rx="18" class="b"/><text x="1115" y="403" class="h">TT1</text><text x="1115" y="439" class="t">Deposits &amp; credit</text><text x="1115" y="470" class="s">Households · corporates</text>
 
 <rect x="395" y="600" width="250" height="105" rx="18" class="b"/><text x="425" y="638" class="h">HOUSEHOLDS</text><text x="425" y="672" class="t">Tiền gửi · tiêu dùng</text>
 <rect x="750" y="600" width="250" height="105" rx="18" class="b"/><text x="780" y="638" class="h">CORPORATES</text><text x="780" y="672" class="t">WC · capex · payroll</text>
