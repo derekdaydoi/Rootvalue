@@ -1,5 +1,5 @@
-const CACHE='rootvalue-v2-20260818e';
-const STATIC=['./','./index.html','./styles.css','./analysis.css','./rootvalue-v2.css','./app.js','./enhancements.js','./analysis.js','./polish.js','./manifest.json','./assets/rootvalue-mark.svg','./assets/vietnam-money-flow.svg'];
+const CACHE='rootvalue-v2-20260818f';
+const STATIC=['./','./index.html','./styles.css','./analysis.css','./rootvalue-v2.css','./app.js','./enhancements.js','./analysis.js','./polish.js','./health-ui.js','./manifest.json','./assets/rootvalue-mark.svg','./assets/vietnam-money-flow.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(STATIC)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('fetch',event=>{
