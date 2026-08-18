@@ -1,0 +1,57 @@
+name: Rootvalue global macro
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/update_global.py'
+      - '.github/workflows/update-global.yml'
+  schedule:
+    - cron: '17 * * * *'   # hourly; source publication cadence is still preserved in the dataset
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rootvalue-global
+  cancel-in-progress: true
+
+jobs:
+  refresh-global:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - name: Install minimal dependencies
+        run: python -m pip install requests
+      - name: Refresh Fed and global macro
+        run: python scripts/update_global.py
+      - name: Commit global snapshot if changed
+        run: |
+          if git diff --quiet -- data/global.json && [ -z "$(git ls-files --others --exclude-standard data/global.json)" ]; then
+            echo "No global data changes"
+            exit 0
+          fi
+          git config user.name "rootvalue-bot"
+          git config user.email "rootvalue-bot@users.noreply.github.com"
+          git add data/global.json
+          git commit -m "data: refresh Fed and global macro"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 3))
+          done
+          echo "Unable to publish global snapshot after retries"
+          exit 1
