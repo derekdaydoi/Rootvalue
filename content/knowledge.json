@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-18",
+  "topics": [
+    {
+      "id": "vietnam-money-system",
+      "category_vi": "DÒNG TIỀN HỆ THỐNG",
+      "category_en": "SYSTEM MONEY FLOW",
+      "title_vi": "Tiền vận động trong hệ thống Việt Nam như thế nào?",
+      "title_en": "How money moves through Vietnam's financial system",
+      "summary_vi": "Tách rõ tồn lượng tiền, dòng giao dịch, giá của tiền và phân bổ tài sản. Trung tâm truyền dẫn là bảng cân đối ngân hàng, không phải một mũi tên đơn giản từ NHNN xuống chứng khoán.",
+      "summary_en": "Separate stocks of money, transaction flows, the price of money and asset allocation. Bank balance sheets are the transmission gearbox between SBV policy and the real economy.",
+      "blocks_vi": [
+        {"type":"image","src":"assets/vietnam-money-flow.svg","alt":"Sơ đồ dòng tiền hệ thống Việt Nam"},
+        {"type":"heading","level":2,"text":"Bốn lớp phải tách riêng"},
+        {"type":"bullets","items":["**Stock**: tiền gửi, dự trữ ngân hàng, dư nợ, số dư Kho bạc, tài sản NHNN.","**Flow**: tín dụng mới, thu thuế, giải ngân ngân sách, giao dịch ngoại hối, OMO, mua bán tài sản.","**Price of money**: lãi suất liên ngân hàng, lãi suất huy động, lợi suất trái phiếu, tỷ giá.","**Allocation**: tiền gửi, trái phiếu, cổ phiếu, bất động sản, vàng. Allocation thay đổi không đồng nghĩa tổng tiền rời hệ thống ngân hàng."]},
+        {"type":"heading","level":2,"text":"TT1 và TT2"},
+        {"type":"paragraph","text":"TT2 phản ánh **thanh khoản cận biên giữa các ngân hàng**. TT1 phản ánh **funding cấu trúc từ dân cư và doanh nghiệp**. O/N tăng một mình có thể chỉ là căng ngắn hạn; O/N tăng cùng lãi suất huy động và credit-deposit gap kéo dài cho thấy áp lực funding sâu hơn."},
+        {"type":"heading","level":2,"text":"KBNN có thể bơm hoặc hút thanh khoản"},
+        {"type":"paragraph","text":"Khi tiền thuế đi từ tiền gửi khu vực tư nhân vào tài khoản Kho bạc tại NHNN, dự trữ của hệ thống ngân hàng có thể giảm. Khi Chính phủ chi tiêu, dòng tiền đi ngược trở lại tiền gửi và dự trữ ngân hàng. Vì vậy **fiscal cashflow** phải được theo dõi song song với OMO."}
+      ],
+      "blocks_en": [
+        {"type":"image","src":"assets/vietnam-money-flow.svg","alt":"Vietnam monetary flow map"},
+        {"type":"heading","level":2,"text":"Four layers must be separated"},
+        {"type":"bullets","items":["**Stock**: deposits, bank reserves, credit, Treasury balances and SBV assets.","**Flow**: new credit, taxation, fiscal spending, FX transactions, OMO and asset trades.","**Price of money**: interbank rates, deposit rates, bond yields and FX.","**Allocation**: deposits, bonds, equities, property and gold. A portfolio shift does not necessarily reduce aggregate bank deposits."]},
+        {"type":"heading","level":2,"text":"Market 1 and Market 2"},
+        {"type":"paragraph","text":"Interbank markets reveal marginal liquidity; customer deposits reveal structural funding. A temporary overnight spike is different from a persistent funding gap accompanied by rising deposit rates."}
+      ]
+    },
+    {
+      "id": "sbv-toolkit",
+      "category_vi": "NHNN",
+      "category_en": "SBV",
+      "title_vi": "Bộ công cụ của Ngân hàng Nhà nước",
+      "title_en": "The SBV policy toolkit",
+      "summary_vi": "Không đọc một công cụ theo dấu cộng/trừ cố định. Cùng một mức OMO có thể là easing chủ động hoặc phản ứng với stress thanh khoản.",
+      "summary_en": "Do not assign a fixed bullish or bearish sign to one instrument. The same OMO injection can represent proactive easing or a response to funding stress.",
+      "blocks_vi": [
+        {"type":"heading","level":2,"text":"OMO"},
+        {"type":"paragraph","text":"Nếu O/N tăng trước rồi OMO tăng sau, cách đọc hợp lý là **NHNN đang bù thiếu thanh khoản ngắn hạn**. Chỉ nhìn OMO tăng và kết luận nới lỏng là sai causal order."},
+        {"type":"heading","level":2,"text":"Tín phiếu NHNN"},
+        {"type":"paragraph","text":"Phát hành tín phiếu thường hút VND liquidity; tín phiếu đáo hạn trả liquidity trở lại. Cần nhìn **outstanding**, kỳ hạn và đáo hạn chứ không chỉ khối lượng phát hành trong ngày."},
+        {"type":"heading","level":2,"text":"Can thiệp ngoại hối"},
+        {"type":"paragraph","text":"NHNN bán USD có thể hút VND khỏi hệ thống nếu không được offset. NHNN mua USD có thể tạo VND liquidity và sau đó được sterilize bằng tín phiếu. Vì vậy cần quan sát **FX action + OMO/bills + interbank rates** cùng nhau."},
+        {"type":"heading","level":2,"text":"Reaction function"},
+        {"type":"formula","text":"P(Action | FX pressure, TT2 liquidity, TT1 funding, inflation, growth, fiscal liquidity, bank capital)"},
+        {"type":"paragraph","text":"Rootvalue chỉ nên ước lượng xác suất phản ứng sau khi các biến đầu vào có lịch sử và provenance đủ tốt. Trước đó hệ thống phải hiển thị **observed / partial / missing**, không tạo probability giả."}
+      ],
+      "blocks_en": [
+        {"type":"heading","level":2,"text":"OMO is context-dependent"},
+        {"type":"paragraph","text":"If overnight rates spike first and OMO injections follow, the causal reading is liquidity support in response to stress, not necessarily proactive easing."},
+        {"type":"heading","level":2,"text":"FX intervention"},
+        {"type":"paragraph","text":"Selling USD can drain VND reserves unless offset; buying USD can add reserves and may later be sterilized. FX actions should be read together with OMO, bills and interbank rates."}
+      ]
+    },
+    {
+      "id": "balance-sheet",
+      "category_vi": "BẢNG CÂN ĐỐI",
+      "category_en": "BALANCE SHEETS",
+      "title_vi": "Đọc bảng cân đối như một bản đồ vốn",
+      "title_en": "Read the balance sheet as a map of capital",
+      "summary_vi": "Câu hỏi đầu tiên không phải P/B bao nhiêu mà là tài sản nằm ở đâu, vốn đến từ đâu và cấu trúc đó thay đổi thế nào trong 5–10 năm.",
+      "summary_en": "The first question is not the P/B ratio. It is where assets sit, where funding comes from, and how that structure changed over 5–10 years.",
+      "blocks_vi": [
+        {"type":"heading","level":2,"text":"Doanh nghiệp thông thường"},
+        {"type":"formula","text":"Assets = Cash + Receivables + Inventory + PPE + CIP + Investments + Other"},
+        {"type":"paragraph","text":"Theo dõi tỷ trọng tài sản giúp phát hiện vốn đang chuyển sang **working capital**, tài sản sản xuất, xây dựng dở dang hay các khoản đầu tư/ứng trước. Thay đổi lớn là câu hỏi để điều tra, không phải kết luận tốt/xấu tự động."},
+        {"type":"heading","level":2,"text":"Ngân hàng"},
+        {"type":"paragraph","text":"Ngân hàng phải dùng mô hình riêng: deposits, loans, securities, interbank assets/liabilities, equity, Tier I/Tier II và RWA. **Liquidity constraint** và **capital constraint** là hai giới hạn khác nhau đối với credit creation."},
+        {"type":"heading","level":2,"text":"Khả năng trả nợ"},
+        {"type":"formula","text":"Net Debt / EBITDA · EBIT / Interest · CFO / Interest"},
+        {"type":"paragraph","text":"Quan trọng hơn snapshot là trajectory: debt tăng nhanh hơn assets và EBIT trong nhiều năm có ý nghĩa khác với debt tăng để tài trợ dự án sắp tạo dòng tiền."}
+      ],
+      "blocks_en": [
+        {"type":"heading","level":2,"text":"Normal corporates"},
+        {"type":"formula","text":"Assets = Cash + Receivables + Inventory + PPE + CIP + Investments + Other"},
+        {"type":"paragraph","text":"Changes in asset concentration reveal where new capital is being deployed. Large shifts trigger investigation; they are not automatically good or bad."}
+      ]
+    },
+    {
+      "id": "macro-framework",
+      "category_vi": "VĨ MÔ",
+      "category_en": "MACRO",
+      "title_vi": "Vĩ mô dùng để tạo kịch bản, không dùng để kể chuyện",
+      "title_en": "Macro is for scenarios, not narratives",
+      "summary_vi": "Shock bên ngoài chỉ có giá trị đầu tư khi ta mô tả được transmission path về Việt Nam: FX, phản ứng NHNN, liquidity, bank balance sheets, credit và sector economics.",
+      "summary_en": "An external shock becomes investable only after mapping its transmission through FX, SBV policy, liquidity, bank balance sheets, credit and sector economics.",
+      "blocks_vi": [
+        {"type":"heading","level":2,"text":"Causal chain"},
+        {"type":"formula","text":"External shock → USD/VND pressure → SBV reaction → TT2 liquidity → TT1 funding → credit → sector → company"},
+        {"type":"paragraph","text":"Fed, DXY, China, hàng hóa hay địa chính trị là **external state variables**. Rootvalue không nên nhảy trực tiếp từ một headline sang VNINDEX. Phải xác định biến nào thực sự đổi constraint của NHNN và hệ thống ngân hàng Việt Nam."},
+        {"type":"heading","level":2,"text":"Regime thay vì một điểm số"},
+        {"type":"bullets","items":["FX pressure: thấp / trung bình / cao.","TT2 liquidity: dư / cân bằng / căng.","TT1 funding: thuận lợi / cân bằng / thiếu funding.","Growth-inflation constraint: hỗ trợ nới lỏng hay buộc phòng thủ.","Fiscal liquidity: KBNN đang bơm hay hút liquidity.","Bank capital: hệ thống còn room mở rộng RWA hay capital đang binding."]}
+      ],
+      "blocks_en": [
+        {"type":"heading","level":2,"text":"Causal chain"},
+        {"type":"formula","text":"External shock → USD/VND pressure → SBV reaction → interbank liquidity → structural funding → credit → sector → company"},
+        {"type":"paragraph","text":"Global headlines are external state variables, not direct trading signals. Rootvalue should identify which Vietnamese constraints actually changed."}
+      ]
+    }
+  ],
+  "blogs": [
+    {
+      "id":"money-does-not-leave-banks",
+      "date":"2026-08-18",
+      "image":"assets/vietnam-money-flow.svg",
+      "title_vi":"Tiền 'chảy vào chứng khoán' thực sự nghĩa là gì?",
+      "title_en":"What does 'money flowing into equities' actually mean?",
+      "excerpt_vi":"Một giao dịch cổ phiếu thường chuyển quyền sở hữu tiền gửi giữa hai người; nó không tự động làm tổng tiền gửi hệ thống biến mất.",
+      "excerpt_en":"An equity trade typically transfers deposit ownership between participants; it does not automatically destroy aggregate bank deposits.",
+      "blocks_vi":[
+        {"type":"paragraph","text":"Khi A dùng **1 tỷ đồng tiền gửi** mua cổ phiếu của B, sau settlement tiền gửi của A giảm và tiền gửi của B tăng. Ở cấp hệ thống, tổng deposits không nhất thiết đổi."},
+        {"type":"heading","level":2,"text":"Vậy cái gì thực sự thay đổi?"},
+        {"type":"bullets","items":["Quyền sở hữu tiền gửi.","Portfolio allocation của household/corporate.","Turnover, participation và market liquidity.","Margin demand và funding của công ty chứng khoán nếu leverage tăng."]},
+        {"type":"quote","text":"Market-flow dashboard nên đo thay đổi leadership và participation; nó không nên tuyên bố tiền vật lý đi trực tiếp từ mã A sang mã B."},
+        {"type":"heading","level":2,"text":"Tại sao distinction này quan trọng?"},
+        {"type":"paragraph","text":"Nếu nhầm allocation với money supply, ta sẽ diễn giải sai cả liquidity regime. **Cung tiền**, **bank reserves**, **deposits** và **asset prices** liên hệ với nhau nhưng không phải cùng một biến."}
+      ],
+      "blocks_en":[
+        {"type":"paragraph","text":"When A uses a bank deposit to buy shares from B, A's deposit falls and B's deposit rises after settlement. Aggregate deposits need not fall."},
+        {"type":"heading","level":2,"text":"What actually changes?"},
+        {"type":"bullets","items":["Ownership of deposits.","Portfolio allocation.","Trading participation and liquidity.","Margin demand and broker funding when leverage rises."]}
+      ]
+    }
+  ]
+}
