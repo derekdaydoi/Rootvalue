@@ -49,5 +49,26 @@ html[data-theme="dark"]{--rv-card-shadow:var(--rv-card-shadow-dark)}
 .rv-knowledge-hero>img{display:none!important}
 .rv-knowledge-hero-copy{min-height:0}
 
+/* Navigation v3: no numbering, larger labels, single-line fit. */
+.nav-item>span:first-child,.mobile-nav-item>b:first-child{display:none!important}
+.nav-item{gap:0!important;padding:12px 14px!important;font-size:14px!important;min-width:0}
+.nav-item b{display:block;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mobile-nav-item{min-width:0!important;padding:8px 2px 7px!important}
+.mobile-nav-item span{display:block;width:100%;white-space:nowrap!important;overflow:hidden;text-overflow:clip;line-height:1!important;font-size:clamp(9px,2.65vw,11px)!important;font-weight:620;letter-spacing:-.18px}
+
+/* Tabs/filters stay readable without wrapping. */
+.report-tabs,.company-view-tabs,.rv-knowledge-tabs{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.report-tabs::-webkit-scrollbar,.company-view-tabs::-webkit-scrollbar,.rv-knowledge-tabs::-webkit-scrollbar{display:none}
+.report-tab,.company-view-btn,.rv-knowledge-tab,.period-btn{white-space:nowrap!important;font-size:12px!important}
+.big-select,.big-select select,.period-control,.company-filter-grid>*{min-width:0;max-width:100%}
+.big-select select{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Defensive responsive sizing audit. */
+img,svg,canvas{max-width:100%}
+.screen,.screen-head>*,.panel,.metric-card,.source-card,.story-card,.knowledge-card,.blog-card,.company-analysis-shell,.company-hero>*,.rv-global-panel,.rv-accuracy-panel{min-width:0;max-width:100%}
+.lead,.panel p,.knowledge-card p,.blog-card p,.rv-article p,.rv-article li,.story-header p{overflow-wrap:anywhere}
+.table-wrap{max-width:100%;overflow-x:auto}
+.utility-row,.mobile-tools{min-width:0}
+
 @media(max-width:1120px){.rv-global-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.rv-freshness-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.suggestion-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
-@media(max-width:760px){.rv-brand-word{font-size:20px}.mobile-nav{grid-template-columns:repeat(6,1fr)!important}.mobile-nav-item{font-size:8px}.rv-knowledge-hero{grid-template-columns:1fr}.rv-knowledge-grid,.rv-blog-list{grid-template-columns:1fr}.rv-global-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rv-reaction-grid{grid-template-columns:1fr 1fr}.rv-freshness-grid{grid-template-columns:1fr 1fr}.rv-news-item{grid-template-columns:58px 1fr}.rv-news-item time{display:none}.suggestion-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.rv-page-footer{padding-bottom:12px}}
+@media(max-width:760px){.rv-brand-word{font-size:20px}.mobile-nav{grid-template-columns:repeat(6,minmax(0,1fr))!important;padding-left:4px!important;padding-right:4px!important}.mobile-nav-item{font-size:10px!important;min-height:48px}.rv-knowledge-hero{grid-template-columns:1fr}.rv-knowledge-grid,.rv-blog-list{grid-template-columns:1fr}.rv-global-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rv-reaction-grid{grid-template-columns:1fr 1fr}.rv-freshness-grid{grid-template-columns:1fr 1fr}.rv-news-item{grid-template-columns:58px 1fr}.rv-news-item time{display:none}.suggestion-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.rv-page-footer{padding-bottom:12px}.screen-head h1{font-size:clamp(30px,9vw,40px)!important}.company-analysis-shell .company-hero h1{font-size:clamp(42px,15vw,62px)!important}.utility-btn,.mini-btn{white-space:nowrap}.company-meta-line{overflow-x:auto;flex-wrap:nowrap!important;scrollbar-width:none}.company-meta-chip{white-space:nowrap}.story-header h2,.suggestion-title h2{font-size:clamp(18px,5.2vw,23px)!important}}
