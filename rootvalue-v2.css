@@ -44,5 +44,10 @@ html[data-theme="dark"]{--rv-card-shadow:var(--rv-card-shadow-dark)}
 /* Dashboard emphasis */
 .company-analysis-shell .company-hero{padding:21px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb,var(--brand-soft) 34%,var(--surface)),var(--surface));box-shadow:var(--rv-card-shadow);margin-bottom:14px}.company-analysis-shell .company-hero h1{font-size:clamp(44px,7vw,76px)!important;line-height:.9!important}.story-grid{gap:14px!important}.story-card{padding:20px!important;min-height:330px}.story-card.wide{min-height:360px}.story-card h3{font-size:19px!important}.suggestion-card{min-height:128px!important}.suggestion-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
 
+/* Knowledge landing is intentionally text-only; diagrams live inside the relevant article. */
+.rv-knowledge-hero{grid-template-columns:1fr!important}
+.rv-knowledge-hero>img{display:none!important}
+.rv-knowledge-hero-copy{min-height:0}
+
 @media(max-width:1120px){.rv-global-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.rv-freshness-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.suggestion-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:760px){.rv-brand-word{font-size:20px}.mobile-nav{grid-template-columns:repeat(6,1fr)!important}.mobile-nav-item{font-size:8px}.rv-knowledge-hero{grid-template-columns:1fr}.rv-knowledge-grid,.rv-blog-list{grid-template-columns:1fr}.rv-global-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rv-reaction-grid{grid-template-columns:1fr 1fr}.rv-freshness-grid{grid-template-columns:1fr 1fr}.rv-news-item{grid-template-columns:58px 1fr}.rv-news-item time{display:none}.suggestion-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.rv-page-footer{padding-bottom:12px}}
