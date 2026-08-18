@@ -21,6 +21,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate knowledge content and SVG assets
+        run: python scripts/validate_site_content.py
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check app.js
+          node --check enhancements.js
+          node --check analysis.js
+          node --check polish.js
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
