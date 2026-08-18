@@ -172,3 +172,36 @@ async function rvHydrateSupplemental(){
 
 rvHydrateSupplemental();
 $('#refreshBtn')?.addEventListener('click',()=>setTimeout(rvHydrateSupplemental,500));
+
+/* Visual interpolation only: smooth paths still pass through every observed data point. */
+function rvSmoothPath(points){
+  if(!points.length)return'';
+  if(points.length===1)return `M ${points[0].x} ${points[0].y}`;
+  if(points.length===2)return `M ${points[0].x} ${points[0].y} L ${points[1].x} ${points[1].y}`;
+  let d=`M ${points[0].x} ${points[0].y}`;const t=.16;
+  for(let i=0;i<points.length-1;i++){
+    const p0=points[i-1]||points[i],p1=points[i],p2=points[i+1],p3=points[i+2]||p2;
+    const lo=Math.min(p1.y,p2.y),hi=Math.max(p1.y,p2.y);
+    const c1x=p1.x+(p2.x-p0.x)*t,c1y=Math.max(lo,Math.min(hi,p1.y+(p2.y-p0.y)*t));
+    const c2x=p2.x-(p3.x-p1.x)*t,c2y=Math.max(lo,Math.min(hi,p2.y-(p3.y-p1.y)*t));
+    d+=` C ${c1x} ${c1y}, ${c2x} ${c2y}, ${p2.x} ${p2.y}`;
+  }
+  return d;
+}
+rvChart=function(defs,{percent=false}={}){
+  const clean=defs.filter(d=>(d.data||[]).some(x=>rvNum(x.value)!=null));
+  if(!clean.length)return rvEmpty();
+  const periods=rvPeriods(clean);if(!periods.length)return rvEmpty();
+  const maps=clean.map(d=>rvSeriesMap(d.data));
+  const values=[];maps.forEach(m=>periods.forEach(p=>{const v=m.get(p);if(v!=null)values.push(v)}));
+  if(!values.length)return rvEmpty();
+  let min=Math.min(...values),max=Math.max(...values);if(min>0)min=0;if(max<0)max=0;if(max===min)max=min+1;
+  const W=620,H=220,L=58,R=12,T=15,B=30,plotW=W-L-R,plotH=H-T-B;
+  const x=i=>L+(periods.length===1?plotW/2:(i/(periods.length-1))*plotW),y=v=>T+((max-v)/(max-min))*plotH;
+  const formatAxis=v=>percent?`${fmt(v*100,0)}%`:rvCompact(v).replace(/ VND$/,'');
+  let svg=`<svg class="rv-chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
+  for(let i=0;i<4;i++){const val=max-(max-min)*(i/3),yy=y(val);svg+=`<line class="rv-grid-line" x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}"/><text class="rv-axis-text" x="${L-7}" y="${yy+3}" text-anchor="end">${escapeHtml(formatAxis(val))}</text>`;}
+  const labelEvery=Math.max(1,Math.ceil(periods.length/7));periods.forEach((p,i)=>{if(i%labelEvery===0||i===periods.length-1)svg+=`<text class="rv-axis-text" x="${x(i)}" y="${H-8}" text-anchor="middle">${escapeHtml(p)}</text>`});
+  clean.forEach((d,si)=>{const m=maps[si];let seg=[],dots='';const flush=()=>{if(seg.length>1)svg+=`<path class="rv-line s${si%5}" d="${rvSmoothPath(seg)}"/>`;seg=[];};periods.forEach((p,i)=>{const v=m.get(p);if(v==null){flush();return;}const pt={x:x(i),y:y(v)};seg.push(pt);dots+=`<circle class="rv-dot s${si%5}" cx="${pt.x}" cy="${pt.y}" r="4.1"/>`;});flush();svg+=dots;});
+  svg+='</svg>';return rvLegend(clean)+svg;
+};
