@@ -16,8 +16,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: rootvalue-market-flow
-  cancel-in-progress: false
+  group: rootvalue-data-write
+  cancel-in-progress: true
 
 jobs:
   refresh-market:
@@ -54,7 +54,7 @@ jobs:
             git config user.email "rootvalue-bot@users.noreply.github.com"
             git add data/market.json
             git commit -m "data: refresh Rootvalue market flow"
-            # market.json is isolated from foundation outputs, so a normal rebase is safe.
-            git pull --rebase origin main
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
