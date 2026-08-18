@@ -1,10 +1,13 @@
 {
-  "name": "Rootvalue",
+  "name": "Rootvalue — From zero to wealth",
   "short_name": "Rootvalue",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F6F7F5",
-  "theme_color": "#F6F7F5",
-  "description": "Vietnam investment research system — evidence before opinion."
+  "theme_color": "#14614A",
+  "description": "Rootvalue — From zero to wealth. Vietnam investment research system with evidence, provenance and automated data.",
+  "icons": [
+    {"src":"assets/rootvalue-mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
 }
