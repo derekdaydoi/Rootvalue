@@ -1,0 +1,3165 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-18T04:26:26.267750+00:00",
+  "policy": "All chart values are generated from normalized financial statements. Missing facts remain missing; no synthetic values are inserted.",
+  "companies": {
+    "TCB": {
+      "symbol": "TCB",
+      "sector": "Banking",
+      "analysis_model": "banking",
+      "source": "KBS via Vnstock community (guest)",
+      "provider": "vnstock",
+      "coverage": {
+        "annual_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "annual_periods": 4,
+        "minimum_annual_periods": 8,
+        "minimum_met": false,
+        "quarterly_years": [
+          2025,
+          2026
+        ],
+        "quarterly_target_periods": 32
+      },
+      "warnings": [
+        "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
+      ],
+      "annual": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2022",
+              "value": 8771995000000.0
+            },
+            {
+              "period": "2023",
+              "value": 8042248000000.0
+            },
+            {
+              "period": "2024",
+              "value": 8714897000000.0
+            },
+            {
+              "period": "2025",
+              "value": 8527494000000.0
+            }
+          ],
+          "cogs": [],
+          "gross_profit": [],
+          "selling_expenses": [],
+          "admin_expenses": [],
+          "financial_income": [],
+          "finance_expenses": [],
+          "operating_profit": [
+            {
+              "period": "2022",
+              "value": 36958691000000.0
+            },
+            {
+              "period": "2023",
+              "value": 31620662000000.0
+            },
+            {
+              "period": "2024",
+              "value": 26809296000000.0
+            },
+            {
+              "period": "2025",
+              "value": 27504062000000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2022",
+              "value": 25954472000000.0
+            },
+            {
+              "period": "2023",
+              "value": 21760104000000.0
+            },
+            {
+              "period": "2024",
+              "value": 18190866000000.0
+            },
+            {
+              "period": "2025",
+              "value": 20436426000000.0
+            }
+          ],
+          "interest_expense": [],
+          "cfo": [
+            {
+              "period": "2022",
+              "value": 33290586000000.0
+            },
+            {
+              "period": "2023",
+              "value": 31037437000000.0
+            },
+            {
+              "period": "2024",
+              "value": 24938816000000.0
+            },
+            {
+              "period": "2025",
+              "value": 29013569000000.0
+            }
+          ],
+          "capex": [
+            {
+              "period": "2022",
+              "value": -657030000000.0
+            },
+            {
+              "period": "2023",
+              "value": -1618886000000.0
+            },
+            {
+              "period": "2024",
+              "value": -1232358000000.0
+            },
+            {
+              "period": "2025",
+              "value": -1110111000000.0
+            }
+          ],
+          "fcf": [
+            {
+              "period": "2022",
+              "value": 32633556000000.0
+            },
+            {
+              "period": "2023",
+              "value": 29418551000000.0
+            },
+            {
+              "period": "2024",
+              "value": 23706458000000.0
+            },
+            {
+              "period": "2025",
+              "value": 27903458000000.0
+            }
+          ],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [],
+          "net_margin": [
+            {
+              "period": "2022",
+              "value": 2.9587878242064662
+            },
+            {
+              "period": "2023",
+              "value": 2.705724071180098
+            },
+            {
+              "period": "2024",
+              "value": 2.087330005162425
+            },
+            {
+              "period": "2025",
+              "value": 2.3965336123367544
+            }
+          ],
+          "cfo_to_profit": [
+            {
+              "period": "2022",
+              "value": 1.2826531782268582
+            },
+            {
+              "period": "2023",
+              "value": 1.4263459862140364
+            },
+            {
+              "period": "2024",
+              "value": 1.3709526528313716
+            },
+            {
+              "period": "2025",
+              "value": 1.4196987770757958
+            }
+          ]
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": true,
+          "ratio": true
+        }
+      },
+      "quarterly": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2025-Q3",
+              "value": 3662198000000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1828132000000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2570935000000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 2265937000000.0
+            }
+          ],
+          "cogs": [],
+          "gross_profit": [],
+          "selling_expenses": [],
+          "admin_expenses": [],
+          "financial_income": [],
+          "finance_expenses": [],
+          "operating_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 10321654000000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 8326283000000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 9970798000000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 9749272000000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 7726642000000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 6013511000000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 6979826000000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 6613525000000.0
+            }
+          ],
+          "interest_expense": [],
+          "cfo": [],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [],
+          "net_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 2.1098373162783663
+            },
+            {
+              "period": "2025-Q4",
+              "value": 3.289429319108248
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2.7148978873444873
+            },
+            {
+              "period": "2026-Q2",
+              "value": 2.918671172234709
+            }
+          ],
+          "cfo_to_profit": []
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": false,
+          "ratio": true
+        }
+      }
+    },
+    "HPG": {
+      "symbol": "HPG",
+      "sector": "Materials",
+      "analysis_model": "generic",
+      "source": "KBS via Vnstock community (guest)",
+      "provider": "vnstock",
+      "coverage": {
+        "annual_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "annual_periods": 4,
+        "minimum_annual_periods": 8,
+        "minimum_met": false,
+        "quarterly_years": [
+          2025,
+          2026
+        ],
+        "quarterly_target_periods": 32
+      },
+      "warnings": [
+        "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
+      ],
+      "annual": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2022",
+              "value": 156116094618000.0
+            },
+            {
+              "period": "2023",
+              "value": 138855112131000.0
+            },
+            {
+              "period": "2024",
+              "value": 118953027894000.0
+            },
+            {
+              "period": "2025",
+              "value": 141409274461000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2022",
+              "value": 131618306435000.0
+            },
+            {
+              "period": "2023",
+              "value": 120357563004000.0
+            },
+            {
+              "period": "2024",
+              "value": 106015187198000.0
+            },
+            {
+              "period": "2025",
+              "value": 124645848221000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2022",
+              "value": 24497788183000.0
+            },
+            {
+              "period": "2023",
+              "value": 18497549128000.0
+            },
+            {
+              "period": "2024",
+              "value": 12937840696000.0
+            },
+            {
+              "period": "2025",
+              "value": 16763426240000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2022",
+              "value": 2633630712000.0
+            },
+            {
+              "period": "2023",
+              "value": 2337308685000.0
+            },
+            {
+              "period": "2024",
+              "value": 1961362130000.0
+            },
+            {
+              "period": "2025",
+              "value": 2665806087000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2022",
+              "value": 1436537357000.0
+            },
+            {
+              "period": "2023",
+              "value": 1545516023000.0
+            },
+            {
+              "period": "2024",
+              "value": 1307290337000.0
+            },
+            {
+              "period": "2025",
+              "value": 1019444279000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2022",
+              "value": 2081789823000.0
+            },
+            {
+              "period": "2023",
+              "value": 2618917240000.0
+            },
+            {
+              "period": "2024",
+              "value": 3173086405000.0
+            },
+            {
+              "period": "2025",
+              "value": 3743650707000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2022",
+              "value": 4603575989000.0
+            },
+            {
+              "period": "2023",
+              "value": 3966636075000.0
+            },
+            {
+              "period": "2024",
+              "value": 5191511844000.0
+            },
+            {
+              "period": "2025",
+              "value": 7026723285000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2022",
+              "value": 17905833948000.0
+            },
+            {
+              "period": "2023",
+              "value": 13267005585000.0
+            },
+            {
+              "period": "2024",
+              "value": 7650762789000.0
+            },
+            {
+              "period": "2025",
+              "value": 9794030627000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2022",
+              "value": 15453174006000.0
+            },
+            {
+              "period": "2023",
+              "value": 12021443836000.0
+            },
+            {
+              "period": "2024",
+              "value": 6835064334000.0
+            },
+            {
+              "period": "2025",
+              "value": 8483510554000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2022",
+              "value": 3114855869000.0
+            },
+            {
+              "period": "2023",
+              "value": 2287360811000.0
+            },
+            {
+              "period": "2024",
+              "value": 3585077684000.0
+            },
+            {
+              "period": "2025",
+              "value": 3083638132000.0
+            }
+          ],
+          "cfo": [
+            {
+              "period": "2022",
+              "value": 17365859057000.0
+            },
+            {
+              "period": "2023",
+              "value": 6608320655000.0
+            },
+            {
+              "period": "2024",
+              "value": 8643030777000.0
+            },
+            {
+              "period": "2025",
+              "value": 12277636677000.0
+            }
+          ],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2022",
+              "value": 0.15692032421733046
+            },
+            {
+              "period": "2023",
+              "value": 0.13321475057071624
+            },
+            {
+              "period": "2024",
+              "value": 0.10876428221338774
+            },
+            {
+              "period": "2025",
+              "value": 0.11854545116574566
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2022",
+              "value": 0.09898514335637415
+            },
+            {
+              "period": "2023",
+              "value": 0.08657545013293148
+            },
+            {
+              "period": "2024",
+              "value": 0.057460196306148514
+            },
+            {
+              "period": "2025",
+              "value": 0.059992603641706055
+            }
+          ],
+          "cfo_to_profit": [
+            {
+              "period": "2022",
+              "value": 1.1237729575980548
+            },
+            {
+              "period": "2023",
+              "value": 0.5497110617620158
+            },
+            {
+              "period": "2024",
+              "value": 1.26451344927458
+            },
+            {
+              "period": "2025",
+              "value": 1.4472353866774008
+            }
+          ]
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": true,
+          "ratio": true
+        }
+      },
+      "quarterly": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2025-Q3",
+              "value": 55158902299000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 37621674554000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 46176484550000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 36407416404000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2025-Q3",
+              "value": 44671115105000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 32197520628000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 39779834053000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 30320155129000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 10487787193000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 5424153925000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 6396650497000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 6087261275000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 1717603200000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 737815719000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 271477098000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 798965988000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 307796867000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 347243795000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 411044379000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 355963310000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2025-Q3",
+              "value": 616702745000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 438057241000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 437336032000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 711903359000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 1925757871000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 970569641000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 1584024164000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 1073210621000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 7155004358000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 3806582011000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 4567440888000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 4571024716000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 6371019005000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 3344284694000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 3860994447000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 3988318475000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2025-Q3",
+              "value": 1519613868000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 627024361000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 1236524775000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 812194102000.0
+            }
+          ],
+          "cfo": [],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.19013770680476608
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.14417630233908063
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.13852614722269932
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.16719838637962803
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.11550300567013827
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.08889249969986862
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.0836138672015906
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.1095468689879849
+            }
+          ],
+          "cfo_to_profit": []
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": false,
+          "ratio": true
+        }
+      }
+    },
+    "FPT": {
+      "symbol": "FPT",
+      "sector": "Technology",
+      "analysis_model": "generic",
+      "source": "KBS via Vnstock community (guest)",
+      "provider": "vnstock",
+      "coverage": {
+        "annual_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "annual_periods": 4,
+        "minimum_annual_periods": 8,
+        "minimum_met": false,
+        "quarterly_years": [
+          2025,
+          2026
+        ],
+        "quarterly_target_periods": 32
+      },
+      "warnings": [
+        "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
+      ],
+      "annual": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2022",
+              "value": 70112825101000.0
+            },
+            {
+              "period": "2023",
+              "value": 62848794351000.0
+            },
+            {
+              "period": "2024",
+              "value": 52617900827000.0
+            },
+            {
+              "period": "2025",
+              "value": 44009527681000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2022",
+              "value": 44224295588000.0
+            },
+            {
+              "period": "2023",
+              "value": 39150445981000.0
+            },
+            {
+              "period": "2024",
+              "value": 32298347383000.0
+            },
+            {
+              "period": "2025",
+              "value": 26842249040000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2022",
+              "value": 25888529512000.0
+            },
+            {
+              "period": "2023",
+              "value": 23698348370000.0
+            },
+            {
+              "period": "2024",
+              "value": 20319553445000.0
+            },
+            {
+              "period": "2025",
+              "value": 17167278641000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2022",
+              "value": 7562660640000.0
+            },
+            {
+              "period": "2023",
+              "value": 6115961972000.0
+            },
+            {
+              "period": "2024",
+              "value": 5242551907000.0
+            },
+            {
+              "period": "2025",
+              "value": 4526440692000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2022",
+              "value": 7337325398000.0
+            },
+            {
+              "period": "2023",
+              "value": 7074038615000.0
+            },
+            {
+              "period": "2024",
+              "value": 6625373638000.0
+            },
+            {
+              "period": "2025",
+              "value": 5846280654000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2022",
+              "value": 2977156357000.0
+            },
+            {
+              "period": "2023",
+              "value": 1935749115000.0
+            },
+            {
+              "period": "2024",
+              "value": 2336069090000.0
+            },
+            {
+              "period": "2025",
+              "value": 1998503980000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2022",
+              "value": 1672048701000.0
+            },
+            {
+              "period": "2023",
+              "value": 1811547382000.0
+            },
+            {
+              "period": "2024",
+              "value": 1718298464000.0
+            },
+            {
+              "period": "2025",
+              "value": 1687369702000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2022",
+              "value": 12951675965000.0
+            },
+            {
+              "period": "2023",
+              "value": 11025080773000.0
+            },
+            {
+              "period": "2024",
+              "value": 9111745534000.0
+            },
+            {
+              "period": "2025",
+              "value": 7589289622000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2022",
+              "value": 9376127630000.0
+            },
+            {
+              "period": "2023",
+              "value": 7856767812000.0
+            },
+            {
+              "period": "2024",
+              "value": 6465190433000.0
+            },
+            {
+              "period": "2025",
+              "value": 5310108591000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2022",
+              "value": 809759601000.0
+            },
+            {
+              "period": "2023",
+              "value": 551639362000.0
+            },
+            {
+              "period": "2024",
+              "value": 832648611000.0
+            },
+            {
+              "period": "2025",
+              "value": 645725556000.0
+            }
+          ],
+          "cfo": [
+            {
+              "period": "2022",
+              "value": 10136043916000.0
+            },
+            {
+              "period": "2023",
+              "value": 11703777189000.0
+            },
+            {
+              "period": "2024",
+              "value": 9517095698000.0
+            },
+            {
+              "period": "2025",
+              "value": 5053831757000.0
+            }
+          ],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2022",
+              "value": 0.3692409979872678
+            },
+            {
+              "period": "2023",
+              "value": 0.3770692598755147
+            },
+            {
+              "period": "2024",
+              "value": 0.38617187545751275
+            },
+            {
+              "period": "2025",
+              "value": 0.39008095622920164
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2022",
+              "value": 0.13372913752217738
+            },
+            {
+              "period": "2023",
+              "value": 0.12501063692839143
+            },
+            {
+              "period": "2024",
+              "value": 0.12287055035237163
+            },
+            {
+              "period": "2025",
+              "value": 0.12065815905796473
+            }
+          ],
+          "cfo_to_profit": [
+            {
+              "period": "2022",
+              "value": 1.0810479886780295
+            },
+            {
+              "period": "2023",
+              "value": 1.4896427473807088
+            },
+            {
+              "period": "2024",
+              "value": 1.4720518748252625
+            },
+            {
+              "period": "2025",
+              "value": 0.9517379297224997
+            }
+          ]
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": true,
+          "ratio": true
+        }
+      },
+      "quarterly": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2025-Q3",
+              "value": 13788503461000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 16058140942000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 20225450357000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 17204521225000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2025-Q3",
+              "value": 9509874281000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 9756793038000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 13171300027000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 10685654746000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 4278629180000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 6301347904000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 7054150330000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 6518866479000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 1149052846000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1828785929000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2045175725000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 1916582833000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 1282590328000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1877437057000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 1892395898000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 1647276733000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2025-Q3",
+              "value": 582702089000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 573331893000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 553701777000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 613110474000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 300452278000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 311343769000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 476741111000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 352575080000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 2885793043000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 2993843379000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 3477285511000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 3346375733000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 2567654036000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 2174301387000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2502704372000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 2434841435000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2025-Q3",
+              "value": 212582740000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 152389538000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 207025853000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 233582914000.0
+            }
+          ],
+          "cfo": [],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.3103041016816553
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.39240830721063424
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.34877593356325776
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.37890426555592804
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.1862170208146565
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.13540181237998253
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.12374035325912125
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.14152334744787412
+            }
+          ],
+          "cfo_to_profit": []
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": false,
+          "ratio": true
+        }
+      }
+    },
+    "MWG": {
+      "symbol": "MWG",
+      "sector": "Consumer & Retail",
+      "analysis_model": "generic",
+      "source": "KBS via Vnstock community (guest)",
+      "provider": "vnstock",
+      "coverage": {
+        "annual_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "annual_periods": 4,
+        "minimum_annual_periods": 8,
+        "minimum_met": false,
+        "quarterly_years": [
+          2025,
+          2026
+        ],
+        "quarterly_target_periods": 32
+      },
+      "warnings": [
+        "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
+      ],
+      "annual": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2022",
+              "value": 155928145619000.0
+            },
+            {
+              "period": "2023",
+              "value": 134341152849000.0
+            },
+            {
+              "period": "2024",
+              "value": 118279788455000.0
+            },
+            {
+              "period": "2025",
+              "value": 133404777591000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2022",
+              "value": 124926268220000.0
+            },
+            {
+              "period": "2023",
+              "value": 106841942772000.0
+            },
+            {
+              "period": "2024",
+              "value": 95759175292000.0
+            },
+            {
+              "period": "2025",
+              "value": 102542735094000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2022",
+              "value": 31001877400000.0
+            },
+            {
+              "period": "2023",
+              "value": 27499210077000.0
+            },
+            {
+              "period": "2024",
+              "value": 22520613164000.0
+            },
+            {
+              "period": "2025",
+              "value": 30862042496000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2022",
+              "value": 19330903537000.0
+            },
+            {
+              "period": "2023",
+              "value": 19849837610000.0
+            },
+            {
+              "period": "2024",
+              "value": 20916710755000.0
+            },
+            {
+              "period": "2025",
+              "value": 22336838068000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2022",
+              "value": 4596074513000.0
+            },
+            {
+              "period": "2023",
+              "value": 3565767583000.0
+            },
+            {
+              "period": "2024",
+              "value": 1167651663000.0
+            },
+            {
+              "period": "2025",
+              "value": 1881027580000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2022",
+              "value": 3107348734000.0
+            },
+            {
+              "period": "2023",
+              "value": 2376502605000.0
+            },
+            {
+              "period": "2024",
+              "value": 2166963715000.0
+            },
+            {
+              "period": "2025",
+              "value": 1313137304000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2022",
+              "value": 1542518673000.0
+            },
+            {
+              "period": "2023",
+              "value": 1188465610000.0
+            },
+            {
+              "period": "2024",
+              "value": 1556146107000.0
+            },
+            {
+              "period": "2025",
+              "value": 1382620455000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2022",
+              "value": 8664080489000.0
+            },
+            {
+              "period": "2023",
+              "value": 5227045425000.0
+            },
+            {
+              "period": "2024",
+              "value": 1047068354000.0
+            },
+            {
+              "period": "2025",
+              "value": 6574693699000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2022",
+              "value": 7033730770000.0
+            },
+            {
+              "period": "2023",
+              "value": 3721868442000.0
+            },
+            {
+              "period": "2024",
+              "value": 167669393000.0
+            },
+            {
+              "period": "2025",
+              "value": 4099763027000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2022",
+              "value": 1470675594000.0
+            },
+            {
+              "period": "2023",
+              "value": 1137236130000.0
+            },
+            {
+              "period": "2024",
+              "value": 1447718355000.0
+            },
+            {
+              "period": "2025",
+              "value": 1362143909000.0
+            }
+          ],
+          "cfo": [
+            {
+              "period": "2022",
+              "value": 6096140690000.0
+            },
+            {
+              "period": "2023",
+              "value": 8517332707000.0
+            },
+            {
+              "period": "2024",
+              "value": 3435827176000.0
+            },
+            {
+              "period": "2025",
+              "value": 7976298802000.0
+            }
+          ],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2022",
+              "value": 0.19882156153996094
+            },
+            {
+              "period": "2023",
+              "value": 0.20469684451725098
+            },
+            {
+              "period": "2024",
+              "value": 0.19040119582702883
+            },
+            {
+              "period": "2025",
+              "value": 0.23134135863273664
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2022",
+              "value": 0.04510879509326335
+            },
+            {
+              "period": "2023",
+              "value": 0.02770460401053276
+            },
+            {
+              "period": "2024",
+              "value": 0.0014175658850099353
+            },
+            {
+              "period": "2025",
+              "value": 0.03073175564648283
+            }
+          ],
+          "cfo_to_profit": [
+            {
+              "period": "2022",
+              "value": 0.8667008859652443
+            },
+            {
+              "period": "2023",
+              "value": 2.2884561450063203
+            },
+            {
+              "period": "2024",
+              "value": 20.491677786416272
+            },
+            {
+              "period": "2025",
+              "value": 1.9455511817317532
+            }
+          ]
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": true,
+          "ratio": true
+        }
+      },
+      "quarterly": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2025-Q3",
+              "value": 48751283552000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 36134958418000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 42850392723000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 39852507153000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2025-Q3",
+              "value": 37942073480000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 28934547803000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 34804147835000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 32374320275000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 10809210072000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 7200410615000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 8046244888000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 7478186878000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 5980272601000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 4403006344000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 4942111524000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 4570833492000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 1317458502000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1214599787000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 1060394370000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 1119414263000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2025-Q3",
+              "value": 957393430000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 693293668000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 836153922000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 809068897000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 453084596000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 339023163000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 390297766000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 410743276000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 4034437503000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1940204764000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2495518122000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 2190441447000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 3302546973000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1545937091000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2071646268000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 1770898917000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2025-Q3",
+              "value": 436321055000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 322792851000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 384665886000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 388038375000.0
+            }
+          ],
+          "cfo": [],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.22172154832539906
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.19926439465371684
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.18777528924912673
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.18764658517693936
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.0677427696745128
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.042782312715487124
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.048346027570665445
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.04443632392314096
+            }
+          ],
+          "cfo_to_profit": []
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": false,
+          "ratio": true
+        }
+      }
+    },
+    "VNM": {
+      "symbol": "VNM",
+      "sector": "Consumer & Retail",
+      "analysis_model": "generic",
+      "source": "KBS via Vnstock community (guest)",
+      "provider": "vnstock",
+      "coverage": {
+        "annual_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "annual_periods": 4,
+        "minimum_annual_periods": 8,
+        "minimum_met": false,
+        "quarterly_years": [
+          2025,
+          2026
+        ],
+        "quarterly_target_periods": 32
+      },
+      "warnings": [
+        "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
+      ],
+      "annual": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2022",
+              "value": 63645886756000.0
+            },
+            {
+              "period": "2023",
+              "value": 61782609528000.0
+            },
+            {
+              "period": "2024",
+              "value": 60368915512000.0
+            },
+            {
+              "period": "2025",
+              "value": 59956247197000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2022",
+              "value": 37436412562000.0
+            },
+            {
+              "period": "2023",
+              "value": 36192433205000.0
+            },
+            {
+              "period": "2024",
+              "value": 35824183896000.0
+            },
+            {
+              "period": "2025",
+              "value": 36059015691000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2022",
+              "value": 26209474195000.0
+            },
+            {
+              "period": "2023",
+              "value": 25590176323000.0
+            },
+            {
+              "period": "2024",
+              "value": 24544731615000.0
+            },
+            {
+              "period": "2025",
+              "value": 23897231507000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2022",
+              "value": 13641689164000.0
+            },
+            {
+              "period": "2023",
+              "value": 13357706797000.0
+            },
+            {
+              "period": "2024",
+              "value": 13018093112000.0
+            },
+            {
+              "period": "2025",
+              "value": 12548212247000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2022",
+              "value": 1904069826000.0
+            },
+            {
+              "period": "2023",
+              "value": 1827916839000.0
+            },
+            {
+              "period": "2024",
+              "value": 1755619128000.0
+            },
+            {
+              "period": "2025",
+              "value": 1595845681000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2022",
+              "value": 1496851902000.0
+            },
+            {
+              "period": "2023",
+              "value": 1585660836000.0
+            },
+            {
+              "period": "2024",
+              "value": 1716367576000.0
+            },
+            {
+              "period": "2025",
+              "value": 1379904408000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2022",
+              "value": 350234100000.0
+            },
+            {
+              "period": "2023",
+              "value": 428238549000.0
+            },
+            {
+              "period": "2024",
+              "value": 503122771000.0
+            },
+            {
+              "period": "2025",
+              "value": 617537183000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2022",
+              "value": 11659774989000.0
+            },
+            {
+              "period": "2023",
+              "value": 11593977638000.0
+            },
+            {
+              "period": "2024",
+              "value": 10903632882000.0
+            },
+            {
+              "period": "2025",
+              "value": 10491064827000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2022",
+              "value": 9410201647000.0
+            },
+            {
+              "period": "2023",
+              "value": 9392310356000.0
+            },
+            {
+              "period": "2024",
+              "value": 8873812417000.0
+            },
+            {
+              "period": "2025",
+              "value": 8516023694000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2022",
+              "value": 325804350000.0
+            },
+            {
+              "period": "2023",
+              "value": 279424561000.0
+            },
+            {
+              "period": "2024",
+              "value": 354094837000.0
+            },
+            {
+              "period": "2025",
+              "value": 166039092000.0
+            }
+          ],
+          "cfo": [
+            {
+              "period": "2022",
+              "value": 8668137049000.0
+            },
+            {
+              "period": "2023",
+              "value": 9685937539000.0
+            },
+            {
+              "period": "2024",
+              "value": 7887423562000.0
+            },
+            {
+              "period": "2025",
+              "value": 8827273177000.0
+            }
+          ],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2022",
+              "value": 0.4118015402233231
+            },
+            {
+              "period": "2023",
+              "value": 0.4141970777618657
+            },
+            {
+              "period": "2024",
+              "value": 0.4065789720890555
+            },
+            {
+              "period": "2025",
+              "value": 0.39857784007861874
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2022",
+              "value": 0.14785247133213814
+            },
+            {
+              "period": "2023",
+              "value": 0.15202191082174
+            },
+            {
+              "period": "2024",
+              "value": 0.14699307320231855
+            },
+            {
+              "period": "2025",
+              "value": 0.1420373037361503
+            }
+          ],
+          "cfo_to_profit": [
+            {
+              "period": "2022",
+              "value": 0.9211425402093724
+            },
+            {
+              "period": "2023",
+              "value": 1.0312625085703673
+            },
+            {
+              "period": "2024",
+              "value": 0.8888427196060257
+            },
+            {
+              "period": "2025",
+              "value": 1.0365486868266105
+            }
+          ]
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": true,
+          "ratio": true
+        }
+      },
+      "quarterly": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2025-Q3",
+              "value": 18847347465000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 12934505333000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 17033552406000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 16953231538000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2025-Q3",
+              "value": 10643261509000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 7724022893000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 10143535413000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 9865934702000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 8204085956000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 5210482440000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 6890016993000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 7087296836000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 4104010853000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 3169757183000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 3186832401000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 3573752080000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 520564180000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 430929441000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 545076497000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 465785970000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2025-Q3",
+              "value": 426283158000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 366337216000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 358341190000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 395840396000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 147341999000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 41765368000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 107566613000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 91354487000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 3908962379000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1950556717000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 3432867145000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 3157752824000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 3167031130000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1568482188000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 2840367602000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 2526766559000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2025-Q3",
+              "value": 116087967000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 75155208000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 89980185000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 75464626000.0
+            }
+          ],
+          "cfo": [],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.43529127752513685
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.40283584921538645
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.40449677370722853
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.41804990512363993
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.168035907221494
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.12126340726755955
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.1667513349123517
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.14904335809585048
+            }
+          ],
+          "cfo_to_profit": []
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": false,
+          "ratio": true
+        }
+      }
+    },
+    "GMD": {
+      "symbol": "GMD",
+      "sector": "Ports & Logistics",
+      "analysis_model": "generic",
+      "source": "KBS via Vnstock community (guest)",
+      "provider": "vnstock",
+      "coverage": {
+        "annual_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "annual_periods": 4,
+        "minimum_annual_periods": 8,
+        "minimum_met": false,
+        "quarterly_years": [
+          2025,
+          2026
+        ],
+        "quarterly_target_periods": 32
+      },
+      "warnings": [
+        "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
+      ],
+      "annual": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2022",
+              "value": 5956025297000.0
+            },
+            {
+              "period": "2023",
+              "value": 4832024799000.0
+            },
+            {
+              "period": "2024",
+              "value": 3845826297000.0
+            },
+            {
+              "period": "2025",
+              "value": 3898243609000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2022",
+              "value": 3216552758000.0
+            },
+            {
+              "period": "2023",
+              "value": 2696544402000.0
+            },
+            {
+              "period": "2024",
+              "value": 2067811109000.0
+            },
+            {
+              "period": "2025",
+              "value": 2180183031000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2022",
+              "value": 2739472539000.0
+            },
+            {
+              "period": "2023",
+              "value": 2135480397000.0
+            },
+            {
+              "period": "2024",
+              "value": 1778015187000.0
+            },
+            {
+              "period": "2025",
+              "value": 1718060577000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2022",
+              "value": 481965604000.0
+            },
+            {
+              "period": "2023",
+              "value": 247200314000.0
+            },
+            {
+              "period": "2024",
+              "value": 109543154000.0
+            },
+            {
+              "period": "2025",
+              "value": 142172449000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2022",
+              "value": 610544457000.0
+            },
+            {
+              "period": "2023",
+              "value": 574838486000.0
+            },
+            {
+              "period": "2024",
+              "value": 551943343000.0
+            },
+            {
+              "period": "2025",
+              "value": 524441250000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2022",
+              "value": 228485206000.0
+            },
+            {
+              "period": "2023",
+              "value": 426126465000.0
+            },
+            {
+              "period": "2024",
+              "value": 1940961393000.0
+            },
+            {
+              "period": "2025",
+              "value": 23947234000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2022",
+              "value": 118711818000.0
+            },
+            {
+              "period": "2023",
+              "value": 150292457000.0
+            },
+            {
+              "period": "2024",
+              "value": 154695013000.0
+            },
+            {
+              "period": "2025",
+              "value": 165690840000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2022",
+              "value": 2914395245000.0
+            },
+            {
+              "period": "2023",
+              "value": 2418584028000.0
+            },
+            {
+              "period": "2024",
+              "value": 3177029886000.0
+            },
+            {
+              "period": "2025",
+              "value": 1308851596000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2022",
+              "value": 1755629825000.0
+            },
+            {
+              "period": "2023",
+              "value": 1455479596000.0
+            },
+            {
+              "period": "2024",
+              "value": 2250577340000.0
+            },
+            {
+              "period": "2025",
+              "value": 993915565000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2022",
+              "value": 112580749000.0
+            },
+            {
+              "period": "2023",
+              "value": 139487502000.0
+            },
+            {
+              "period": "2024",
+              "value": 134993139000.0
+            },
+            {
+              "period": "2025",
+              "value": 130756998000.0
+            }
+          ],
+          "cfo": [
+            {
+              "period": "2022",
+              "value": 2142022561000.0
+            },
+            {
+              "period": "2023",
+              "value": 1526822552000.0
+            },
+            {
+              "period": "2024",
+              "value": -2870318000.0
+            },
+            {
+              "period": "2025",
+              "value": 2299239828000.0
+            }
+          ],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2022",
+              "value": 0.4599497823455937
+            },
+            {
+              "period": "2023",
+              "value": 0.4419431782390569
+            },
+            {
+              "period": "2024",
+              "value": 0.4623233213593058
+            },
+            {
+              "period": "2025",
+              "value": 0.4407268373463009
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2022",
+              "value": 0.2947653405509033
+            },
+            {
+              "period": "2023",
+              "value": 0.30121525789793446
+            },
+            {
+              "period": "2024",
+              "value": 0.5851999456542277
+            },
+            {
+              "period": "2025",
+              "value": 0.25496497004582147
+            }
+          ],
+          "cfo_to_profit": [
+            {
+              "period": "2022",
+              "value": 1.2200878172025815
+            },
+            {
+              "period": "2023",
+              "value": 1.0490168025687665
+            },
+            {
+              "period": "2024",
+              "value": -0.001275369634708932
+            },
+            {
+              "period": "2025",
+              "value": 2.3133150430137395
+            }
+          ]
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": true,
+          "ratio": true
+        }
+      },
+      "quarterly": {
+        "series": {
+          "revenue": [
+            {
+              "period": "2025-Q3",
+              "value": 1761552624000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 1276946137000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 1614391702000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 1560495942000.0
+            }
+          ],
+          "cogs": [
+            {
+              "period": "2025-Q3",
+              "value": 890826292000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 715314322000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 848835354000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 894254338000.0
+            }
+          ],
+          "gross_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 870726332000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 561631815000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 765556348000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 666241604000.0
+            }
+          ],
+          "selling_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 208831612000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 86247302000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 193884083000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 120681056000.0
+            }
+          ],
+          "admin_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 152001743000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 125416964000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 160727381000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 198392394000.0
+            }
+          ],
+          "financial_income": [
+            {
+              "period": "2025-Q3",
+              "value": 687002231000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 29194419000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 86229740000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 49486141000.0
+            }
+          ],
+          "finance_expenses": [
+            {
+              "period": "2025-Q3",
+              "value": 41894183000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 28585205000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": -15556745000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 74836313000.0
+            }
+          ],
+          "operating_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 1537174094000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 577711137000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 901911833000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 618825753000.0
+            }
+          ],
+          "net_profit": [
+            {
+              "period": "2025-Q3",
+              "value": 1133486077000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 402975061000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 513435769000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 315208521000.0
+            }
+          ],
+          "interest_expense": [
+            {
+              "period": "2025-Q3",
+              "value": 44029241000.0
+            },
+            {
+              "period": "2025-Q4",
+              "value": 27354631000.0
+            },
+            {
+              "period": "2026-Q1",
+              "value": 34355716000.0
+            },
+            {
+              "period": "2026-Q2",
+              "value": 23820033000.0
+            }
+          ],
+          "cfo": [],
+          "capex": [],
+          "fcf": [],
+          "total_assets": [],
+          "current_assets": [],
+          "current_liabilities": [],
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "payables": [],
+          "short_debt": [],
+          "long_debt": [],
+          "total_debt": [],
+          "equity": [],
+          "nwc": [],
+          "operating_nwc": [],
+          "gross_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.4942948170477137
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.43982420144946177
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.4742073110581437
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.42694222142360433
+            }
+          ],
+          "net_margin": [
+            {
+              "period": "2025-Q3",
+              "value": 0.6434585385398057
+            },
+            {
+              "period": "2025-Q4",
+              "value": 0.3155771800576738
+            },
+            {
+              "period": "2026-Q1",
+              "value": 0.3180366749679936
+            },
+            {
+              "period": "2026-Q2",
+              "value": 0.20199252847528393
+            }
+          ],
+          "cfo_to_profit": []
+        },
+        "asset_mix": {
+          "cash": [],
+          "receivables": [],
+          "inventory": [],
+          "ppe": [],
+          "cip": [],
+          "other": []
+        },
+        "report_availability": {
+          "balance_sheet": false,
+          "income_statement": true,
+          "cash_flow": false,
+          "ratio": true
+        }
+      }
+    }
+  }
+}
