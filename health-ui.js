@@ -1,5 +1,28 @@
 // Rootvalue data-health presentation layer.
 (() => {
+  const style=document.createElement('style');
+  style.textContent=`
+    [data-screen="data"] #sourceCards{margin-bottom:26px}
+    [data-screen="data"] #sourceCards + .panel{margin-top:0}
+    [data-screen="data"] .panel{margin-bottom:18px}
+    .health-list{gap:0!important}
+    .health-item-v2{display:grid!important;grid-template-columns:92px minmax(0,1fr);gap:16px!important;align-items:start!important;padding:15px 0!important;border-bottom:1px solid var(--line)!important;color:var(--ink)!important}
+    .health-item-v2:last-child{border-bottom:0!important}
+    .health-badge{display:inline-flex;align-items:center;justify-content:center;width:max-content;min-width:78px;padding:5px 8px;border-radius:999px;font-size:9px;font-weight:750;letter-spacing:.45px;background:var(--warning-soft);color:var(--warning)}
+    .health-item-v2.error .health-badge{background:var(--danger-soft);color:var(--danger)}
+    .health-item-v2.ok .health-badge{background:var(--brand-soft);color:var(--brand)}
+    .health-copy{min-width:0}
+    .health-copy strong{display:block;font-size:12px;font-weight:650;margin:0 0 4px;color:var(--ink)}
+    .health-copy span{display:block;font-size:11px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}
+    @media(max-width:760px){
+      [data-screen="data"] #sourceCards{margin-bottom:20px}
+      .health-item-v2{grid-template-columns:1fr;gap:7px!important;padding:14px 0!important}
+      .health-badge{min-width:0}
+      .health-copy strong{font-size:13px}.health-copy span{font-size:12px}
+    }
+  `;
+  document.head.appendChild(style);
+
   const txt=(vi,en)=>STATE.lang==='vi'?vi:en;
   const esc=(v)=>escapeHtml(v);
 
