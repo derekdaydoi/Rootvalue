@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-19T16:46:16.269345+00:00",
+  "generated_at": "2026-08-19T17:38:54.916239+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -11873,31 +11873,11 @@
     "wti": {
       "status": "ok",
       "series_id": "DCOILWTICO",
-      "as_of": "2026-08-11",
-      "latest": 84.77,
-      "previous": 83.76,
-      "change": 1.009999999999991,
+      "as_of": "2026-08-18",
+      "latest": 86.48,
+      "previous": 86.04,
+      "change": 0.4399999999999977,
       "history": [
-        {
-          "date": "2024-12-03",
-          "value": 70.15
-        },
-        {
-          "date": "2024-12-04",
-          "value": 68.81
-        },
-        {
-          "date": "2024-12-05",
-          "value": 68.58
-        },
-        {
-          "date": "2024-12-06",
-          "value": 68.58
-        },
-        {
-          "date": "2024-12-09",
-          "value": 68.65
-        },
         {
           "date": "2024-12-10",
           "value": 68.85
@@ -13557,6 +13537,26 @@
         {
           "date": "2026-08-11",
           "value": 84.77
+        },
+        {
+          "date": "2026-08-12",
+          "value": 84.97
+        },
+        {
+          "date": "2026-08-13",
+          "value": 82.77
+        },
+        {
+          "date": "2026-08-14",
+          "value": 83.99
+        },
+        {
+          "date": "2026-08-17",
+          "value": 86.04
+        },
+        {
+          "date": "2026-08-18",
+          "value": 86.48
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
