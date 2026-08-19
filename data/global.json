@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-19T17:38:54.916239+00:00",
+  "generated_at": "2026-08-19T18:52:34.088434+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-08-18",
-      "latest": 0.155,
-      "previous": 0.255,
-      "change": -0.1,
+      "as_of": "2026-08-19",
+      "latest": 0.317,
+      "previous": 0.155,
+      "change": 0.162,
       "history": [
-        {
-          "date": "2024-12-11",
-          "value": 180.12
-        },
         {
           "date": "2024-12-12",
           "value": 165.025
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-08-18",
           "value": 0.155
+        },
+        {
+          "date": "2026-08-19",
+          "value": 0.317
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
@@ -13569,6 +13569,13 @@
   "news": [
     {
       "source": "Federal Reserve",
+      "title": "Minutes of the Federal Open Market Committee, July 28–29, 2026",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260819a.htm",
+      "published": "Wed, 19 Aug 2026 18:00:00 GMT",
+      "summary": "Minutes of the Federal Open Market Committee, July 28–29, 2026"
+    },
+    {
+      "source": "Federal Reserve",
       "title": "Federal Reserve issues FOMC statement",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
       "published": "Wed, 29 Jul 2026 18:00:00 GMT",
@@ -13643,13 +13650,6 @@
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260408a.htm",
       "published": "Wed, 8 Apr 2026 18:00:00 GMT",
       "summary": "Minutes of the Federal Open Market Committee, March 17–18, 2026"
-    },
-    {
-      "source": "Federal Reserve",
-      "title": "Federal Reserve issues FOMC statement",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260318a.htm",
-      "published": "Wed, 18 Mar 2026 18:00:00 GMT",
-      "summary": "Federal Reserve issues FOMC statement"
     },
     {
       "source": "ECB",
