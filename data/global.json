@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-21T07:55:57.406812+00:00",
+  "generated_at": "2026-08-21T08:57:14.343354+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "ECB Consumer Expectations Survey results – July 2026",
+      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260821~a044fdddd9.en.html",
+      "published": "Fri, 21 Aug 2026 10:00:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Christine Lagarde: Panel remarks about the European economy during a discussion on the global economic outlook at the World Economic Forum",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260819~98ddf24b7b.en.html",
       "published": "Wed, 19 Aug 2026 09:10:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "Results of the June 2026 survey on credit terms and conditions in euro-denominated securities financing and OTC derivatives markets (SESFOD)",
       "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_3~c0b45e246f.en.html",
       "published": "Fri, 24 Jul 2026 11:00:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "ECB to start implementing enhanced repo facility for central banks",
-      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_2~d7d475d2f0.en.html",
-      "published": "Fri, 24 Jul 2026 10:30:00 +0200",
       "summary": ""
     }
   ],
