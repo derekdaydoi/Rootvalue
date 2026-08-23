@@ -1,13 +1,6 @@
 name: Rootvalue market flow
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/update_market.py'
-      - 'scripts/update_data.py'
-      - 'config/watchlist.json'
-      - '.github/workflows/update-market.yml'
   schedule:
     - cron: '20 9 * * 1-5'   # 16:20 ICT, after VN cash-market close
   workflow_dispatch:
@@ -17,20 +10,20 @@ permissions:
 
 concurrency:
   group: rootvalue-data-write
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh-market:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
       VNSTOCK_INTERACTIVE: '0'
       VNSTOCK_LANGUAGE: '2'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Setup Python
@@ -43,18 +36,33 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Refresh market flow and investigation picks
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: python scripts/update_market.py
+
+      - name: Publish synchronized frontend snapshot
+        run: python scripts/publish_foundation.py
+
+      - name: Validate generated data contracts
+        run: python scripts/validate_data_contracts.py
 
       - name: Commit market snapshot if changed
         run: |
-          if git diff --quiet -- data/market.json && [ -z "$(git ls-files --others --exclude-standard data/market.json)" ]; then
+          if git diff --quiet -- data/market.json data/rootvalue.json && [ -z "$(git ls-files --others --exclude-standard data/market.json data/rootvalue.json)" ]; then
             echo "No market data changes"
           else
             git config user.name "rootvalue-bot"
             git config user.email "rootvalue-bot@users.noreply.github.com"
-            git add data/market.json
+            git add data/market.json data/rootvalue.json
             git commit -m "data: refresh Rootvalue market flow"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then
+                exit 0
+              fi
+              git rebase --abort || true
+              sleep $((attempt * 3))
+            done
+            echo "Unable to publish market snapshot after retries"
+            exit 1
           fi

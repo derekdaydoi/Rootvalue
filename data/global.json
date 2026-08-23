@@ -1,9 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-23T15:35:27.317494+00:00",
-  "status": "ok",
+  "generated_at": "2026-08-23T15:25:42.257486+00:00",
+  "status": "partial",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
+  "coverage": {
+    "required_series": 8,
+    "fresh_series": 7,
+    "usable_series": 8,
+    "required_feeds": 2,
+    "fresh_feeds": 1,
+    "all_required_fresh": false
+  },
   "series": {
     "fed_funds_effective": {
       "status": "ok",
@@ -1698,7 +1706,10 @@
       "label": "Fed funds effective",
       "unit": "%",
       "frequency": "daily",
-      "source": "Federal Reserve / FRED"
+      "source": "Federal Reserve / FRED",
+      "source_age_days": 3,
+      "freshness": "current",
+      "stale_after_days": 7
     },
     "fed_total_assets": {
       "status": "ok",
@@ -3393,7 +3404,10 @@
       "label": "Fed total assets",
       "unit": "USD mn",
       "frequency": "weekly",
-      "source": "Federal Reserve H.4.1 / FRED"
+      "source": "Federal Reserve H.4.1 / FRED",
+      "source_age_days": 4,
+      "freshness": "current",
+      "stale_after_days": 14
     },
     "fed_overnight_rrp": {
       "status": "ok",
@@ -5088,10 +5102,13 @@
       "label": "Fed overnight reverse repo",
       "unit": "USD bn",
       "frequency": "daily",
-      "source": "New York Fed / FRED"
+      "source": "New York Fed / FRED",
+      "source_age_days": 2,
+      "freshness": "current",
+      "stale_after_days": 7
     },
     "broad_dollar": {
-      "status": "ok",
+      "status": "stale",
       "series_id": "DTWEXBGS",
       "as_of": "2026-08-14",
       "latest": 118.9028,
@@ -6783,7 +6800,10 @@
       "label": "Broad U.S. dollar index",
       "unit": "index",
       "frequency": "daily",
-      "source": "Federal Reserve H.10 / FRED"
+      "source": "Federal Reserve H.10 / FRED",
+      "source_age_days": 9,
+      "freshness": "stale",
+      "stale_after_days": 7
     },
     "us_2y": {
       "status": "ok",
@@ -8478,7 +8498,10 @@
       "label": "U.S. Treasury 2Y",
       "unit": "%",
       "frequency": "daily",
-      "source": "U.S. Treasury / FRED"
+      "source": "U.S. Treasury / FRED",
+      "source_age_days": 3,
+      "freshness": "current",
+      "stale_after_days": 7
     },
     "us_10y": {
       "status": "ok",
@@ -10173,7 +10196,10 @@
       "label": "U.S. Treasury 10Y",
       "unit": "%",
       "frequency": "daily",
-      "source": "U.S. Treasury / FRED"
+      "source": "U.S. Treasury / FRED",
+      "source_age_days": 3,
+      "freshness": "current",
+      "stale_after_days": 7
     },
     "vix": {
       "status": "ok",
@@ -11868,7 +11894,10 @@
       "label": "VIX",
       "unit": "index",
       "frequency": "daily",
-      "source": "CBOE / FRED"
+      "source": "CBOE / FRED",
+      "source_age_days": 3,
+      "freshness": "current",
+      "stale_after_days": 7
     },
     "wti": {
       "status": "ok",
@@ -13563,7 +13592,10 @@
       "label": "WTI crude oil",
       "unit": "USD/bbl",
       "frequency": "daily",
-      "source": "EIA / FRED"
+      "source": "EIA / FRED",
+      "source_age_days": 5,
+      "freshness": "current",
+      "stale_after_days": 7
     }
   },
   "news": [
@@ -13740,8 +13772,10 @@
     {
       "source": "Federal Reserve",
       "url": "https://www.federalreserve.gov/feeds/press_monetary.xml",
-      "status": "ok",
-      "items": 12
+      "status": "stale",
+      "items": 12,
+      "error": "HTTPSConnectionPool(host='www.federalreserve.gov', port=443): Max retries exceeded with url: /feeds/press_monetary.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
+      "last_attempt_at": "2026-08-23T15:25:42.257486+00:00"
     },
     {
       "source": "ECB",

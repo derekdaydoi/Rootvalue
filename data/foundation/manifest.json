@@ -17,43 +17,109 @@
     {
       "symbol": "TCB",
       "status": "partial",
-      "annual_periods": 4,
+      "annual_periods": 0,
       "minimum_met": false,
+      "ready_for_foundation": false,
+      "required_reports_ready": {
+        "balance_sheet": false,
+        "income_statement": false,
+        "cash_flow": false
+      },
+      "stale_reports": [],
+      "source_as_of": "2025",
+      "generated_at": "2026-08-16T07:25:35.925565+00:00",
+      "last_attempt_at": null,
+      "last_refresh_error": null,
       "provider": "vnstock"
     },
     {
       "symbol": "HPG",
       "status": "partial",
-      "annual_periods": 4,
+      "annual_periods": 0,
       "minimum_met": false,
+      "ready_for_foundation": false,
+      "required_reports_ready": {
+        "balance_sheet": false,
+        "income_statement": false,
+        "cash_flow": false
+      },
+      "stale_reports": [],
+      "source_as_of": "2025",
+      "generated_at": "2026-08-16T07:25:35.925565+00:00",
+      "last_attempt_at": null,
+      "last_refresh_error": null,
       "provider": "vnstock"
     },
     {
       "symbol": "FPT",
       "status": "partial",
-      "annual_periods": 4,
+      "annual_periods": 0,
       "minimum_met": false,
+      "ready_for_foundation": false,
+      "required_reports_ready": {
+        "balance_sheet": false,
+        "income_statement": false,
+        "cash_flow": false
+      },
+      "stale_reports": [],
+      "source_as_of": "2025",
+      "generated_at": "2026-08-16T07:25:35.925565+00:00",
+      "last_attempt_at": null,
+      "last_refresh_error": null,
       "provider": "vnstock"
     },
     {
       "symbol": "MWG",
       "status": "partial",
-      "annual_periods": 4,
+      "annual_periods": 0,
       "minimum_met": false,
+      "ready_for_foundation": false,
+      "required_reports_ready": {
+        "balance_sheet": false,
+        "income_statement": false,
+        "cash_flow": false
+      },
+      "stale_reports": [],
+      "source_as_of": "2025",
+      "generated_at": "2026-08-16T07:25:35.925565+00:00",
+      "last_attempt_at": null,
+      "last_refresh_error": null,
       "provider": "vnstock"
     },
     {
       "symbol": "VNM",
       "status": "partial",
-      "annual_periods": 4,
+      "annual_periods": 0,
       "minimum_met": false,
+      "ready_for_foundation": false,
+      "required_reports_ready": {
+        "balance_sheet": false,
+        "income_statement": false,
+        "cash_flow": false
+      },
+      "stale_reports": [],
+      "source_as_of": "2025",
+      "generated_at": "2026-08-16T07:25:35.925565+00:00",
+      "last_attempt_at": null,
+      "last_refresh_error": null,
       "provider": "vnstock"
     },
     {
       "symbol": "GMD",
       "status": "partial",
-      "annual_periods": 4,
+      "annual_periods": 0,
       "minimum_met": false,
+      "ready_for_foundation": false,
+      "required_reports_ready": {
+        "balance_sheet": false,
+        "income_statement": false,
+        "cash_flow": false
+      },
+      "stale_reports": [],
+      "source_as_of": "2025",
+      "generated_at": "2026-08-16T07:25:35.925565+00:00",
+      "last_attempt_at": null,
+      "last_refresh_error": null,
       "provider": "vnstock"
     }
   ],
@@ -85,5 +151,5 @@
     "state_ready": false
   },
   "foundation_ready": false,
-  "policy": "Data foundation is READY only when every configured company has >=8 annual periods and every required SBV-state historical series is present."
+  "policy": "Data foundation is READY only when every required annual report has >=8 common periods for every configured company and every required SBV-state historical series is present."
 }
