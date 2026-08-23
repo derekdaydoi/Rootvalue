@@ -3,31 +3,62 @@ name: Rootvalue Pages
 on:
   push:
     branches: [main]
+  pull_request:
+  # Commits pushed by another workflow with GITHUB_TOKEN do not emit a new
+  # push workflow event. Deploy the latest main snapshot after each successful
+  # updater completes instead of relying on a broad PAT or leaving Pages stale.
+  workflow_run:
+    workflows:
+      - Rootvalue company foundation
+      - Rootvalue official SBV daily
+      - Rootvalue market flow
+      - Rootvalue global macro
+    types: [completed]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: rootvalue-pages
+  # All production deploy sources share one queue, so a slower pre-update
+  # push cannot finish later and roll Pages back over a fresher workflow_run.
+  # Pull requests keep an independent validation group per PR.
+  group: rootvalue-pages-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'production' }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout
+      - name: Checkout latest main for production validation
+        if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Checkout requested revision for push or pull request
+        if: github.event_name != 'workflow_run' && github.event_name != 'workflow_dispatch'
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install test dependencies
+        run: python -m pip install -r requirements.txt
 
       - name: Validate knowledge content and SVG assets
         run: python scripts/validate_site_content.py
+
+      - name: Validate published data contracts
+        run: python scripts/validate_data_contracts.py
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
 
       - name: Validate JavaScript syntax
         run: |
@@ -35,6 +66,27 @@ jobs:
           node --check enhancements.js
           node --check analysis.js
           node --check polish.js
+          node --check health-ui.js
+          node --check sw.js
+
+  package:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    needs: validate
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout latest main for production event
+        if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Checkout requested revision
+        if: github.event_name != 'workflow_run' && github.event_name != 'workflow_dispatch'
+        uses: actions/checkout@v4
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -45,11 +97,15 @@ jobs:
           path: '.'
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: package
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy GitHub Pages
         id: deployment

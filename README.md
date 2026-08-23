@@ -12,7 +12,7 @@ Rootvalue không đưa khuyến nghị MUA / BÁN / NẮM GIỮ và không gom d
 
 Rootvalue chỉ coi nền dữ liệu là `READY` khi:
 
-- mọi doanh nghiệp cấu hình có tối thiểu **8 kỳ BCTC năm**;
+- mọi doanh nghiệp cấu hình có tối thiểu **8 kỳ riêng cho từng báo cáo năm cốt lõi**: cân đối kế toán, kết quả kinh doanh và lưu chuyển tiền tệ;
 - lịch sử tiền tệ từ 2018 có đủ các biến cốt lõi cho SBV State: tỷ giá, liên ngân hàng, lãi suất điều hành, OMO, tín dụng, cung tiền và CPI;
 - dữ liệu chính thức NHNN và dữ liệu từ provider được tách provenance;
 - dữ liệu thiếu giữ nguyên trạng thái thiếu, không nội suy hoặc tạo số mẫu.
@@ -47,7 +47,12 @@ rootvalue-bot commit
 GitHub Pages
 ```
 
-`.github/workflows/update-data.yml` chạy 06:15 ICT mỗi ngày, chạy thủ công và tự chạy khi data pipeline/config thay đổi.
+Hai nhịp cập nhật được tách để một lỗi/quota BCTC không chặn dữ liệu tiền tệ chính thức:
+
+- `.github/workflows/update-data.yml` chạy Chủ nhật lúc 06:15 ICT cho company foundation nặng; có thể chạy thủ công từ `main` khi cần.
+- `.github/workflows/update-sbv.yml` chạy hằng ngày lúc 06:15 ICT chỉ cho bảng NHNN chính thức, lịch sử quan sát và snapshot frontend; workflow này không nhận `VNSTOCK_API_KEY`.
+
+Ở guest mode, từng request sửa BCTC được giới hạn tốc độ. Nếu thư viện Vnstock phát `SystemExit` khi chạm quota, job chờ một lần 65 giây, thử lại đúng một lần rồi ghi nhận lỗi provider thay vì làm chết cả pipeline.
 
 ## BCTC 8 năm
 
@@ -55,7 +60,7 @@ Nguồn V1 là MAS thông qua Vnstock.
 
 - Guest mode có thể không đủ 8 kỳ.
 - API key cộng đồng cho phép truy cập tối đa 8 kỳ tài chính.
-- Nếu runner có `vnstock_data`, Rootvalue ưu tiên provider này để lấy lịch sử dài hơn.
+- Nếu runner đã được cài `vnstock_data`, Rootvalue ưu tiên provider này để lấy lịch sử dài hơn. Đây là gói tài trợ cài qua Vnstock Installer, không nằm trong `requirements.txt` công khai; chỉ đặt `VNSTOCK_API_KEY` không tự cài được gói này trên GitHub-hosted runner.
 
 Tạo GitHub Actions secret:
 
@@ -76,11 +81,34 @@ Rootvalue dùng hai lớp:
 
 Nếu thiếu chuỗi bắt buộc, `state_engine` ở trạng thái `blocked_by_missing_history`; hệ thống chưa được phép sinh xác suất easing/defend.
 
+Ngày quan sát do nguồn NHNN công bố được lưu riêng với thời điểm pipeline tải dữ liệu. Rootvalue không dùng ngày tải làm ngày quan sát và không nhân một bảng sự kiện/tháng thành chuỗi theo ngày.
+
+## Kiểm định
+
+Hai lớp kiểm định có ý nghĩa khác nhau:
+
+- `validate_data_contracts.py` là cổng bắt buộc: chặn schema hỏng, số không hữu hạn, snapshot lệch nhau, URL không tin cậy, dữ liệu thiếu bị gắn nhãn `ok`, hoặc thông tin xác thực lọt vào JSON công khai.
+- `validate_foundation.py` là báo cáo độ phủ: có thể báo chưa `READY` mà website vẫn build, miễn phần dữ liệu đang công bố vượt qua data contract.
+
+Chạy đầy đủ trước khi phát hành:
+
+```bash
+python scripts/validate_site_content.py
+python scripts/validate_data_contracts.py
+python -m unittest discover -s tests -p 'test_*.py' -v
+node --check app.js
+node --check enhancements.js
+node --check analysis.js
+node --check polish.js
+node --check health-ui.js
+node --check sw.js
+```
+
 ## Ngôn ngữ và giao diện
 
 - `VIE / ENG`: toàn bộ giao diện chuyển theo một ngôn ngữ.
 - Sáng / Tối: lưu lựa chọn trên trình duyệt.
-- Typography ưu tiên `OpenAI Sans` nếu có trên máy, sau đó rơi về system UI font; không đóng gói font riêng trong repository.
+- Typography dùng system UI stack (`Segoe UI Variable`, `Segoe UI`, Roboto, Noto Sans, Arial); không tải hoặc đóng gói font riêng.
 
 ## Chạy cục bộ
 

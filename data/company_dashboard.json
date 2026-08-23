@@ -9,45 +9,63 @@
       "analysis_model": "banking",
       "source": "KBS via Vnstock community (guest)",
       "provider": "vnstock",
+      "status": "partial",
+      "source_as_of": "2025",
+      "source_generated_at": "2026-08-16T07:25:35.925565+00:00",
       "coverage": {
-        "annual_years": [
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "annual_periods": 4,
+        "annual_years": [],
+        "annual_periods": 0,
         "minimum_annual_periods": 8,
         "minimum_met": false,
         "quarterly_years": [
           2025,
           2026
         ],
-        "quarterly_target_periods": 32
+        "quarterly_target_periods": 32,
+        "annual_union_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "required_annual_reports": [
+          "balance_sheet",
+          "income_statement",
+          "cash_flow"
+        ],
+        "required_reports_ready": {
+          "balance_sheet": false,
+          "income_statement": false,
+          "cash_flow": false
+        },
+        "annual_years_by_report": {
+          "balance_sheet": [],
+          "income_statement": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "cash_flow": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "ratio": [
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        }
       },
       "warnings": [
         "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
       ],
       "annual": {
         "series": {
-          "revenue": [
-            {
-              "period": "2022",
-              "value": 8771995000000.0
-            },
-            {
-              "period": "2023",
-              "value": 8042248000000.0
-            },
-            {
-              "period": "2024",
-              "value": 8714897000000.0
-            },
-            {
-              "period": "2025",
-              "value": 8527494000000.0
-            }
-          ],
+          "revenue": [],
           "cogs": [],
           "gross_profit": [],
           "selling_expenses": [],
@@ -94,19 +112,19 @@
           "cfo": [
             {
               "period": "2022",
-              "value": 33290586000000.0
+              "value": 39923618000000.0
             },
             {
               "period": "2023",
-              "value": 31037437000000.0
+              "value": 42376555000000.0
             },
             {
               "period": "2024",
-              "value": 24938816000000.0
+              "value": 12053287000000.0
             },
             {
               "period": "2025",
-              "value": 29013569000000.0
+              "value": 55468501000000.0
             }
           ],
           "capex": [
@@ -130,19 +148,19 @@
           "fcf": [
             {
               "period": "2022",
-              "value": 32633556000000.0
+              "value": 39266588000000.0
             },
             {
               "period": "2023",
-              "value": 29418551000000.0
+              "value": 40757669000000.0
             },
             {
               "period": "2024",
-              "value": 23706458000000.0
+              "value": 10820929000000.0
             },
             {
               "period": "2025",
-              "value": 27903458000000.0
+              "value": 54358390000000.0
             }
           ],
           "total_assets": [],
@@ -161,40 +179,23 @@
           "nwc": [],
           "operating_nwc": [],
           "gross_margin": [],
-          "net_margin": [
-            {
-              "period": "2022",
-              "value": 2.9587878242064662
-            },
-            {
-              "period": "2023",
-              "value": 2.705724071180098
-            },
-            {
-              "period": "2024",
-              "value": 2.087330005162425
-            },
-            {
-              "period": "2025",
-              "value": 2.3965336123367544
-            }
-          ],
+          "net_margin": [],
           "cfo_to_profit": [
             {
               "period": "2022",
-              "value": 1.2826531782268582
+              "value": 1.538217306058085
             },
             {
               "period": "2023",
-              "value": 1.4263459862140364
+              "value": 1.9474426684725403
             },
             {
               "period": "2024",
-              "value": 1.3709526528313716
+              "value": 0.6626010548370814
             },
             {
               "period": "2025",
-              "value": 1.4196987770757958
+              "value": 2.714197727136829
             }
           ]
         },
@@ -206,6 +207,14 @@
           "cip": [],
           "other": []
         },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
+        },
         "report_availability": {
           "balance_sheet": false,
           "income_statement": true,
@@ -215,24 +224,7 @@
       },
       "quarterly": {
         "series": {
-          "revenue": [
-            {
-              "period": "2025-Q3",
-              "value": 3662198000000.0
-            },
-            {
-              "period": "2025-Q4",
-              "value": 1828132000000.0
-            },
-            {
-              "period": "2026-Q1",
-              "value": 2570935000000.0
-            },
-            {
-              "period": "2026-Q2",
-              "value": 2265937000000.0
-            }
-          ],
+          "revenue": [],
           "cogs": [],
           "gross_profit": [],
           "selling_expenses": [],
@@ -295,24 +287,7 @@
           "nwc": [],
           "operating_nwc": [],
           "gross_margin": [],
-          "net_margin": [
-            {
-              "period": "2025-Q3",
-              "value": 2.1098373162783663
-            },
-            {
-              "period": "2025-Q4",
-              "value": 3.289429319108248
-            },
-            {
-              "period": "2026-Q1",
-              "value": 2.7148978873444873
-            },
-            {
-              "period": "2026-Q2",
-              "value": 2.918671172234709
-            }
-          ],
+          "net_margin": [],
           "cfo_to_profit": []
         },
         "asset_mix": {
@@ -322,6 +297,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,
@@ -337,21 +320,56 @@
       "analysis_model": "generic",
       "source": "KBS via Vnstock community (guest)",
       "provider": "vnstock",
+      "status": "partial",
+      "source_as_of": "2025",
+      "source_generated_at": "2026-08-16T07:25:35.925565+00:00",
       "coverage": {
-        "annual_years": [
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "annual_periods": 4,
+        "annual_years": [],
+        "annual_periods": 0,
         "minimum_annual_periods": 8,
         "minimum_met": false,
         "quarterly_years": [
           2025,
           2026
         ],
-        "quarterly_target_periods": 32
+        "quarterly_target_periods": 32,
+        "annual_union_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "required_annual_reports": [
+          "balance_sheet",
+          "income_statement",
+          "cash_flow"
+        ],
+        "required_reports_ready": {
+          "balance_sheet": false,
+          "income_statement": false,
+          "cash_flow": false
+        },
+        "annual_years_by_report": {
+          "balance_sheet": [],
+          "income_statement": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "cash_flow": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "ratio": [
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        }
       },
       "warnings": [
         "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
@@ -556,8 +574,42 @@
               "value": 12277636677000.0
             }
           ],
-          "capex": [],
-          "fcf": [],
+          "capex": [
+            {
+              "period": "2022",
+              "value": -25748320477000.0
+            },
+            {
+              "period": "2023",
+              "value": -35495026797000.0
+            },
+            {
+              "period": "2024",
+              "value": -17373946476000.0
+            },
+            {
+              "period": "2025",
+              "value": -17887504647000.0
+            }
+          ],
+          "fcf": [
+            {
+              "period": "2022",
+              "value": -8382461420000.0
+            },
+            {
+              "period": "2023",
+              "value": -28886706142000.0
+            },
+            {
+              "period": "2024",
+              "value": -8730915699000.0
+            },
+            {
+              "period": "2025",
+              "value": -5609867970000.0
+            }
+          ],
           "total_assets": [],
           "current_assets": [],
           "current_liabilities": [],
@@ -635,6 +687,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,
@@ -889,6 +949,14 @@
           "cip": [],
           "other": []
         },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
+        },
         "report_availability": {
           "balance_sheet": false,
           "income_statement": true,
@@ -903,21 +971,56 @@
       "analysis_model": "generic",
       "source": "KBS via Vnstock community (guest)",
       "provider": "vnstock",
+      "status": "partial",
+      "source_as_of": "2025",
+      "source_generated_at": "2026-08-16T07:25:35.925565+00:00",
       "coverage": {
-        "annual_years": [
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "annual_periods": 4,
+        "annual_years": [],
+        "annual_periods": 0,
         "minimum_annual_periods": 8,
         "minimum_met": false,
         "quarterly_years": [
           2025,
           2026
         ],
-        "quarterly_target_periods": 32
+        "quarterly_target_periods": 32,
+        "annual_union_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "required_annual_reports": [
+          "balance_sheet",
+          "income_statement",
+          "cash_flow"
+        ],
+        "required_reports_ready": {
+          "balance_sheet": false,
+          "income_statement": false,
+          "cash_flow": false
+        },
+        "annual_years_by_report": {
+          "balance_sheet": [],
+          "income_statement": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "cash_flow": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "ratio": [
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        }
       },
       "warnings": [
         "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
@@ -1122,8 +1225,42 @@
               "value": 5053831757000.0
             }
           ],
-          "capex": [],
-          "fcf": [],
+          "capex": [
+            {
+              "period": "2022",
+              "value": -5097919350000.0
+            },
+            {
+              "period": "2023",
+              "value": -3275312326000.0
+            },
+            {
+              "period": "2024",
+              "value": -3978252082000.0
+            },
+            {
+              "period": "2025",
+              "value": -3215243201000.0
+            }
+          ],
+          "fcf": [
+            {
+              "period": "2022",
+              "value": 5038124566000.0
+            },
+            {
+              "period": "2023",
+              "value": 8428464863000.0
+            },
+            {
+              "period": "2024",
+              "value": 5538843616000.0
+            },
+            {
+              "period": "2025",
+              "value": 1838588556000.0
+            }
+          ],
           "total_assets": [],
           "current_assets": [],
           "current_liabilities": [],
@@ -1201,6 +1338,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,
@@ -1455,6 +1600,14 @@
           "cip": [],
           "other": []
         },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
+        },
         "report_availability": {
           "balance_sheet": false,
           "income_statement": true,
@@ -1469,21 +1622,56 @@
       "analysis_model": "generic",
       "source": "KBS via Vnstock community (guest)",
       "provider": "vnstock",
+      "status": "partial",
+      "source_as_of": "2025",
+      "source_generated_at": "2026-08-16T07:25:35.925565+00:00",
       "coverage": {
-        "annual_years": [
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "annual_periods": 4,
+        "annual_years": [],
+        "annual_periods": 0,
         "minimum_annual_periods": 8,
         "minimum_met": false,
         "quarterly_years": [
           2025,
           2026
         ],
-        "quarterly_target_periods": 32
+        "quarterly_target_periods": 32,
+        "annual_union_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "required_annual_reports": [
+          "balance_sheet",
+          "income_statement",
+          "cash_flow"
+        ],
+        "required_reports_ready": {
+          "balance_sheet": false,
+          "income_statement": false,
+          "cash_flow": false
+        },
+        "annual_years_by_report": {
+          "balance_sheet": [],
+          "income_statement": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "cash_flow": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "ratio": [
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        }
       },
       "warnings": [
         "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
@@ -1688,8 +1876,42 @@
               "value": 7976298802000.0
             }
           ],
-          "capex": [],
-          "fcf": [],
+          "capex": [
+            {
+              "period": "2022",
+              "value": -888461890000.0
+            },
+            {
+              "period": "2023",
+              "value": -303747827000.0
+            },
+            {
+              "period": "2024",
+              "value": -523383331000.0
+            },
+            {
+              "period": "2025",
+              "value": -4465359524000.0
+            }
+          ],
+          "fcf": [
+            {
+              "period": "2022",
+              "value": 5207678800000.0
+            },
+            {
+              "period": "2023",
+              "value": 8213584880000.0
+            },
+            {
+              "period": "2024",
+              "value": 2912443845000.0
+            },
+            {
+              "period": "2025",
+              "value": 3510939278000.0
+            }
+          ],
           "total_assets": [],
           "current_assets": [],
           "current_liabilities": [],
@@ -1767,6 +1989,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,
@@ -2021,6 +2251,14 @@
           "cip": [],
           "other": []
         },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
+        },
         "report_availability": {
           "balance_sheet": false,
           "income_statement": true,
@@ -2035,21 +2273,56 @@
       "analysis_model": "generic",
       "source": "KBS via Vnstock community (guest)",
       "provider": "vnstock",
+      "status": "partial",
+      "source_as_of": "2025",
+      "source_generated_at": "2026-08-16T07:25:35.925565+00:00",
       "coverage": {
-        "annual_years": [
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "annual_periods": 4,
+        "annual_years": [],
+        "annual_periods": 0,
         "minimum_annual_periods": 8,
         "minimum_met": false,
         "quarterly_years": [
           2025,
           2026
         ],
-        "quarterly_target_periods": 32
+        "quarterly_target_periods": 32,
+        "annual_union_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "required_annual_reports": [
+          "balance_sheet",
+          "income_statement",
+          "cash_flow"
+        ],
+        "required_reports_ready": {
+          "balance_sheet": false,
+          "income_statement": false,
+          "cash_flow": false
+        },
+        "annual_years_by_report": {
+          "balance_sheet": [],
+          "income_statement": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "cash_flow": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "ratio": [
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        }
       },
       "warnings": [
         "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
@@ -2254,8 +2527,42 @@
               "value": 8827273177000.0
             }
           ],
-          "capex": [],
-          "fcf": [],
+          "capex": [
+            {
+              "period": "2022",
+              "value": -1762010725000.0
+            },
+            {
+              "period": "2023",
+              "value": -1741501711000.0
+            },
+            {
+              "period": "2024",
+              "value": -1579637141000.0
+            },
+            {
+              "period": "2025",
+              "value": -1456914053000.0
+            }
+          ],
+          "fcf": [
+            {
+              "period": "2022",
+              "value": 6906126324000.0
+            },
+            {
+              "period": "2023",
+              "value": 7944435828000.0
+            },
+            {
+              "period": "2024",
+              "value": 6307786421000.0
+            },
+            {
+              "period": "2025",
+              "value": 7370359124000.0
+            }
+          ],
           "total_assets": [],
           "current_assets": [],
           "current_liabilities": [],
@@ -2333,6 +2640,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,
@@ -2587,6 +2902,14 @@
           "cip": [],
           "other": []
         },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
+        },
         "report_availability": {
           "balance_sheet": false,
           "income_statement": true,
@@ -2601,21 +2924,56 @@
       "analysis_model": "generic",
       "source": "KBS via Vnstock community (guest)",
       "provider": "vnstock",
+      "status": "partial",
+      "source_as_of": "2025",
+      "source_generated_at": "2026-08-16T07:25:35.925565+00:00",
       "coverage": {
-        "annual_years": [
-          2022,
-          2023,
-          2024,
-          2025
-        ],
-        "annual_periods": 4,
+        "annual_years": [],
+        "annual_periods": 0,
         "minimum_annual_periods": 8,
         "minimum_met": false,
         "quarterly_years": [
           2025,
           2026
         ],
-        "quarterly_target_periods": 32
+        "quarterly_target_periods": 32,
+        "annual_union_years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "required_annual_reports": [
+          "balance_sheet",
+          "income_statement",
+          "cash_flow"
+        ],
+        "required_reports_ready": {
+          "balance_sheet": false,
+          "income_statement": false,
+          "cash_flow": false
+        },
+        "annual_years_by_report": {
+          "balance_sheet": [],
+          "income_statement": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "cash_flow": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "ratio": [
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        }
       },
       "warnings": [
         "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
@@ -2820,8 +3178,42 @@
               "value": 2299239828000.0
             }
           ],
-          "capex": [],
-          "fcf": [],
+          "capex": [
+            {
+              "period": "2022",
+              "value": -1676123112000.0
+            },
+            {
+              "period": "2023",
+              "value": -1479931826000.0
+            },
+            {
+              "period": "2024",
+              "value": -1177219494000.0
+            },
+            {
+              "period": "2025",
+              "value": -1365689144000.0
+            }
+          ],
+          "fcf": [
+            {
+              "period": "2022",
+              "value": 465899449000.0
+            },
+            {
+              "period": "2023",
+              "value": 46890726000.0
+            },
+            {
+              "period": "2024",
+              "value": -1180089812000.0
+            },
+            {
+              "period": "2025",
+              "value": 933550684000.0
+            }
+          ],
           "total_assets": [],
           "current_assets": [],
           "current_liabilities": [],
@@ -2899,6 +3291,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,
@@ -3152,6 +3552,14 @@
           "ppe": [],
           "cip": [],
           "other": []
+        },
+        "reconciliation": {
+          "asset_mix": [],
+          "total_debt_components_complete": false
+        },
+        "derivations": {
+          "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+          "total_debt": "short debt + long debt; omitted unless both components are available"
         },
         "report_availability": {
           "balance_sheet": false,

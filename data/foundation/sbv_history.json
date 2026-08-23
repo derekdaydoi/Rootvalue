@@ -1,10 +1,87 @@
 {
-  "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T07:32:17.343332+00:00",
+  "schema_version": "1.2.0",
+  "generated_at": "2026-08-23T15:34:04.342536+00:00",
   "status": "accumulating",
-  "history_type": "official daily capture history",
-  "warning": "This is not yet a 2018-backfilled series. It accumulates verified SBV observations from the date Rootvalue started capturing them.",
+  "validation_status": "pass",
+  "history_type": "official per-dataset source-dated observation history",
+  "warning": "This is not a 2018-backfilled series. Money/deposit and OMO records are independent; fetch dates are audit metadata and never observation dates.",
+  "blocked_reasons": [],
+  "dataset_status": {
+    "money_supply_deposits": {
+      "status": "pass",
+      "validation_status": "pass",
+      "source_observation_date": "2025-09-16",
+      "schema_fingerprint": "be0d8abc3ff8c827",
+      "errors": []
+    },
+    "omo_latest": {
+      "status": "pass",
+      "validation_status": "pass",
+      "source_observation_date": "2026-08-22",
+      "schema_fingerprint": "1ce765c9c6f3380f",
+      "errors": []
+    }
+  },
   "observations": [
+    {
+      "dataset": "money_supply_deposits",
+      "source_date": "2025-09-16",
+      "source_observation_date": "2025-09-16",
+      "source_as_of": "2025-09-16",
+      "capture_date": "2025-09-16",
+      "fetched_at": "2026-08-23T15:24:25.764779+00:00",
+      "schema_fingerprint": "be0d8abc3ff8c827",
+      "provenance": "primary_official_observation",
+      "source": "State Bank of Vietnam official website",
+      "m2_balance_bn_vnd": 20414616.0,
+      "m2_growth_ytd_pct": 4.99,
+      "corp_deposit_bn_vnd": 6371536.0,
+      "corp_deposit_growth_ytd_pct": 3.09,
+      "household_deposit_bn_vnd": 11068825.0,
+      "household_deposit_growth_ytd_pct": 7.1,
+      "observation_key": "6b07e4e2554b81152ebdd9dfc3a824c2ecf52cd4ae66904f53de9b4e2ec7c91c",
+      "source_table_id": "money_supply_deposits:be0d8abc3ff8c827"
+    },
+    {
+      "dataset": "omo_latest",
+      "source_date": "2026-08-22",
+      "source_observation_date": "2026-08-22",
+      "source_as_of": "2026-08-22",
+      "capture_date": "2026-08-22",
+      "fetched_at": "2026-08-23T15:24:26.599469+00:00",
+      "schema_fingerprint": "1ce765c9c6f3380f",
+      "provenance": "primary_official_observation",
+      "source": "State Bank of Vietnam official website",
+      "omo_awarded_bn_vnd": 4526.61,
+      "omo_rate_pct": 4.5,
+      "omo_terms": [
+        {
+          "term": "Kỳ hạn 16 ngày",
+          "awarded_bn_vnd": 4526.61,
+          "rate_pct": 4.5
+        },
+        {
+          "term": "Kỳ hạn 35 ngày",
+          "awarded_bn_vnd": 0.0,
+          "rate_pct": 0.0
+        },
+        {
+          "term": "Kỳ hạn 63 ngày",
+          "awarded_bn_vnd": 0.0,
+          "rate_pct": 0.0
+        },
+        {
+          "term": "Kỳ hạn 91 ngày",
+          "awarded_bn_vnd": 0.0,
+          "rate_pct": 0.0
+        }
+      ],
+      "omo_rate_policy": "single official rate across positive-awarded terms only; zero-volume placeholders are excluded and mixed executed rates remain in omo_terms",
+      "observation_key": "9df25e6a2caa06117f3d05483273c21c445b610a63a51358c759252cf501b47c",
+      "source_table_id": "omo_latest:1ce765c9c6f3380f"
+    }
+  ],
+  "quarantined_legacy_observations": [
     {
       "captured_at": "2026-08-16T07:32:17.343332+00:00",
       "capture_date": "2026-08-16",
@@ -39,7 +116,9 @@
           "awarded_bn_vnd": 909.92,
           "rate_pct": 4.5
         }
-      ]
+      ],
+      "quarantine_reason": "legacy observation lacks verifiable per-dataset source metadata",
+      "quarantine_key": "1a88b2ed9d6587d8bdc88824159183652766660bb3d2920c3b4ff62f131cfa96"
     }
   ]
 }

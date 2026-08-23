@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -13,8 +14,6 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "watchlist.json"
-OUT_PATH = ROOT / "data" / "rootvalue.json"
-SCHEMA_VERSION = "1.1.0"
 UTC_NOW = datetime.now(timezone.utc)
 TODAY = UTC_NOW.date()
 HAS_VNSTOCK_KEY = bool(os.getenv("VNSTOCK_API_KEY", "").strip())
@@ -31,9 +30,11 @@ def provider_call(fn: Callable[[], Any]) -> Any:
     elapsed = time.monotonic() - _LAST_CALL
     if _LAST_CALL and elapsed < RATE_SECONDS:
         time.sleep(RATE_SECONDS - elapsed)
-    result = fn()
-    _LAST_CALL = time.monotonic()
-    return result
+    try:
+        return fn()
+    finally:
+        # Errors still consume provider quota; pace subsequent retries too.
+        _LAST_CALL = time.monotonic()
 
 
 def read_json(path: Path, default: Any) -> Any:
@@ -41,6 +42,16 @@ def read_json(path: Path, default: Any) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return default
+
+
+def public_error(value: Any, limit: int = 320) -> str:
+    text = re.sub(r"https?://\S+", "<redacted-url>", str(value or ""))
+    names = r"api[_ -]?key|access[_ -]?token|token|authorization|client[_ -]?secret"
+    quoted = re.compile(rf"(?i)([\"']?(?:{names})[\"']?\s*[:=]\s*)([\"'])(.*?)(\2)")
+    text = quoted.sub(lambda match: f"{match.group(1)}{match.group(2)}<redacted>{match.group(2)}", text)
+    text = re.sub(rf"(?i)([\"']?(?:{names})[\"']?\s*[:=]\s*)(?:Bearer\s+)?[^\s,;}}\]]+", r"\1<redacted>", text)
+    text = re.sub(r"(?i)\bBearer\s+[A-Za-z0-9._~+/=-]+", "Bearer <redacted>", text)
+    return re.sub(r"\s+", " ", text).strip()[:limit] or "provider error"
 
 
 def finite(value: Any) -> float | None:
@@ -141,7 +152,47 @@ def ending_return(frame: pd.DataFrame, window: int, offset: int = 0) -> float | 
     return end / start - 1
 
 
+def align_market_calendars(
+    frame: pd.DataFrame,
+    index_frame: pd.DataFrame,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    stock = frame.copy()
+    benchmark = index_frame.copy()
+    stock["_trading_date"] = stock["date"].map(
+        lambda value: None if pd.isna(value) else pd.Timestamp(value).date()
+    )
+    benchmark["_trading_date"] = benchmark["date"].map(
+        lambda value: None if pd.isna(value) else pd.Timestamp(value).date()
+    )
+    stock = stock.dropna(subset=["_trading_date"]).sort_values("_trading_date").drop_duplicates("_trading_date")
+    benchmark = benchmark.dropna(subset=["_trading_date"]).sort_values("_trading_date").drop_duplicates("_trading_date")
+    if stock.empty or benchmark.empty:
+        raise ValueError("empty stock/index calendar")
+
+    common_dates = sorted(set(stock["_trading_date"]) & set(benchmark["_trading_date"]))
+    if not common_dates:
+        raise ValueError("stock and VNINDEX have no common trading dates")
+    index_snapshot_date = benchmark.iloc[-1]["_trading_date"]
+    latest_common_date = common_dates[-1]
+    if latest_common_date != index_snapshot_date:
+        raise ValueError(
+            f"latest common trading date {latest_common_date.isoformat()} "
+            f"does not match VNINDEX snapshot date {index_snapshot_date.isoformat()}"
+        )
+    if len(common_dates) < 25:
+        raise ValueError(f"insufficient common daily bars: {len(common_dates)}")
+
+    aligned_stock = stock[stock["_trading_date"].isin(common_dates)].sort_values("_trading_date")
+    aligned_index = benchmark[benchmark["_trading_date"].isin(common_dates)].sort_values("_trading_date")
+    return (
+        aligned_stock.drop(columns=["_trading_date"]).reset_index(drop=True),
+        aligned_index.drop(columns=["_trading_date"]).reset_index(drop=True),
+    )
+
+
 def market_metrics(frame: pd.DataFrame, index_frame: pd.DataFrame | None = None) -> dict[str, Any]:
+    if index_frame is not None:
+        frame, index_frame = align_market_calendars(frame, index_frame)
     close = finite(frame.iloc[-1]["close"])
     prev = finite(frame.iloc[-2]["close"])
     ret_1d = None if close is None or prev in (None, 0) else close / prev - 1
@@ -215,7 +266,7 @@ def fetch_market(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
             metric.update({"symbol": symbol, "sector": item.get("sector", "")})
             rows.append(metric)
         except Exception as exc:
-            warnings.append(f"market:{symbol}:{exc}")
+            warnings.append(f"market:{symbol}:{public_error(exc)}")
 
     current = sorted([r for r in rows if r.get("rs_20d_vs_vnindex") is not None], key=lambda r: r["rs_20d_vs_vnindex"], reverse=True)
     prior = sorted([r for r in rows if r.get("rs_20d_vs_vnindex_5d_ago") is not None], key=lambda r: r["rs_20d_vs_vnindex_5d_ago"], reverse=True)
@@ -235,9 +286,11 @@ def fetch_market(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
         else:
             row["state"] = "Neutral"
 
+    aligned_dates = {row.get("as_of") for row in rows if row.get("as_of")}
+    aligned_as_of = next(iter(aligned_dates)) if len(aligned_dates) == 1 else index_summary.get("as_of")
     return {
         "status": "ok" if len(rows) == len(config["symbols"]) else "partial",
-        "as_of": index_summary.get("as_of"),
+        "as_of": aligned_as_of,
         "source": "Vnstock community / Market Unified UI",
         "universe_note": config.get("market_universe_note"),
         "methodology": {
@@ -246,6 +299,7 @@ def fetch_market(config: dict[str, Any], warnings: list[str]) -> dict[str, Any]:
             "rank_delta": "rank 5 sessions ago minus current rank; positive means improving",
             "participation": "5-session average volume / 20-session average volume; volume proxy, not proof of cash transfer",
             "range_position": "(close - 20D low) / (20D high - 20D low)",
+            "calendar_alignment": "Each stock and VNINDEX are aligned on common trading dates; a symbol missing the latest VNINDEX session is excluded.",
         },
         "index": index_summary,
         "rows": rows,
@@ -265,14 +319,14 @@ def fetch_retail_macro(warnings: list[str]) -> tuple[list[dict[str, Any]], list[
                 row = usd.iloc[0]
                 metrics.append({"key": "usd_vcb_sell", "label": "USD/VND VCB", "value": finite(row.get("sell")), "unit": "VND/USD", "as_of": jsonable(row.get("time")), "source": "Vietcombank via Vnstock Retail", "interpretation": "fx_proxy"})
     except Exception as exc:
-        warnings.append(f"macro:fx:{exc}")
+        warnings.append(f"macro:fx:{public_error(exc)}")
     try:
         gold = provider_call(lambda: retail.gold(source="sjc"))
         if isinstance(gold, pd.DataFrame) and not gold.empty:
             row = gold.iloc[0]
             metrics.append({"key": "gold_sjc_sell", "label": "SJC", "value": finite(row.get("sell")), "unit": "provider unit", "as_of": jsonable(row.get("time")), "source": "SJC via Vnstock Retail", "interpretation": "defensive_asset_proxy"})
     except Exception as exc:
-        warnings.append(f"macro:gold:{exc}")
+        warnings.append(f"macro:gold:{public_error(exc)}")
     return metrics, ["Vietcombank + SJC via Vnstock Retail community"]
 
 
@@ -298,7 +352,7 @@ def fetch_optional_sponsor_macro(warnings: list[str]) -> tuple[dict[str, Any], l
         try:
             datasets[key] = df_payload(provider_call(fn), 120)
         except Exception as exc:
-            warnings.append(f"macro:{key}:{exc}")
+            warnings.append(f"macro:{key}:{public_error(exc)}")
     return datasets, (["Vnstock Data sponsor Macro Unified UI"] if datasets else [])
 
 
@@ -361,8 +415,9 @@ def fetch_companies(config: dict[str, Any], warnings: list[str]) -> dict[str, An
                 if c:
                     counts.append(c)
             except Exception as exc:
-                warnings.append(f"fundamental:{symbol}:{name}:{exc}")
-                reports[name] = {"columns": [], "rows": [], "error": str(exc)}
+                message = public_error(exc)
+                warnings.append(f"fundamental:{symbol}:{name}:{message}")
+                reports[name] = {"columns": [], "rows": [], "error": message}
         annual_periods = max(counts) if counts else 0
         companies[symbol] = {
             "symbol": symbol,
@@ -394,43 +449,13 @@ def fetch_companies(config: dict[str, Any], warnings: list[str]) -> dict[str, An
     }
 
 
-def main() -> None:
-    config = read_json(CONFIG_PATH, {})
-    previous = read_json(OUT_PATH, {})
-    warnings: list[str] = []
-    errors: list[str] = []
-    snapshot: dict[str, Any] = {
-        "schema_version": SCHEMA_VERSION,
-        "generated_at": UTC_NOW.isoformat(),
-        "pipeline_status": "partial",
-        "meta": {
-            "principle": "Missing data stays missing. No fabricated financial or macro values.",
-            "market_universe": "V1 validation watchlist",
-            "python": os.sys.version.split()[0],
-            "vnstock_auth": "community_key" if HAS_VNSTOCK_KEY else "guest",
-            "provider_interval_seconds": RATE_SECONDS,
-        },
-    }
-
-    # Fundamentals first because long-history company analysis is the primary V1 requirement.
-    for key, fn in (
-        ("companies", lambda: fetch_companies(config, warnings)),
-        ("market", lambda: fetch_market(config, warnings)),
-        ("macro", lambda: fetch_macro(warnings)),
-    ):
-        try:
-            snapshot[key] = fn()
-        except Exception as exc:
-            errors.append(f"{key}:{exc}")
-            snapshot[key] = preserve_previous(previous, key, str(exc))
-
-    statuses = [snapshot.get(k, {}).get("status") for k in ("market", "macro", "companies")]
-    snapshot["pipeline_status"] = "ok" if all(s == "ok" for s in statuses) else ("partial" if any(s in {"ok", "partial", "stale"} for s in statuses) else "error")
-    snapshot["health"] = {"errors": errors, "warnings": warnings}
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
-    print(f"Rootvalue snapshot: status={snapshot['pipeline_status']} warnings={len(warnings)} errors={len(errors)} auth={'key' if HAS_VNSTOCK_KEY else 'guest'}")
+def main() -> int:
+    print(
+        "scripts/update_data.py is a legacy library module and is not allowed to overwrite "
+        "data/rootvalue.json. Run update_market.py and publish_foundation.py instead."
+    )
+    return 2
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

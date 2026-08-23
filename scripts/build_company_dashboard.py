@@ -21,9 +21,19 @@ def load(path: Path, default: Any) -> Any:
         return default
 
 
-def save(path: Path, payload: Any) -> None:
+def semantic_payload(payload: Any) -> Any:
+    if not isinstance(payload, dict):
+        return payload
+    return {key: value for key, value in payload.items() if key != "generated_at"}
+
+
+def save(path: Path, payload: Any) -> bool:
+    previous = load(path, {})
+    if previous and semantic_payload(previous) == semantic_payload(payload):
+        return False
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
+    return True
 
 
 def finite(v: Any) -> float | None:
@@ -67,20 +77,33 @@ def row_identity(row: dict[str, Any]) -> tuple[str, str]:
     return norm(item_id), norm(item)
 
 
-def choose_row(rows: list[dict[str, Any]], ids: list[str] = [], contains: list[str] = [], prefer: list[str] = []) -> dict[str, Any] | None:
-    idset = {norm(x) for x in ids}
+def choose_row(
+    rows: list[dict[str, Any]],
+    ids: list[str] | None = None,
+    contains: list[str] | None = None,
+    prefer: list[str] | None = None,
+) -> dict[str, Any] | None:
+    normalized_ids = [norm(x) for x in (ids or [])]
+    contains = [norm(x) for x in (contains or []) if norm(x)]
+    prefer = [norm(x) for x in (prefer or []) if norm(x)]
+
+    # Exact provider IDs are authoritative and retain the caller's priority order.
+    for expected_id in normalized_ids:
+        for row in rows:
+            item_id, _ = row_identity(row)
+            if item_id == expected_id:
+                return row
+
     candidates: list[tuple[int, dict[str, Any]]] = []
     for row in rows:
         item_id, item = row_identity(row)
         text = f"{item_id} {item}"
-        score = 0
-        if item_id in idset:
-            score += 100
-        if any(norm(x) in text for x in contains):
-            score += 35
-        score += sum(12 for x in prefer if norm(x) in text)
-        if score:
-            candidates.append((score, row))
+        matched = [token for token in contains if token in text]
+        if not matched:
+            continue
+        # Preference terms may break a real match, but may never create one.
+        score = max(len(token) for token in matched) + sum(12 for token in prefer if token in text)
+        candidates.append((score, row))
     if not candidates:
         return None
     candidates.sort(key=lambda x: x[0], reverse=True)
@@ -153,8 +176,8 @@ def build_frequency(reports: dict[str, Any]) -> dict[str, Any]:
     net_profit = row_series(choose_row(income, ids=["profit_after_tax_for_shareholders_of_parent_company", "net_profit"], contains=["lợi nhuận sau thuế", "net profit"], prefer=["công ty mẹ", "parent"]))
     interest_expense = row_series(choose_row(income, ids=["of_which_interest_expense", "interest_expense"], contains=["chi phí đi vay", "interest expense"]))
 
-    cfo = row_series(choose_row(cashflow, ids=["net_cash_flows_from_operating_activities", "net_cash_flow_from_operating_activities"], contains=["lưu chuyển tiền thuần từ hoạt động kinh doanh", "net cash flow from operating"]))
-    capex = row_series(choose_row(cashflow, ids=["purchase_of_fixed_assets", "purchase_of_fixed_assets_and_other_long_term_assets"], contains=["mua sắm, xây dựng tài sản cố định", "purchase of fixed assets"]))
+    cfo = row_series(choose_row(cashflow, ids=["operating_cash_flow", "net_cash_flows_from_operating_activities", "net_cash_flow_from_operating_activities"], contains=["lưu chuyển tiền thuần từ hoạt động kinh doanh", "net cash flow from operating"]))
+    capex = row_series(choose_row(cashflow, ids=["payment_for_fixed_assets_constructions_and_other_long_term_assets", "purchase_of_fixed_assets", "purchase_of_fixed_assets_and_other_long_term_assets"], contains=["mua sắm, xây dựng tài sản cố định", "mua sắm, xây dựng tscđ", "purchase of fixed assets"]))
 
     total_assets = row_series(choose_row(balance, ids=["total_assets", "total_asset"], contains=["tổng cộng tài sản", "tổng tài sản", "total assets"]))
     current_assets = row_series(choose_row(balance, ids=["current_assets", "total_current_assets"], contains=["tài sản ngắn hạn", "current assets"]))
@@ -173,21 +196,47 @@ def build_frequency(reports: dict[str, Any]) -> dict[str, Any]:
     operating_nwc = []
     if receivables and inventory and payables:
         operating_nwc = sum_series(receivables, inventory, [{"period": x["period"], "value": -x["value"]} for x in payables])
-    total_debt = sum_series(short_debt, long_debt) if short_debt and long_debt else (short_debt or long_debt)
+    # A missing debt component is unknown, not zero; do not label a partial sum as total debt.
+    total_debt = sum_series(short_debt, long_debt) if short_debt and long_debt else []
     gross_margin = binary_series(gross_profit, revenue, lambda a, b: a / b if b else None)
     net_margin = binary_series(net_profit, revenue, lambda a, b: a / b if b else None)
     cfo_to_profit = binary_series(cfo, net_profit, lambda a, b: a / b if b else None)
     fcf = sum_series(cfo, capex) if cfo and capex else []
 
-    asset_other: list[dict[str, Any]] = []
+    asset_components = {
+        "cash": cash,
+        "receivables": receivables,
+        "inventory": inventory,
+        "ppe": ppe,
+        "cip": cip,
+    }
+    safe_asset_mix: dict[str, list[dict[str, Any]]] = {key: [] for key in (*asset_components, "other")}
+    asset_reconciliation: list[dict[str, Any]] = []
     if total_assets:
-        periods, maps = align(total_assets, cash, receivables, inventory, ppe, cip)
+        component_names = list(asset_components)
+        periods, maps = align(total_assets, *(asset_components[name] for name in component_names))
         for p in periods:
             total = maps[0].get(p)
             if total is None:
                 continue
-            known = sum((m.get(p) or 0) for m in maps[1:])
-            asset_other.append({"period": p, "value": max(float(total - known), 0.0)})
+            values = [m.get(p) for m in maps[1:]]
+            missing = [name for name, value in zip(component_names, values) if value is None]
+            if missing:
+                asset_reconciliation.append({"period": p, "status": "incomplete", "missing_components": missing})
+                continue
+            if total < 0 or any(value is not None and value < 0 for value in values):
+                asset_reconciliation.append({"period": p, "status": "invalid_negative_component"})
+                continue
+            known = float(sum(value for value in values if value is not None))
+            residual = float(total - known)
+            tolerance = max(abs(float(total)) * 1e-6, 1.0)
+            if residual < -tolerance:
+                asset_reconciliation.append({"period": p, "status": "components_exceed_total", "difference": residual})
+                continue
+            for name, value in zip(component_names, values):
+                safe_asset_mix[name].append({"period": p, "value": float(value)})
+            safe_asset_mix["other"].append({"period": p, "value": max(residual, 0.0)})
+            asset_reconciliation.append({"period": p, "status": "reconciled", "difference": residual})
 
     return {
         "series": {
@@ -223,13 +272,14 @@ def build_frequency(reports: dict[str, Any]) -> dict[str, Any]:
             "net_margin": net_margin,
             "cfo_to_profit": cfo_to_profit,
         },
-        "asset_mix": {
-            "cash": cash,
-            "receivables": receivables,
-            "inventory": inventory,
-            "ppe": ppe,
-            "cip": cip,
-            "other": asset_other,
+        "asset_mix": safe_asset_mix,
+        "reconciliation": {
+            "asset_mix": asset_reconciliation,
+            "total_debt_components_complete": bool(short_debt and long_debt),
+        },
+        "derivations": {
+            "fcf": "CFO + signed cash outflow for fixed-asset purchases",
+            "total_debt": "short debt + long debt; omitted unless both components are available",
         },
         "report_availability": {
             "balance_sheet": bool(balance),
@@ -258,6 +308,9 @@ def main() -> None:
             "analysis_model": "banking" if sector == "Banking" else "generic",
             "source": raw.get("source"),
             "provider": raw.get("provider"),
+            "status": raw.get("status"),
+            "source_as_of": raw.get("source_as_of") or max(raw.get("coverage", {}).get("annual_years", []) or [None]),
+            "source_generated_at": raw.get("generated_at"),
             "coverage": raw.get("coverage", {}),
             "warnings": raw.get("warnings", []),
             "annual": build_frequency(reports.get("annual", {})),
@@ -270,8 +323,8 @@ def main() -> None:
         "policy": "All chart values are generated from normalized financial statements. Missing facts remain missing; no synthetic values are inserted.",
         "companies": companies,
     }
-    save(OUT, payload)
-    print(json.dumps({"companies": len(companies), "output": str(OUT.relative_to(ROOT))}, ensure_ascii=False))
+    changed = save(OUT, payload)
+    print(json.dumps({"companies": len(companies), "output": str(OUT.relative_to(ROOT)), "changed": changed}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

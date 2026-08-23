@@ -13,7 +13,10 @@
       "source": "State Bank of Vietnam official website",
       "provenance": "primary_official",
       "numeric_locale": "vi-VN: decimal comma, thousands dot",
-      "as_of": null,
+      "source_date": "2025-09-16",
+      "source_date_evidence": "dated page label",
+      "fetched_at": "2026-08-23T15:24:25.764779+00:00",
+      "schema_fingerprint": "be0d8abc3ff8c827",
       "tables": [
         {
           "columns": [
@@ -50,7 +53,11 @@
           ],
           "row_count": 5
         }
-      ]
+      ],
+      "failure_kind": null,
+      "transient_error": false,
+      "http_succeeded": true,
+      "refresh_status": "fresh"
     },
     "omo_latest": {
       "status": "ok",
@@ -59,7 +66,10 @@
       "source": "State Bank of Vietnam official website",
       "provenance": "primary_official",
       "numeric_locale": "vi-VN: decimal comma, thousands dot",
-      "as_of": null,
+      "source_date": "2026-08-22",
+      "source_date_evidence": "Vietnamese body date: Ngày DD tháng MM năm YYYY",
+      "fetched_at": "2026-08-23T15:24:26.599469+00:00",
+      "schema_fingerprint": "1ce765c9c6f3380f",
       "tables": [
         {
           "columns": [
@@ -76,39 +86,43 @@
               "Mua kỳ hạn"
             ],
             [
-              "- Kỳ hạn 7 ngày",
-              "4/4",
-              "6307.47",
+              "- Kỳ hạn 16 ngày",
+              "1/1",
+              "4526.61",
               "4.5"
             ],
             [
               "- Kỳ hạn 35 ngày",
-              "4/4",
-              "3466.54",
-              "4.5"
+              "0",
+              ".00",
+              "0"
             ],
             [
               "- Kỳ hạn 63 ngày",
-              "1/1",
-              "210.17",
-              "4.5"
+              "0",
+              ".00",
+              "0"
             ],
             [
               "- Kỳ hạn 91 ngày",
-              "3/3",
-              "909.92",
-              "4.5"
+              "0",
+              ".00",
+              "0"
             ],
             [
               "Tổng cộng",
               null,
-              "10894.10",
+              "4526.61",
               null
             ]
           ],
           "row_count": 6
         }
-      ]
+      ],
+      "failure_kind": null,
+      "transient_error": false,
+      "http_succeeded": true,
+      "refresh_status": "fresh"
     }
   },
   "coverage": {
@@ -139,7 +153,114 @@
   },
   "official_validation": {
     "status": "pass",
+    "datasets": {
+      "money_supply_deposits": {
+        "status": "pass",
+        "checks": {
+          "source": {
+            "status": "pass",
+            "errors": [],
+            "source_status": "ok"
+          },
+          "date": {
+            "status": "pass",
+            "errors": [],
+            "source_date": "2025-09-16",
+            "parsed_date": "2025-09-16"
+          },
+          "schema": {
+            "status": "pass",
+            "errors": [],
+            "schema_fingerprint": "be0d8abc3ff8c827"
+          },
+          "table": {
+            "status": "pass",
+            "errors": [],
+            "table_count": 1,
+            "required_rows": [
+              "corporate_deposits",
+              "household_deposits",
+              "m2"
+            ],
+            "observed_rows": [
+              "corporate_deposits",
+              "household_deposits",
+              "m2"
+            ]
+          },
+          "numeric": {
+            "status": "pass",
+            "errors": [],
+            "numeric_row_count": 3
+          }
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "omo_latest": {
+        "status": "pass",
+        "checks": {
+          "source": {
+            "status": "pass",
+            "errors": [],
+            "source_status": "ok"
+          },
+          "date": {
+            "status": "pass",
+            "errors": [],
+            "source_date": "2026-08-22",
+            "parsed_date": "2026-08-22"
+          },
+          "schema": {
+            "status": "pass",
+            "errors": [],
+            "schema_fingerprint": "1ce765c9c6f3380f"
+          },
+          "table": {
+            "status": "pass",
+            "errors": [],
+            "table_count": 1,
+            "term_rows": 4,
+            "total_rows": 1
+          },
+          "numeric": {
+            "status": "pass",
+            "errors": [],
+            "numeric_rates": 4,
+            "numeric_term_volumes": 4,
+            "numeric_totals": 1
+          }
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "errors": [],
     "warnings": [],
-    "policy": "Official SBV tables are not promoted into historical state series until dates/schema are validated."
+    "validated_source_dates": {
+      "money_supply_deposits": "2025-09-16",
+      "omo_latest": "2026-08-22"
+    },
+    "policy": "Each official SBV dataset is promoted independently only when its own source date, schema, table shape and numeric values pass validation."
+  },
+  "official_refresh": {
+    "status": "ok",
+    "last_attempt_at": "2026-08-23T15:24:26.601824+00:00",
+    "datasets": {
+      "money_supply_deposits": {
+        "status": "ok",
+        "failure_kind": null,
+        "kept_last_known_good": false,
+        "source_observation_date": "2025-09-16"
+      },
+      "omo_latest": {
+        "status": "ok",
+        "failure_kind": null,
+        "kept_last_known_good": false,
+        "source_observation_date": "2026-08-22"
+      }
+    },
+    "warnings": [],
+    "policy": "Transient import/network failures retain last-known-good official data; successful HTTP responses must pass date, schema, table and numeric validation."
   }
 }

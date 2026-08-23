@@ -8,7 +8,7 @@
     .health-list{gap:0!important}
     .health-item-v2{display:grid!important;grid-template-columns:92px minmax(0,1fr);gap:16px!important;align-items:start!important;padding:15px 0!important;border-bottom:1px solid var(--line)!important;color:var(--ink)!important}
     .health-item-v2:last-child{border-bottom:0!important}
-    .health-badge{display:inline-flex;align-items:center;justify-content:center;width:max-content;min-width:78px;padding:5px 8px;border-radius:999px;font-size:9px;font-weight:750;letter-spacing:.45px;background:var(--warning-soft);color:var(--warning)}
+    .health-badge{display:inline-flex;align-items:center;justify-content:center;width:max-content;min-width:78px;padding:5px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.2px;background:var(--warning-soft);color:var(--warning)}
     .health-item-v2.error .health-badge{background:var(--danger-soft);color:var(--danger)}
     .health-item-v2.ok .health-badge{background:var(--brand-soft);color:var(--brand)}
     .health-copy{min-width:0}

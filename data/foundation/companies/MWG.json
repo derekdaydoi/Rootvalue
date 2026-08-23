@@ -7,32 +7,67 @@
   "provenance": "secondary_normalized_provider",
   "access_mode": "guest",
   "coverage": {
-    "annual_years": [
-      2022,
-      2023,
-      2024,
-      2025
-    ],
-    "annual_periods": 4,
+    "annual_years": [],
+    "annual_periods": 0,
     "minimum_annual_periods": 8,
     "minimum_met": false,
     "quarterly_years": [
       2025,
       2026
     ],
-    "quarterly_target_periods": 32
+    "quarterly_target_periods": 32,
+    "annual_union_years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "required_annual_reports": [
+      "balance_sheet",
+      "income_statement",
+      "cash_flow"
+    ],
+    "required_reports_ready": {
+      "balance_sheet": false,
+      "income_statement": false,
+      "cash_flow": false
+    },
+    "annual_years_by_report": {
+      "balance_sheet": [],
+      "income_statement": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "cash_flow": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "ratio": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    }
   },
   "status": "partial",
   "reports": {
     "annual": {
       "balance_sheet": {
-        "status": "ok",
+        "status": "empty",
         "years": [],
         "data": {
           "columns": [],
           "rows": [],
           "row_count": 0
-        }
+        },
+        "refresh_status": "empty",
+        "periods": [],
+        "source_as_of": null
       },
       "income_statement": {
         "status": "ok",
@@ -1167,13 +1202,16 @@
     },
     "quarterly": {
       "balance_sheet": {
-        "status": "ok",
+        "status": "empty",
         "years": [],
         "data": {
           "columns": [],
           "rows": [],
           "row_count": 0
-        }
+        },
+        "refresh_status": "empty",
+        "periods": [],
+        "source_as_of": null
       },
       "income_statement": {
         "status": "ok",
@@ -1396,13 +1434,16 @@
         }
       },
       "cash_flow": {
-        "status": "ok",
+        "status": "empty",
         "years": [],
         "data": {
           "columns": [],
           "rows": [],
           "row_count": 0
-        }
+        },
+        "refresh_status": "empty",
+        "periods": [],
+        "source_as_of": null
       },
       "ratio": {
         "status": "ok",
@@ -1893,5 +1934,7 @@
   "warnings": [
     "annual.balance_sheet fallback: balance_sheet fallback returned empty; 'function' object has no attribute 'balance_sheet'"
   ],
-  "policy": "No synthetic values. Missing periods remain missing."
+  "policy": "No synthetic values. Missing periods remain missing.",
+  "source_as_of": "2025",
+  "stale_reports": []
 }
