@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-25T17:44:49.425367+00:00",
+  "generated_at": "2026-08-25T18:56:18.763563+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-08-24",
-      "latest": 0.38,
-      "previous": 0.2,
-      "change": 0.18,
+      "as_of": "2026-08-25",
+      "latest": 0.405,
+      "previous": 0.38,
+      "change": 0.025000000000000022,
       "history": [
-        {
-          "date": "2024-12-17",
-          "value": 118.093
-        },
         {
           "date": "2024-12-18",
           "value": 131.651
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-08-24",
           "value": 0.38
+        },
+        {
+          "date": "2026-08-25",
+          "value": 0.405
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
@@ -13569,6 +13569,13 @@
   "news": [
     {
       "source": "Federal Reserve",
+      "title": "Minutes of the Board's discount rate meetings on July 20 and July 29, 2026",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260825a.htm",
+      "published": "Tue, 25 Aug 2026 18:00:00 GMT",
+      "summary": "Minutes of the Board&#39;s discount rate meetings on July 20 and July 29, 2026"
+    },
+    {
+      "source": "Federal Reserve",
       "title": "Minutes of the Federal Open Market Committee, July 28–29, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260819a.htm",
       "published": "Wed, 19 Aug 2026 18:00:00 GMT",
@@ -13643,13 +13650,6 @@
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260414a.htm",
       "published": "Tue, 14 Apr 2026 18:00:00 GMT",
       "summary": "Minutes of the Board’s discount rate meetings on February 9 and March 18, 2026"
-    },
-    {
-      "source": "Federal Reserve",
-      "title": "Minutes of the Federal Open Market Committee, March 17–18, 2026",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260408a.htm",
-      "published": "Wed, 8 Apr 2026 18:00:00 GMT",
-      "summary": "Minutes of the Federal Open Market Committee, March 17–18, 2026"
     },
     {
       "source": "ECB",
