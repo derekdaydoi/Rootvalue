@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-26T16:58:36.332288+00:00",
+  "generated_at": "2026-08-26T19:19:21.484045+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-08-25",
-      "latest": 0.405,
-      "previous": 0.38,
-      "change": 0.025000000000000022,
+      "as_of": "2026-08-26",
+      "latest": 0.702,
+      "previous": 0.405,
+      "change": 0.29699999999999993,
       "history": [
-        {
-          "date": "2024-12-18",
-          "value": 131.651
-        },
         {
           "date": "2024-12-19",
           "value": 112.417
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-08-25",
           "value": 0.405
+        },
+        {
+          "date": "2026-08-26",
+          "value": 0.702
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
@@ -11873,31 +11873,11 @@
     "wti": {
       "status": "ok",
       "series_id": "DCOILWTICO",
-      "as_of": "2026-08-18",
-      "latest": 86.48,
-      "previous": 86.04,
-      "change": 0.4399999999999977,
+      "as_of": "2026-08-25",
+      "latest": 83.9,
+      "previous": 86.34,
+      "change": -2.4399999999999977,
       "history": [
-        {
-          "date": "2024-12-10",
-          "value": 68.85
-        },
-        {
-          "date": "2024-12-11",
-          "value": 70.57
-        },
-        {
-          "date": "2024-12-12",
-          "value": 70.25
-        },
-        {
-          "date": "2024-12-13",
-          "value": 71.54
-        },
-        {
-          "date": "2024-12-16",
-          "value": 71.03
-        },
         {
           "date": "2024-12-17",
           "value": 70.31
@@ -13557,6 +13537,26 @@
         {
           "date": "2026-08-18",
           "value": 86.48
+        },
+        {
+          "date": "2026-08-19",
+          "value": 87.28
+        },
+        {
+          "date": "2026-08-20",
+          "value": 89.75
+        },
+        {
+          "date": "2026-08-21",
+          "value": 87.21
+        },
+        {
+          "date": "2026-08-24",
+          "value": 86.34
+        },
+        {
+          "date": "2026-08-25",
+          "value": 83.9
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
