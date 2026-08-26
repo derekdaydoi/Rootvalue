@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-26T09:56:41.264555+00:00",
+  "generated_at": "2026-08-26T10:51:06.376309+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "Piero Cipollone: From vision to delivery: building Europe’s tokenised financial market",
+      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260826~3641116314.en.html",
+      "published": "Wed, 26 Aug 2026 12:15:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Piero Cipollone: Interview with ilsussidiario.net",
       "url": "https://www.ecb.europa.eu//press/inter/date/2026/html/ecb.in260824~fa5acbddea.en.html",
       "published": "Mon, 24 Aug 2026 08:00:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "Decisions taken by the Governing Council of the ECB (in addition to decisions setting interest rates)",
       "url": "https://www.ecb.europa.eu//press/govcdec/otherdec/2026/html/ecb.gc260724~eebbc30622.en.html",
       "published": "Fri, 24 Jul 2026 15:00:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "ECB to extend use of climate factors in Eurosystem collateral framework to non-financial corporate credit claims",
-      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_4~f082ce289d.en.html",
-      "published": "Fri, 24 Jul 2026 12:00:00 +0200",
       "summary": ""
     }
   ],
