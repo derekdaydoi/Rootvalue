@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-25T23:56:36.120440+00:00",
+  "generated_at": "2026-08-27T05:00:21.310446+00:00",
   "policy": "All chart values are generated from normalized financial statements. Missing facts remain missing; no synthetic values are inserted.",
   "companies": {
     "TCB": {
