@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-27T09:45:50.684529+00:00",
+  "generated_at": "2026-08-27T20:29:19.560348+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -8,15 +8,11 @@
     "fed_funds_effective": {
       "status": "ok",
       "series_id": "DFF",
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "latest": 3.63,
       "previous": 3.63,
       "change": 0.0,
       "history": [
-        {
-          "date": "2025-07-02",
-          "value": 4.33
-        },
         {
           "date": "2025-07-03",
           "value": 4.33
@@ -1691,6 +1687,10 @@
         },
         {
           "date": "2026-08-25",
+          "value": 3.63
+        },
+        {
+          "date": "2026-08-26",
           "value": 3.63
         }
       ],
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-08-26",
-      "latest": 0.702,
-      "previous": 0.405,
-      "change": 0.29699999999999993,
+      "as_of": "2026-08-27",
+      "latest": 0.456,
+      "previous": 0.702,
+      "change": -0.24599999999999994,
       "history": [
-        {
-          "date": "2024-12-19",
-          "value": 112.417
-        },
         {
           "date": "2024-12-20",
           "value": 98.356
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-08-26",
           "value": 0.702
+        },
+        {
+          "date": "2026-08-27",
+          "value": 0.456
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
@@ -6788,15 +6788,11 @@
     "us_2y": {
       "status": "ok",
       "series_id": "DGS2",
-      "as_of": "2026-08-25",
-      "latest": 4.17,
-      "previous": 4.24,
-      "change": -0.07000000000000028,
+      "as_of": "2026-08-26",
+      "latest": 4.19,
+      "previous": 4.17,
+      "change": 0.020000000000000462,
       "history": [
-        {
-          "date": "2024-12-19",
-          "value": 4.32
-        },
         {
           "date": "2024-12-20",
           "value": 4.3
@@ -8472,6 +8468,10 @@
         {
           "date": "2026-08-25",
           "value": 4.17
+        },
+        {
+          "date": "2026-08-26",
+          "value": 4.19
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DGS2",
@@ -8483,15 +8483,11 @@
     "us_10y": {
       "status": "ok",
       "series_id": "DGS10",
-      "as_of": "2026-08-25",
-      "latest": 4.64,
-      "previous": 4.7,
-      "change": -0.0600000000000005,
+      "as_of": "2026-08-26",
+      "latest": 4.66,
+      "previous": 4.64,
+      "change": 0.020000000000000462,
       "history": [
-        {
-          "date": "2024-12-19",
-          "value": 4.57
-        },
         {
           "date": "2024-12-20",
           "value": 4.52
@@ -10167,6 +10163,10 @@
         {
           "date": "2026-08-25",
           "value": 4.64
+        },
+        {
+          "date": "2026-08-26",
+          "value": 4.66
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DGS10",
@@ -10178,15 +10178,11 @@
     "vix": {
       "status": "ok",
       "series_id": "VIXCLS",
-      "as_of": "2026-08-25",
-      "latest": 15.45,
-      "previous": 15.85,
-      "change": -0.40000000000000036,
+      "as_of": "2026-08-26",
+      "latest": 15.21,
+      "previous": 15.45,
+      "change": -0.23999999999999844,
       "history": [
-        {
-          "date": "2025-01-09",
-          "value": 18.07
-        },
         {
           "date": "2025-01-10",
           "value": 19.54
@@ -11862,6 +11858,10 @@
         {
           "date": "2026-08-25",
           "value": 15.45
+        },
+        {
+          "date": "2026-08-26",
+          "value": 15.21
         }
       ],
       "url": "https://fred.stlouisfed.org/series/VIXCLS",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "Meeting of 22-23 July 2026",
+      "url": "https://www.ecb.europa.eu//press/accounts/2026/html/ecb.mg260827~f06c21fd54.en.html",
+      "published": "Thu, 27 Aug 2026 13:30:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Piero Cipollone: From vision to delivery: building Europe’s tokenised financial market",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260826~3641116314.en.html",
       "published": "Wed, 26 Aug 2026 12:15:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "Philip R. Lane: Outlook for the euro area economy",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260724~d484b483b9.en.pdf",
       "published": "Fri, 24 Jul 2026 17:30:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "Decisions taken by the Governing Council of the ECB (in addition to decisions setting interest rates)",
-      "url": "https://www.ecb.europa.eu//press/govcdec/otherdec/2026/html/ecb.gc260724~eebbc30622.en.html",
-      "published": "Fri, 24 Jul 2026 15:00:00 +0200",
       "summary": ""
     }
   ],
