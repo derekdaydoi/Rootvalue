@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-28T05:22:39.349213+00:00",
+  "generated_at": "2026-08-28T18:40:05.939385+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-08-27",
-      "latest": 0.456,
-      "previous": 0.702,
-      "change": -0.24599999999999994,
+      "as_of": "2026-08-28",
+      "latest": 0.175,
+      "previous": 0.456,
+      "change": -0.281,
       "history": [
-        {
-          "date": "2024-12-20",
-          "value": 98.356
-        },
         {
           "date": "2024-12-23",
           "value": 116.004
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-08-27",
           "value": 0.456
+        },
+        {
+          "date": "2026-08-28",
+          "value": 0.175
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
@@ -10178,15 +10178,11 @@
     "vix": {
       "status": "ok",
       "series_id": "VIXCLS",
-      "as_of": "2026-08-26",
-      "latest": 15.21,
-      "previous": 15.45,
-      "change": -0.23999999999999844,
+      "as_of": "2026-08-27",
+      "latest": 14.51,
+      "previous": 15.21,
+      "change": -0.7000000000000011,
       "history": [
-        {
-          "date": "2025-01-10",
-          "value": 19.54
-        },
         {
           "date": "2025-01-13",
           "value": 19.19
@@ -11862,6 +11858,10 @@
         {
           "date": "2026-08-26",
           "value": 15.21
+        },
+        {
+          "date": "2026-08-27",
+          "value": 14.51
         }
       ],
       "url": "https://fred.stlouisfed.org/series/VIXCLS",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "Isabel Schnabel: Central banks on-chain",
+      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html",
+      "published": "Fri, 28 Aug 2026 18:00:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Meeting of 22-23 July 2026",
       "url": "https://www.ecb.europa.eu//press/accounts/2026/html/ecb.mg260827~f06c21fd54.en.html",
       "published": "Thu, 27 Aug 2026 13:30:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "ECB wage tracker at 2.7% in Q1 2027, indicating stable negotiated wage pressures",
       "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260729~4ad7508d8a.en.html",
       "published": "Wed, 29 Jul 2026 10:00:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "Philip R. Lane: Outlook for the euro area economy",
-      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260724~d484b483b9.en.pdf",
-      "published": "Fri, 24 Jul 2026 17:30:00 +0200",
       "summary": ""
     }
   ],
