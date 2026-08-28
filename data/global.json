@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-27T20:29:19.560348+00:00",
+  "generated_at": "2026-08-28T05:22:39.349213+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -1703,15 +1703,11 @@
     "fed_total_assets": {
       "status": "ok",
       "series_id": "WALCL",
-      "as_of": "2026-08-19",
-      "latest": 6745699.0,
-      "previous": 6759955.0,
-      "change": -14256.0,
+      "as_of": "2026-08-26",
+      "latest": 6730912.0,
+      "previous": 6745699.0,
+      "change": -14787.0,
       "history": [
-        {
-          "date": "2018-08-08",
-          "value": 4258030.0
-        },
         {
           "date": "2018-08-15",
           "value": 4228924.0
@@ -3387,6 +3383,10 @@
         {
           "date": "2026-08-19",
           "value": 6745699.0
+        },
+        {
+          "date": "2026-08-26",
+          "value": 6730912.0
         }
       ],
       "url": "https://fred.stlouisfed.org/series/WALCL",
