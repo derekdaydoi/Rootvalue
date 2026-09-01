@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-01T14:52:29.719908+00:00",
+  "generated_at": "2026-09-01T18:29:30.867198+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-08-31",
-      "latest": 6.726,
-      "previous": 0.175,
-      "change": 6.551,
+      "as_of": "2026-09-01",
+      "latest": 0.725,
+      "previous": 6.726,
+      "change": -6.001,
       "history": [
-        {
-          "date": "2024-12-24",
-          "value": 180.989
-        },
         {
           "date": "2024-12-26",
           "value": 196.818
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-08-31",
           "value": 6.726
+        },
+        {
+          "date": "2026-09-01",
+          "value": 0.725
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "Boris Vujčić: Listening to households: expectations, behaviour and monetary policy",
+      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260901~bb28f33f54.en.html",
+      "published": "Tue, 01 Sep 2026 18:00:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Isabel Schnabel: Central banks on-chain",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html",
       "published": "Fri, 28 Aug 2026 18:00:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "Digital euro app to incorporate highest accessibility standards",
       "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260730~3b3bfbb565.en.html",
       "published": "Thu, 30 Jul 2026 10:00:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "ECB wage tracker at 2.7% in Q1 2027, indicating stable negotiated wage pressures",
-      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260729~4ad7508d8a.en.html",
-      "published": "Wed, 29 Jul 2026 10:00:00 +0200",
       "summary": ""
     }
   ],
