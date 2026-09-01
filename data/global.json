@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-01T18:29:30.867198+00:00",
+  "generated_at": "2026-09-01T21:45:45.299903+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -8,23 +8,11 @@
     "fed_funds_effective": {
       "status": "ok",
       "series_id": "DFF",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "latest": 3.63,
       "previous": 3.63,
       "change": 0.0,
       "history": [
-        {
-          "date": "2025-07-05",
-          "value": 4.33
-        },
-        {
-          "date": "2025-07-06",
-          "value": 4.33
-        },
-        {
-          "date": "2025-07-07",
-          "value": 4.33
-        },
         {
           "date": "2025-07-08",
           "value": 4.33
@@ -1691,6 +1679,18 @@
         },
         {
           "date": "2026-08-28",
+          "value": 3.63
+        },
+        {
+          "date": "2026-08-29",
+          "value": 3.63
+        },
+        {
+          "date": "2026-08-30",
+          "value": 3.63
+        },
+        {
+          "date": "2026-08-31",
           "value": 3.63
         }
       ],
@@ -6788,15 +6788,11 @@
     "us_2y": {
       "status": "ok",
       "series_id": "DGS2",
-      "as_of": "2026-08-28",
+      "as_of": "2026-08-31",
       "latest": 4.34,
-      "previous": 4.2,
-      "change": 0.13999999999999968,
+      "previous": 4.34,
+      "change": 0.0,
       "history": [
-        {
-          "date": "2024-12-24",
-          "value": 4.29
-        },
         {
           "date": "2024-12-26",
           "value": 4.3
@@ -8472,6 +8468,10 @@
         {
           "date": "2026-08-28",
           "value": 4.34
+        },
+        {
+          "date": "2026-08-31",
+          "value": 4.34
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DGS2",
@@ -8483,15 +8483,11 @@
     "us_10y": {
       "status": "ok",
       "series_id": "DGS10",
-      "as_of": "2026-08-28",
-      "latest": 4.73,
-      "previous": 4.67,
-      "change": 0.0600000000000005,
+      "as_of": "2026-08-31",
+      "latest": 4.75,
+      "previous": 4.73,
+      "change": 0.019999999999999574,
       "history": [
-        {
-          "date": "2024-12-24",
-          "value": 4.59
-        },
         {
           "date": "2024-12-26",
           "value": 4.58
@@ -10167,6 +10163,10 @@
         {
           "date": "2026-08-28",
           "value": 4.73
+        },
+        {
+          "date": "2026-08-31",
+          "value": 4.75
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DGS10",
