@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-03T14:34:11.835343+00:00",
+  "generated_at": "2026-09-03T18:37:29.510451+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -3398,15 +3398,11 @@
     "fed_overnight_rrp": {
       "status": "ok",
       "series_id": "RRPONTSYD",
-      "as_of": "2026-09-02",
-      "latest": 0.525,
-      "previous": 0.725,
-      "change": -0.19999999999999996,
+      "as_of": "2026-09-03",
+      "latest": 0.702,
+      "previous": 0.525,
+      "change": 0.17699999999999994,
       "history": [
-        {
-          "date": "2024-12-27",
-          "value": 268.739
-        },
         {
           "date": "2024-12-30",
           "value": 260.743
@@ -5082,6 +5078,10 @@
         {
           "date": "2026-09-02",
           "value": 0.525
+        },
+        {
+          "date": "2026-09-03",
+          "value": 0.702
         }
       ],
       "url": "https://fred.stlouisfed.org/series/RRPONTSYD",
