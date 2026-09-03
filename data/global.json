@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-03T09:47:46.226456+00:00",
+  "generated_at": "2026-09-03T14:34:11.835343+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -10178,15 +10178,11 @@
     "vix": {
       "status": "ok",
       "series_id": "VIXCLS",
-      "as_of": "2026-09-01",
-      "latest": 16.34,
-      "previous": 14.92,
-      "change": 1.42,
+      "as_of": "2026-09-02",
+      "latest": 15.2,
+      "previous": 16.34,
+      "change": -1.1400000000000006,
       "history": [
-        {
-          "date": "2025-01-16",
-          "value": 16.6
-        },
         {
           "date": "2025-01-17",
           "value": 15.97
@@ -11862,6 +11858,10 @@
         {
           "date": "2026-09-01",
           "value": 16.34
+        },
+        {
+          "date": "2026-09-02",
+          "value": 15.2
         }
       ],
       "url": "https://fred.stlouisfed.org/series/VIXCLS",
