@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-04T04:30:58.954754+00:00",
+  "generated_at": "2026-09-04T09:38:01.275015+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "Philip R. Lane: Diversity at the European Central Bank",
+      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260904~7b9257099b.en.pdf",
+      "published": "Fri, 04 Sep 2026 11:10:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Boris Vujčić: Listening to households: expectations, behaviour and monetary policy",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260901~bb28f33f54.en.html",
       "published": "Tue, 01 Sep 2026 18:00:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "ECB publishes consolidated banking data for end-March 2026",
       "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260807~58eb5109ce.en.html",
       "published": "Fri, 07 Aug 2026 10:00:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "Digital euro app to incorporate highest accessibility standards",
-      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260730~3b3bfbb565.en.html",
-      "published": "Thu, 30 Jul 2026 10:00:00 +0200",
       "summary": ""
     }
   ],
