@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-08T18:39:16.084258+00:00",
+  "generated_at": "2026-09-08T21:50:42.955306+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -8,27 +8,11 @@
     "fed_funds_effective": {
       "status": "ok",
       "series_id": "DFF",
-      "as_of": "2026-09-03",
+      "as_of": "2026-09-07",
       "latest": 3.63,
       "previous": 3.63,
       "change": 0.0,
       "history": [
-        {
-          "date": "2025-07-11",
-          "value": 4.33
-        },
-        {
-          "date": "2025-07-12",
-          "value": 4.33
-        },
-        {
-          "date": "2025-07-13",
-          "value": 4.33
-        },
-        {
-          "date": "2025-07-14",
-          "value": 4.33
-        },
         {
           "date": "2025-07-15",
           "value": 4.33
@@ -1691,6 +1675,22 @@
         },
         {
           "date": "2026-09-03",
+          "value": 3.63
+        },
+        {
+          "date": "2026-09-04",
+          "value": 3.63
+        },
+        {
+          "date": "2026-09-05",
+          "value": 3.63
+        },
+        {
+          "date": "2026-09-06",
+          "value": 3.63
+        },
+        {
+          "date": "2026-09-07",
           "value": 3.63
         }
       ],
@@ -5093,31 +5093,11 @@
     "broad_dollar": {
       "status": "ok",
       "series_id": "DTWEXBGS",
-      "as_of": "2026-08-28",
-      "latest": 118.7479,
-      "previous": 118.3583,
-      "change": 0.3896000000000015,
+      "as_of": "2026-09-04",
+      "latest": 118.0732,
+      "previous": 118.127,
+      "change": -0.05379999999999541,
       "history": [
-        {
-          "date": "2024-12-26",
-          "value": 128.3329
-        },
-        {
-          "date": "2024-12-27",
-          "value": 128.45
-        },
-        {
-          "date": "2024-12-30",
-          "value": 128.8205
-        },
-        {
-          "date": "2024-12-31",
-          "value": 129.2775
-        },
-        {
-          "date": "2025-01-02",
-          "value": 129.4598
-        },
         {
           "date": "2025-01-03",
           "value": 129.4535
@@ -6777,6 +6757,26 @@
         {
           "date": "2026-08-28",
           "value": 118.7479
+        },
+        {
+          "date": "2026-08-31",
+          "value": 118.5679
+        },
+        {
+          "date": "2026-09-01",
+          "value": 118.6568
+        },
+        {
+          "date": "2026-09-02",
+          "value": 118.5296
+        },
+        {
+          "date": "2026-09-03",
+          "value": 118.127
+        },
+        {
+          "date": "2026-09-04",
+          "value": 118.0732
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
@@ -6788,15 +6788,11 @@
     "us_2y": {
       "status": "ok",
       "series_id": "DGS2",
-      "as_of": "2026-09-03",
-      "latest": 4.34,
-      "previous": 4.39,
-      "change": -0.04999999999999982,
+      "as_of": "2026-09-04",
+      "latest": 4.37,
+      "previous": 4.34,
+      "change": 0.03000000000000025,
       "history": [
-        {
-          "date": "2024-12-31",
-          "value": 4.25
-        },
         {
           "date": "2025-01-02",
           "value": 4.25
@@ -8472,6 +8468,10 @@
         {
           "date": "2026-09-03",
           "value": 4.34
+        },
+        {
+          "date": "2026-09-04",
+          "value": 4.37
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DGS2",
@@ -8483,15 +8483,11 @@
     "us_10y": {
       "status": "ok",
       "series_id": "DGS10",
-      "as_of": "2026-09-03",
-      "latest": 4.77,
-      "previous": 4.79,
-      "change": -0.020000000000000462,
+      "as_of": "2026-09-04",
+      "latest": 4.78,
+      "previous": 4.77,
+      "change": 0.010000000000000675,
       "history": [
-        {
-          "date": "2024-12-31",
-          "value": 4.58
-        },
         {
           "date": "2025-01-02",
           "value": 4.57
@@ -10167,6 +10163,10 @@
         {
           "date": "2026-09-03",
           "value": 4.77
+        },
+        {
+          "date": "2026-09-04",
+          "value": 4.78
         }
       ],
       "url": "https://fred.stlouisfed.org/series/DGS10",
