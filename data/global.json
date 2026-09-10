@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-10T09:42:24.757586+00:00",
+  "generated_at": "2026-09-10T14:25:25.225969+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -13653,6 +13653,20 @@
     },
     {
       "source": "ECB",
+      "title": "Christine Lagarde, Boris Vujčić: Monetary policy statement",
+      "url": "https://www.ecb.europa.eu//press/press_conference/monetary-policy-statement/2026/html/ecb.is260910~6a45359cfc.en.html",
+      "published": "Thu, 10 Sep 2026 15:00:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
+      "title": "Monetary policy decisions",
+      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.mp260910~314e508016.en.html",
+      "published": "Thu, 10 Sep 2026 14:15:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Christine Lagarde: The choice facing Europeans",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260909~59a07e6f05.en.html",
       "published": "Wed, 09 Sep 2026 19:00:00 +0200",
@@ -13719,20 +13733,6 @@
       "title": "Christine Lagarde: Panel remarks about the European economy during a discussion on the global economic outlook at the World Economic Forum",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260819~98ddf24b7b.en.html",
       "published": "Wed, 19 Aug 2026 09:10:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "Philip R. Lane: The rise in defence spending and the euro area economy",
-      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260817~1f9f7149c9.en.pdf",
-      "published": "Mon, 17 Aug 2026 11:30:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "Cash remains most widely accepted payment method in euro area",
-      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260813~389729d6a9.en.html",
-      "published": "Thu, 13 Aug 2026 11:00:00 +0200",
       "summary": ""
     }
   ],
