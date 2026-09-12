@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-12T05:46:08.709824+00:00",
+  "generated_at": "2026-09-12T10:44:11.052109+00:00",
   "status": "ok",
   "freshness_class": "near-real-time / source-release cadence",
   "accuracy_policy": "Official/primary releases are preferred. Rootvalue stores source dates separately from fetch time and never labels delayed official statistics as real-time.",
@@ -13653,6 +13653,13 @@
     },
     {
       "source": "ECB",
+      "title": "Christine Lagarde: Europe seen from Normandy",
+      "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260912~fafa4b35b0.en.html",
+      "published": "Sat, 12 Sep 2026 12:15:00 +0200",
+      "summary": ""
+    },
+    {
+      "source": "ECB",
       "title": "Philip R. Lane: Outlook for the euro area economy",
       "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260911~a4d6526f00.en.pdf",
       "published": "Fri, 11 Sep 2026 19:00:00 +0200",
@@ -13726,13 +13733,6 @@
       "title": "Piero Cipollone: Interview with ilsussidiario.net",
       "url": "https://www.ecb.europa.eu//press/inter/date/2026/html/ecb.in260824~fa5acbddea.en.html",
       "published": "Mon, 24 Aug 2026 08:00:00 +0200",
-      "summary": ""
-    },
-    {
-      "source": "ECB",
-      "title": "ECB Consumer Expectations Survey results – July 2026",
-      "url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260821~a044fdddd9.en.html",
-      "published": "Fri, 21 Aug 2026 10:00:00 +0200",
       "summary": ""
     }
   ],
